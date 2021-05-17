@@ -1,0 +1,107 @@
+﻿<Window x:Class="W.O.R.D.S.Views.Card"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:W.O.R.D.S.Views"
+        xmlns:converters="clr-namespace:W.O.R.D.S.Models.Converters"
+        mc:Ignorable="d"
+        Title="Card" Height="600" Width="900" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+    <Window.Resources>
+        <converters:AnswerConverter x:Key="AnswerConverter" />
+        <converters:ColorConverter x:Key="ColorConverter" />
+    </Window.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition Height="40"></RowDefinition>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0" Background="PaleTurquoise">
+            <DockPanel Margin="4">
+                <TextBlock Text="{Binding Mode.Word.Level}" FontWeight="Bold"></TextBlock>
+                <TextBlock Text="{Binding Count}" HorizontalAlignment="Right"></TextBlock>
+            </DockPanel>
+            <DockPanel Margin="4">
+                <TextBlock Text="{Binding Mode.Word.PartOfSpeech}"></TextBlock>
+                <Image Width="16" Height="16" Source="{Binding Mode.Word.Category.Image}" HorizontalAlignment="Right"></Image>
+            </DockPanel>
+        </StackPanel>
+        <StackPanel VerticalAlignment="Center">
+            <TextBlock Text="{Binding Mode.MainWord}" HorizontalAlignment="Center" TextWrapping="Wrap" FontWeight="Bold" FontSize="28"></TextBlock>
+            <TextBlock Text="{Binding Mode.Transcription}" HorizontalAlignment="Center" Foreground="ForestGreen" FontWeight="Bold" FontSize="24"></TextBlock>
+        </StackPanel>
+        
+        <StackPanel VerticalAlignment="Center">
+            <TextBlock Visibility="{Binding Mode.Presenter.CloseVisible}" HorizontalAlignment="Center" Foreground="DarkGreen" FontWeight="Bold" FontSize="28">
+                <TextBlock.Text>
+                    <MultiBinding StringFormat="ПРАВИЛЬНЫХ ОТВЕТОВ: {0}">
+                        <Binding Path="WordSet.Right"/>
+                    </MultiBinding>
+                </TextBlock.Text>
+            </TextBlock>
+            <TextBlock Visibility="{Binding Mode.Presenter.CloseVisible}" HorizontalAlignment="Center" Foreground="Firebrick" FontWeight="Bold" FontSize="28">
+                <TextBlock.Text>
+                    <MultiBinding StringFormat="НЕПРАВИЛЬНЫХ ОТВЕТОВ: {0}">
+                        <Binding Path="WordSet.Wrong"/>
+                    </MultiBinding>
+                </TextBlock.Text> 
+            </TextBlock>
+        </StackPanel>
+
+        <StackPanel Grid.Row="1" VerticalAlignment="Center" Visibility="{Binding Mode.Presenter.FlashcardBottomVisible}">
+            <TextBlock Text="{Binding Mode.Translation}"  HorizontalAlignment="Center" FontSize="28"></TextBlock>
+            <DockPanel VerticalAlignment="Center" HorizontalAlignment="Center" Margin="8">
+                <Image Source="/Images/rhombus.png" Width="16" Height="16" Margin="0,0,8,0"></Image>
+                <TextBlock Text="{Binding Mode.Word.Meaning}" Foreground="MidnightBlue" FontSize="16" TextWrapping="Wrap"></TextBlock>
+            </DockPanel>
+        </StackPanel>
+
+        <StackPanel Grid.Row="1" VerticalAlignment="Center" Visibility="{Binding Mode.Presenter.VariantsBottomVisible}">
+            <StackPanel HorizontalAlignment="Center">
+                <ListBox SelectedItem="{Binding SelectedVariant}" IsEnabled="{Binding ElementsEnabled}" ItemsSource="{Binding Mode.Items}" SelectionMode="Single">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Text}" Background="{Binding Color}" FontSize="20" Margin="4"></TextBlock>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+            </StackPanel>
+        </StackPanel>
+
+        <StackPanel Grid.Row="1" VerticalAlignment="Center">
+            <TextBlock Text="{Binding Answer, Converter={StaticResource AnswerConverter}}" Foreground="{Binding Answer, Converter={StaticResource ColorConverter}}" Visibility="{Binding Mode.Presenter.TypingBottomVisible}" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="26" Margin="8"></TextBlock>
+            <TextBox Text="{Binding EditText,UpdateSourceTrigger=PropertyChanged}" Width="260" Height="36" Background="PaleGreen" IsEnabled="{Binding ElementsEnabled}" Visibility="{Binding Mode.Presenter.EditVisible}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="20" Margin="8">
+                <TextBox.InputBindings>
+                    <KeyBinding
+                        Key="Return"
+                        Command="{Binding AnswerCommand}"/>
+                </TextBox.InputBindings>
+            </TextBox>
+            <DockPanel VerticalAlignment="Center" HorizontalAlignment="Center" Margin="8" Visibility="{Binding Mode.Presenter.TypingBottomVisible}">
+                <Image Source="/Images/rhombus.png" Width="16" Height="16" Margin="0,0,8,0"></Image>
+                <TextBlock Text="{Binding Mode.Word.Meaning}" Foreground="MidnightBlue" FontSize="16" TextWrapping="Wrap"></TextBlock>
+            </DockPanel>
+        </StackPanel>
+
+        <TextBlock Grid.Row="1" Visibility="{Binding Mode.Presenter.CloseVisible}" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="Indigo" FontSize="26">
+            <TextBlock.Text>
+                <MultiBinding StringFormat="Затраченное время: {0} сек.">
+                    <Binding Path="WordSet.Time"/>
+                </MultiBinding>
+            </TextBlock.Text>
+        </TextBlock>
+
+        <StackPanel Grid.Row="2" Orientation="Horizontal">
+            <Button Width="450" Command="{Binding NextCommand}" CommandParameter="1" Visibility="{Binding Mode.Presenter.ShowAnswerVisible}" Background="DarkGreen" FontWeight="Bold" FontSize="18">ПРАВИЛЬНО</Button>
+            <Button Width="450" Command="{Binding NextCommand}" CommandParameter="0" Visibility="{Binding Mode.Presenter.ShowAnswerVisible}" Background="FireBrick" FontWeight="Bold" FontSize="18">НЕПРАВИЛЬНО</Button>
+            <Button Width="900" Command="{Binding AnswerCommand}" Visibility="{Binding Mode.Presenter.RightWrongVisible}" Background="Teal" FontWeight="Bold" FontSize="18">ПОКАЗАТЬ ОТВЕТ</Button>
+
+            <Button Width="900" Command="{Binding NextCommand}" Visibility="{Binding Mode.Presenter.NextVisible}" Background="Teal" FontWeight="Bold" FontSize="18">ДАЛЕЕ</Button>
+
+            <Button Width="900" Command="{Binding AnswerCommand}" Visibility="{Binding Mode.Presenter.EnterVisible}" Background="Gray" FontWeight="Bold" FontSize="18">ВВЕСТИ</Button>
+
+            <Button Width="900" Command="{Binding CloseCommand}" Visibility="{Binding Mode.Presenter.CloseVisible}" Background="Gray" FontWeight="Bold" FontSize="18">ЗАВЕРШИТЬ</Button>
+        </StackPanel>
+    </Grid>
+</Window>

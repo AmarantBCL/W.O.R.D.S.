@@ -1,0 +1,10 @@
+﻿<Application x:Class="W.O.R.D.S.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:W.O.R.D.S"
+             StartupUri="Views/Menu.xaml"
+             ShutdownMode="OnLastWindowClose">
+    <Application.Resources>
+         
+    </Application.Resources>
+</Application>
