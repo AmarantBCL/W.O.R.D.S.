@@ -78,7 +78,7 @@ namespace W.O.R.D.S.ViewModels
 
                 OnPropertyChanged("SelectedVocabulary");
 
-                Word.GetWordsFromFile(SelectedVocabulary);
+                //Word.GetWordsFromFile(SelectedVocabulary);
                 TotalWords = Word.CountWordsInVocabulary(SelectedVocabulary);// Word.Count;
 
                 //MessageBox.Show(TotalWords.ToString());
