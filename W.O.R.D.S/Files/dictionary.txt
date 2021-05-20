@@ -1,1 +1,0 @@
-{"Name":"cat","Translation":"кошка","Level":0,"PartOfSpeech":0,"Category":{"Id":1,"Name":"Animals","Image":"/Images/animals.png"},"Transcription":"kæt","Meaning":"a small animal with soft fur that people often keep as a pet. Cats catch and kill birds and mice.","Stage":0,"Progress":0,"Time":"2021-01-21T20:45:10.156941+02:00"}

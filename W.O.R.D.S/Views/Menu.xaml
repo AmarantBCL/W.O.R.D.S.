@@ -25,6 +25,16 @@
         <StackPanel Grid.Row="1" VerticalAlignment="Center" Style="{StaticResource 14px}">
             <StackPanel HorizontalAlignment="Center" Margin="5">
                 <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Словарь: "/>
+                    <ComboBox ItemsSource="{Binding Vocabularies}" SelectedItem="{Binding SelectedVocabulary}" Width="200">
+                        <ComboBox.ItemTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Name}"></TextBlock>
+                            </DataTemplate>
+                        </ComboBox.ItemTemplate>
+                    </ComboBox>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
                     <TextBlock Text="Всего слов: "/>
                     <TextBlock Text="{Binding TotalWords, UpdateSourceTrigger=PropertyChanged}" FontWeight="Bold"/>
                 </StackPanel>
@@ -64,14 +74,14 @@
                     </ComboBox.ItemTemplate>
                 </ComboBox>
             </StackPanel>
-            <StackPanel HorizontalAlignment="Center" Style="{StaticResource 14px}">
-                <!--CheckBox>Показывать нумерацию карточек</-->
+            <!--StackPanel HorizontalAlignment="Center" Style="{StaticResource 14px}"> // -> Goes to settings
+                <CheckBox>Показывать нумерацию карточек</CheckBox>
                 <CheckBox>Показывать категорию</CheckBox>
                 <CheckBox>Показывать уровень</CheckBox>
                 <CheckBox>Показывать часть речи</CheckBox>
                 <CheckBox>Показывать транскрипцию</CheckBox>
                 <CheckBox>Показывать значение слова</CheckBox>
-            </StackPanel>
+            </-->
         </StackPanel>
 
         <StackPanel Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center" Style="{StaticResource 14px}">

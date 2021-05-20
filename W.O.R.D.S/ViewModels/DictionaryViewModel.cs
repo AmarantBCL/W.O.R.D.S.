@@ -102,14 +102,15 @@ namespace W.O.R.D.S.ViewModels
         }
         #endregion
 
-        public DictionaryViewModel(Window window)
+        public DictionaryViewModel(Window window, Vocabulary vocabulary)
         {
             this.window = window;
             window.Show();
 
             Dictionary = new ObservableCollection<Word>();
 
-            foreach (var word in Word.Vocabulary)
+            foreach (var word in Word.GetWordsFromVocabulary(vocabulary))
+            //foreach (var word in Word.Vocabulary)
             {
                 Dictionary.Add(word);
             }

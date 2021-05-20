@@ -9,18 +9,21 @@ namespace W.O.R.D.S.Models
     class Wordset
     {
         private DateTime startTime;
+        private Vocabulary dict;
         public List<Word> Set { get; private set; }
         public int Right { get; private set; }
         public int Wrong { get; private set; }
         public string Time { get; private set; }
 
-        public Wordset(int amount, Category category)
+        public Wordset(int amount, Vocabulary vocabulary, Category category)
         {
             startTime = DateTime.Now;
+            dict = vocabulary;
 
             if (category.Name == "All")
             {
                 Set = Word.Vocabulary.Distinct()
+                    .Where(x => x.Dict.Name == vocabulary.Name)
                     .OrderBy(x => Guid.NewGuid())
                     .Take(amount)
                     .ToList();
@@ -28,6 +31,7 @@ namespace W.O.R.D.S.Models
             else
             {
                 Set = Word.Vocabulary.Distinct()
+                    .Where(x => x.Dict.Name == vocabulary.Name)
                     .Where(x => x.Category != null && x.Category.Name == category.Name)
                     .OrderBy(x => Guid.NewGuid())
                     .Take(amount)
@@ -50,6 +54,7 @@ namespace W.O.R.D.S.Models
         {
             var result = Word.Vocabulary.Distinct()
                 .OrderBy(x => Guid.NewGuid())
+                .Where(x => x.Dict.Name == dict.Name)
                 .Where(x => x != word && x.PartOfSpeech == word.PartOfSpeech)
                 .Take(3)
                 .ToList()

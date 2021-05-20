@@ -21,10 +21,10 @@ namespace W.O.R.D.S.Views
     /// </summary>
     public partial class Card : Window
     {
-        public Card(string gameMode, int wordAmount, Category category)
+        public Card(string gameMode, int wordAmount, Vocabulary vocabulary, Category category)
         {
             InitializeComponent();
-            DataContext = new CardViewModel(this, gameMode, wordAmount, category);
+            DataContext = new CardViewModel(this, gameMode, wordAmount, vocabulary, category);
         }
     }
 }

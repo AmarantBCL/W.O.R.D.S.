@@ -26,6 +26,7 @@ namespace W.O.R.D.S.Models
         public DateTime Time { get; private set; }
         public static List<Word> Vocabulary { get; private set; } = new List<Word>();
         public static int Count { get; private set; } = 0;
+        public Vocabulary Dict { get; set; }
 
         public Word(string name, string translation, PartOfSpeech partOfSpeech, Level level, string transcription, string meaning, Category category, int stage, int progress, DateTime time)
         {
@@ -43,44 +44,37 @@ namespace W.O.R.D.S.Models
             Vocabulary.Add(this);
         }
 
-        public static void GetWordsFromFile()
+        public static void GetWordsFromFile(Vocabulary vocabulary)
         {
-            if (alreadyRead)
-                return;
+            //if (alreadyRead)
+                //return;
 
-            string path = @"Files/dictionary.txt";
-            string[] lines = File.ReadAllLines(path);
-
-            foreach (var item in lines)
-            {
-                Word word = JsonConvert.DeserializeObject<Word>(item);
-            }
-
-            //path = @"Files/dictionaryE.txt"; // ELEMENTARY
-            //lines = File.ReadAllLines(path);
+            //string path = @"Files/Dictionaries/" + vocabulary.Path;
+            //string[] lines = File.ReadAllLines(path);
 
             //foreach (var item in lines)
             //{
             //    Word word = JsonConvert.DeserializeObject<Word>(item);
+            //    word.Dict = vocabulary;
             //}
 
-            //path = @"Files/dictionaryRevision.txt"; // PRE-INTERMEDIATE REVISION
-            //lines = File.ReadAllLines(path);
+            //alreadyRead = true;
+        }
 
-            //foreach (var item in lines)
-            //{
-            //    Word word = JsonConvert.DeserializeObject<Word>(item);
-            //}
+        public static List<Word> GetWordsFromVocabulary(Vocabulary vocabulary)
+        {
+            var result = Vocabulary.Where(x => x.Dict.Name == vocabulary.Name)
+                .ToList();
 
-            //path = @"Files/dictionaryMain.txt"; // MAIN
-            //lines = File.ReadAllLines(path);
+            return result;
+        }
 
-            //foreach (var item in lines)
-            //{
-            //    Word word = JsonConvert.DeserializeObject<Word>(item);
-            //}
+        public static int CountWordsInVocabulary(Vocabulary vocabulary)
+        {
+            var result = Vocabulary.Where(x => x.Dict.Name == vocabulary.Name)
+                .ToList();
 
-            alreadyRead = true;
+            return result.Count;
         }
 
         public static void SaveWordsToFile()

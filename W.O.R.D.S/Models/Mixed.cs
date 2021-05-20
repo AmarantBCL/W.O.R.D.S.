@@ -51,6 +51,7 @@ namespace W.O.R.D.S.Models
         public void Answer()
         {
             mode.Answer();
+            CopyMode();
         }
 
         private void CopyMode()

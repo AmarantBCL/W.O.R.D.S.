@@ -105,12 +105,12 @@ namespace W.O.R.D.S.ViewModels
         #endregion
 
         // Constructor
-        public CardViewModel(Window window, string gameMode, int wordAmount, Category category)
+        public CardViewModel(Window window, string gameMode, int wordAmount, Vocabulary vocabulary, Category category)
         {
             this.window = window;
             window.Show();
 
-            WordSet = new Wordset(wordAmount, category);
+            WordSet = new Wordset(wordAmount, vocabulary, category);
             maxWords = WordSet.Set.Count;
             ElementsEnabled = true;
 

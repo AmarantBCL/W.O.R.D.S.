@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using W.O.R.D.S.Models;
 using W.O.R.D.S.ViewModels;
 
 namespace W.O.R.D.S.Views
@@ -20,10 +21,10 @@ namespace W.O.R.D.S.Views
     /// </summary>
     public partial class Dictionary : Window
     {
-        public Dictionary()
+        public Dictionary(Vocabulary vocabulary)
         {
             InitializeComponent();
-            DataContext = new DictionaryViewModel(this);
+            DataContext = new DictionaryViewModel(this, vocabulary);
         }
     }
 }

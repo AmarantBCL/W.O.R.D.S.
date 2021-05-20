@@ -27,6 +27,7 @@ namespace W.O.R.D.S.ViewModels
         };
 
         public ObservableCollection<Category> Categories { get; set; } = new ObservableCollection<Category>();
+        public ObservableCollection<Vocabulary> Vocabularies { get; set; } = new ObservableCollection<Vocabulary>();
 
         private int totalWords;
         public int TotalWords
@@ -65,6 +66,25 @@ namespace W.O.R.D.S.ViewModels
             }
         }
 
+        private Vocabulary selectedVocabulary;
+        public Vocabulary SelectedVocabulary
+        {
+            get => selectedVocabulary;
+            set
+            {
+                selectedVocabulary = value;
+
+
+
+                OnPropertyChanged("SelectedVocabulary");
+
+                Word.GetWordsFromFile(SelectedVocabulary);
+                TotalWords = Word.CountWordsInVocabulary(SelectedVocabulary);// Word.Count;
+
+                //MessageBox.Show(TotalWords.ToString());
+            }
+        }
+
         private Category selectedCategory;
         public Category SelectedCategory
         {
@@ -85,8 +105,15 @@ namespace W.O.R.D.S.ViewModels
                 Categories.Add(item);
             }
 
-            Word.GetWordsFromFile();
-            TotalWords = Word.Count;
+            foreach (var item in Vocabulary.Read())
+            {
+                Vocabularies.Add(item);
+            }
+
+            SelectedVocabulary = Vocabularies[0];
+            //Word.GetWordsFromFile(SelectedVocabulary);
+
+            //TotalWords = Word.Count;
 
             SelectedCategory = Categories[0];
 
@@ -126,7 +153,7 @@ namespace W.O.R.D.S.ViewModels
 
                       if (int.TryParse(WordsAmount, out int amount))
                       {
-                          new Card(GameMode, amount, SelectedCategory);
+                          new Card(GameMode, amount, SelectedVocabulary, SelectedCategory);
                           window.Close();
                       }
                       else
@@ -145,7 +172,7 @@ namespace W.O.R.D.S.ViewModels
                 return dictionaryCommand ??
                   (dictionaryCommand = new RelayCommand(obj =>
                   {
-                      new Dictionary();
+                      new Dictionary(SelectedVocabulary);
                       window.Close();
                   }));
             }
