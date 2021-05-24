@@ -55,6 +55,7 @@
                 <Image Source="/Images/rhombus.png" Width="16" Height="16" Margin="0,0,8,0"></Image>
                 <TextBlock Text="{Binding Mode.Word.Meaning}" Foreground="MidnightBlue" FontSize="16" TextWrapping="Wrap"></TextBlock>
             </DockPanel>
+            <TextBlock Text="{Binding Mode.Word.Example.Name}" HorizontalAlignment="Center" FontSize="16" FontStyle="Italic" TextWrapping="Wrap"></TextBlock>
         </StackPanel>
 
         <StackPanel Grid.Row="1" VerticalAlignment="Center" Visibility="{Binding Mode.Presenter.VariantsBottomVisible}">
@@ -82,6 +83,7 @@
                 <Image Source="/Images/rhombus.png" Width="16" Height="16" Margin="0,0,8,0"></Image>
                 <TextBlock Text="{Binding Mode.Word.Meaning}" Foreground="MidnightBlue" FontSize="16" TextWrapping="Wrap"></TextBlock>
             </DockPanel>
+            <TextBlock Text="{Binding Mode.Word.Example.Name}" HorizontalAlignment="Center" FontSize="16" FontStyle="Italic" TextWrapping="Wrap" Visibility="{Binding Mode.Presenter.TypingBottomVisible}"></TextBlock>
         </StackPanel>
 
         <TextBlock Grid.Row="1" Visibility="{Binding Mode.Presenter.CloseVisible}" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="Indigo" FontSize="26">

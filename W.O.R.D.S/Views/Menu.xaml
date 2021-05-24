@@ -74,18 +74,10 @@
                     </ComboBox.ItemTemplate>
                 </ComboBox>
             </StackPanel>
-            <!--StackPanel HorizontalAlignment="Center" Style="{StaticResource 14px}"> // -> Goes to settings
-                <CheckBox>Показывать нумерацию карточек</CheckBox>
-                <CheckBox>Показывать категорию</CheckBox>
-                <CheckBox>Показывать уровень</CheckBox>
-                <CheckBox>Показывать часть речи</CheckBox>
-                <CheckBox>Показывать транскрипцию</CheckBox>
-                <CheckBox>Показывать значение слова</CheckBox>
-            </-->
         </StackPanel>
 
         <StackPanel Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center" Style="{StaticResource 14px}">
-            <TextBlock FontWeight="Bold" HorizontalAlignment="Center" Margin="5">Тип игры:</TextBlock>
+            <TextBlock FontWeight="Bold" HorizontalAlignment="Center" Margin="5">Тип тренировки:</TextBlock>
             <RadioButton Command="{Binding ModeCommand}" CommandParameter="0">Карточки на английском</RadioButton>
             <RadioButton Command="{Binding ModeCommand}" CommandParameter="1">Карточки на русском</RadioButton>
             <RadioButton Command="{Binding ModeCommand}" CommandParameter="2">Варианты на английском</RadioButton>
@@ -99,7 +91,7 @@
         <StackPanel Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Center" Style="{StaticResource 14px}">
             <Button Command="{Binding DictionaryCommand}" Background="RoyalBlue" FontWeight="Bold" Width="180" Margin="10,8,10,8">СЛОВАРЬ</Button>
             <Button Command="{Binding StartCommand}" CommandParameter="0" Background="LimeGreen" FontWeight="Bold" Width="180" Margin="10,8,10,8">НАЧАТЬ</Button>
-            <Button Background="IndianRed" FontWeight="Bold" Width="180" Margin="10,8,10,8">НАСТРОЙКИ</Button>
+            <Button Command="{Binding SettingsCommand}" Background="IndianRed" FontWeight="Bold" Width="180" Margin="10,8,10,8">НАСТРОЙКИ</Button>
         </StackPanel>
     </Grid>
 </Window>

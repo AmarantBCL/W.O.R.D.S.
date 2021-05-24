@@ -227,7 +227,8 @@ namespace W.O.R.D.S.ViewModels
             }
             else
             {
-                Count = $"{WordSet.Set.Count}/{maxWords}";
+                if (Setting.Order)
+                    Count = $"{WordSet.Set.Count}/{maxWords}";
             }
 
             OnPropertyChanged("Mode");

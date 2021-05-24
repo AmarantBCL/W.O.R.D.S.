@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using W.O.R.D.S.Models.DTO;
 
 namespace W.O.R.D.S.Models
 {
@@ -19,6 +20,8 @@ namespace W.O.R.D.S.Models
         {
             startTime = DateTime.Now;
             dict = vocabulary;
+
+            List<int> exceptions = Setting.Exceptions;
 
             if (category.Name == "All")
             {

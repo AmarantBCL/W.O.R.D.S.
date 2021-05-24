@@ -177,6 +177,20 @@ namespace W.O.R.D.S.ViewModels
                   }));
             }
         }
+
+        private RelayCommand settingsCommand;
+        public RelayCommand SettingsCommand
+        {
+            get
+            {
+                return settingsCommand ??
+                  (settingsCommand = new RelayCommand(obj =>
+                  {
+                      new Settings();
+                      window.Close();
+                  }));
+            }
+        }
         #endregion
 
         public event PropertyChangedEventHandler PropertyChanged;

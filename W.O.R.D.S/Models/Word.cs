@@ -21,6 +21,7 @@ namespace W.O.R.D.S.Models
         public string Transcription { get; private set; }
         public string Meaning { get; private set; }
         public Category Category { get; set; }
+        public Example Example { get; set; }
         public int Group { get; private set; }
         public int Progress { get; private set; }
         public DateTime Time { get; private set; }
@@ -28,7 +29,7 @@ namespace W.O.R.D.S.Models
         public static int Count { get; private set; } = 0;
         public Vocabulary Dict { get; set; }
 
-        public Word(string name, string translation, PartOfSpeech partOfSpeech, Level level, string transcription, string meaning, Category category, int stage, int progress, DateTime time)
+        public Word(string name, string translation, PartOfSpeech partOfSpeech, Level level, string transcription, string meaning, Category category, string example, int stage, int progress, DateTime time)
         {
             Id = Count++;
             Name = name;
@@ -38,6 +39,7 @@ namespace W.O.R.D.S.Models
             Transcription = transcription == "" ? "" : "[" + transcription + "]";
             Meaning = meaning;
             Category = category;
+            Example = new Example { Name = example };
             Group = stage;
             Progress = progress;
             Time = time;

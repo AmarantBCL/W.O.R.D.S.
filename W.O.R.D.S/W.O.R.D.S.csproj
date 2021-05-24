@@ -76,6 +76,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Models\DTO\Setting.cs" />
+    <Compile Include="ViewModels\SettingsViewModel.cs" />
+    <Compile Include="Views\Settings.xaml.cs">
+      <DependentUpon>Settings.xaml</DependentUpon>
+    </Compile>
     <Page Include="Views\Card.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -97,6 +102,7 @@
     <Compile Include="Models\Converters\ColorConverter.cs" />
     <Compile Include="Models\DTO\Option.cs" />
     <Compile Include="Models\DTO\Presenter.cs" />
+    <Compile Include="Models\Example.cs" />
     <Compile Include="Models\Flashcard.cs" />
     <Compile Include="Models\ICard.cs" />
     <Compile Include="Models\Mixed.cs" />
@@ -118,6 +124,10 @@
       <DependentUpon>Menu.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Views\Settings.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Models\Category.cs" />
@@ -178,15 +188,13 @@
     <None Include="Files\Dictionaries\EVIU Elementary.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Files\Dictionaries\EVIU Pre-Intermediate and Intermediate.txt">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Files\Dictionaries\Revision.txt">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
     <None Include="Files\Dictionaries\Test.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <Resource Include="Files\Dictionaries\EVIU Pre-Intermediate &amp; Intermediate.txt" />
+    <Resource Include="Files\Dictionaries\Revision Pre-Intermediate &amp; Intermediate.txt" />
+    <Resource Include="Files\Dictionaries\EVIU Beginner.txt" />
+    <Resource Include="Files\Dictionaries\Revision Elementary.txt" />
     <Content Include="Images\accessories.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

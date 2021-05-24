@@ -19,6 +19,7 @@ namespace W.O.R.D.S.ViewModels
         // Properties
         #region
         private Window window;
+        private Vocabulary vocabulary;
 
         public ObservableCollection<Category> Categories { get; set; } = new ObservableCollection<Category>();
 
@@ -36,7 +37,7 @@ namespace W.O.R.D.S.ViewModels
                 {
                     Dictionary = new ObservableCollection<Word>();
 
-                    foreach (var word in Word.Vocabulary)
+                    foreach (var word in Word.GetWordsFromVocabulary(vocabulary))
                     {
                         if (word.Name.Contains(search) || word.Translation.Contains(search))
                             Dictionary.Add(word);
@@ -46,7 +47,7 @@ namespace W.O.R.D.S.ViewModels
                 {
                     Dictionary = new ObservableCollection<Word>();
 
-                    foreach (var word in Word.Vocabulary)
+                    foreach (var word in Word.GetWordsFromVocabulary(vocabulary))
                     {
                         Dictionary.Add(word);
                     }
@@ -105,12 +106,12 @@ namespace W.O.R.D.S.ViewModels
         public DictionaryViewModel(Window window, Vocabulary vocabulary)
         {
             this.window = window;
+            this.vocabulary = vocabulary;
             window.Show();
 
             Dictionary = new ObservableCollection<Word>();
 
             foreach (var word in Word.GetWordsFromVocabulary(vocabulary))
-            //foreach (var word in Word.Vocabulary)
             {
                 Dictionary.Add(word);
             }
