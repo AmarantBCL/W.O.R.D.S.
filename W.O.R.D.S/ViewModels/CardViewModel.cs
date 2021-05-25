@@ -70,7 +70,7 @@ namespace W.O.R.D.S.ViewModels
                 if (selectedVariant == null)
                     return;
 
-                Mode.Transcription = Mode.Word.Transcription;
+                Mode.Transcription = "[" + Mode.Word.Transcription + "]";
                 OnPropertyChanged("Mode");
 
                 if (selectedVariant.Text == Mode.Translation)

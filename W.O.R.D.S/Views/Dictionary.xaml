@@ -56,7 +56,7 @@
             <Button Command="{Binding CloseCommand}" Background="Yellow" Style="{StaticResource ButtonStyle}" Margin="0,0,6,0">Сбросить</Button>
             <Button Command="{Binding CloseCommand}" Background="RoyalBlue" Style="{StaticResource ButtonStyle}" Margin="0,0,6,0">Выгрузить</Button>
             <Button Command="{Binding EditCommand}" Background="Silver" Style="{StaticResource ButtonStyle}" Margin="0,0,6,0">Редактировать</Button>
-            <Button Command="{Binding CloseCommand}" Background="LimeGreen" Style="{StaticResource ButtonStyle}" Margin="0,0,6,0">Добавить</Button>
+            <Button Command="{Binding AddCommand}" Background="LimeGreen" Style="{StaticResource ButtonStyle}" Margin="0,0,6,0">Добавить</Button>
             <Button Command="{Binding CloseCommand}" Background="LightCoral" Style="{StaticResource ButtonStyle}" Margin="0,0,6,0">Закрыть</Button>
         </StackPanel>
 

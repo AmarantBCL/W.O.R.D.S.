@@ -39,7 +39,7 @@ namespace W.O.R.D.S.Models
 
         public void Answer()
         {
-            Transcription = Word.Transcription;
+            Transcription = "[" + Word.Transcription + "]";
 
             Presenter.HideAll();
             Presenter.NextVisible = Visibility.Visible;

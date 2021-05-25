@@ -21,6 +21,16 @@ namespace W.O.R.D.S.Models
             Image = "/Images/" + name.ToLower() + ".png";
         }
 
+        public bool ShouldSerializeId()
+        {
+            return false;
+        }
+
+        public bool ShouldSerializeImage()
+        {
+            return false;
+        }
+
         public static List<Category> Read()
         {
             string catPath = @"Files/categories.txt";

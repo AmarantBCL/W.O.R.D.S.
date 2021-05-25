@@ -132,7 +132,7 @@ namespace W.O.R.D.S.ViewModels
                 return closeCommand ??
                   (closeCommand = new RelayCommand(obj =>
                   {
-                      Word.SaveWordsToFile();
+                      Word.SaveWordsToFile(vocabulary);
 
                       new MenuViewModel(new MainWindow());
                       window.Close();
@@ -165,6 +165,20 @@ namespace W.O.R.D.S.ViewModels
                       Search = Search;
 
                       MessageBox.Show(SelectedCategory.Name);
+                  }));
+            }
+        }
+
+        private RelayCommand addCommand;
+        public RelayCommand AddCommand
+        {
+            get
+            {
+                return addCommand ??
+                  (addCommand = new RelayCommand(obj =>
+                  {
+                      Word word = new Word("", "", PartOfSpeech.Noun, Level.A1, "", "", new Category("Unknown"), new Example(), 0, -1, new DateTime());
+                      word.Dict = vocabulary;
                   }));
             }
         }

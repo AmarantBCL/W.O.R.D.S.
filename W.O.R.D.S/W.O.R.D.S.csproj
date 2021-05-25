@@ -179,22 +179,30 @@
     <None Include="Files\categories.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Files\Dictionaries\4000 Essential Words 1.txt">
+    <Content Include="Files\Dictionaries\Test.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Files\Dictionaries\Custom.txt">
+    </Content>
+    <Content Include="Files\Dictionaries\4000 Essential Words 1.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Files\Dictionaries\EVIU Elementary.txt">
+    </Content>
+    <Content Include="Files\Dictionaries\Custom.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Files\Dictionaries\Test.txt">
+    </Content>
+    <Content Include="Files\Dictionaries\EVIU Beginner.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <Resource Include="Files\Dictionaries\EVIU Pre-Intermediate &amp; Intermediate.txt" />
-    <Resource Include="Files\Dictionaries\Revision Pre-Intermediate &amp; Intermediate.txt" />
-    <Resource Include="Files\Dictionaries\EVIU Beginner.txt" />
-    <Resource Include="Files\Dictionaries\Revision Elementary.txt" />
+    </Content>
+    <Content Include="Files\Dictionaries\EVIU Elementary.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\Dictionaries\EVIU Pre-Intermediate &amp; Intermediate.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\Dictionaries\Revision Elementary.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\Dictionaries\Revision Pre-Intermediate &amp; Intermediate.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Images\accessories.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

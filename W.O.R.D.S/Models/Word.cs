@@ -29,38 +29,38 @@ namespace W.O.R.D.S.Models
         public static int Count { get; private set; } = 0;
         public Vocabulary Dict { get; set; }
 
-        public Word(string name, string translation, PartOfSpeech partOfSpeech, Level level, string transcription, string meaning, Category category, string example, int stage, int progress, DateTime time)
+        public Word(string name, string translation, PartOfSpeech partOfSpeech, Level level, string transcription, string meaning, Category category, Example example, int stage, int progress, DateTime time)
         {
             Id = Count++;
             Name = name;
             Translation = translation;
             PartOfSpeech = partOfSpeech;
             Level = level;
-            Transcription = transcription == "" ? "" : "[" + transcription + "]";
+            Transcription = transcription == "" ? "" : transcription; // [ + ]
             Meaning = meaning;
             Category = category;
-            Example = new Example { Name = example };
+            Example = example;
             Group = stage;
             Progress = progress;
             Time = time;
             Vocabulary.Add(this);
         }
 
-        public static void GetWordsFromFile(Vocabulary vocabulary)
+        public bool ShouldSerializeId()
         {
-            //if (alreadyRead)
-                //return;
+            return false;
+        }
 
-            //string path = @"Files/Dictionaries/" + vocabulary.Path;
-            //string[] lines = File.ReadAllLines(path);
+        public bool ShouldSerializeDict()
+        {
+            return false;
+        }
 
-            //foreach (var item in lines)
-            //{
-            //    Word word = JsonConvert.DeserializeObject<Word>(item);
-            //    word.Dict = vocabulary;
-            //}
+        public bool ShouldSerializeTranscription()
+        {
+            Transcription = Transcription.Trim(new char[] { '[', ']' });
 
-            //alreadyRead = true;
+            return true;
         }
 
         public static List<Word> GetWordsFromVocabulary(Vocabulary vocabulary)
@@ -79,14 +79,15 @@ namespace W.O.R.D.S.Models
             return result.Count;
         }
 
-        public static void SaveWordsToFile()
+        public static void SaveWordsToFile(Vocabulary vocabulary)
         {
-            string path = @"Files/dictionary.txt";
+            string path = @"Files/Dictionaries/" + vocabulary.Path;
+
             StringBuilder sb = new StringBuilder();
 
-            foreach (var word in Vocabulary)
+            foreach (var word in GetWordsFromVocabulary(vocabulary))
             {
-                sb.AppendLine(JsonConvert.SerializeObject(word) );
+                sb.AppendLine(JsonConvert.SerializeObject(word));
             }
 
             File.WriteAllText(path, sb.ToString());

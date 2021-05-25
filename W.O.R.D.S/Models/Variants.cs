@@ -35,7 +35,7 @@ namespace W.O.R.D.S.Models
                 {
                     MainWord = Word.Name;
                     Translation = Word.Translation;
-                    Transcription = Word.Transcription;
+                    Transcription = "[" + Word.Transcription + "]";
 
                     var result = wordset.GenerateVariants(Word);
 
