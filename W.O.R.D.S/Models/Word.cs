@@ -16,10 +16,10 @@ namespace W.O.R.D.S.Models
         public int Id { get; private set; }
         public string Name { get; set; }
         public string Translation { get; set; }
-        public PartOfSpeech PartOfSpeech { get; private set; }
-        public Level Level { get; private set; }
-        public string Transcription { get; private set; }
-        public string Meaning { get; private set; }
+        public PartOfSpeech PartOfSpeech { get; set; }
+        public Level Level { get; set; }
+        public string Transcription { get; set; }
+        public string Meaning { get; set; }
         public Category Category { get; set; }
         public Example Example { get; set; }
         public int Group { get; private set; }

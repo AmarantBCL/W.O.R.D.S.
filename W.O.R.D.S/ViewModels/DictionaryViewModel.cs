@@ -91,6 +91,39 @@ namespace W.O.R.D.S.ViewModels
             }
         }
 
+        private string wordTranscription = "";
+        public string WordTranscription
+        {
+            get => wordTranscription;
+            set
+            {
+                wordTranscription = value;
+                OnPropertyChanged("WordTranscription");
+            }
+        }
+
+        private string wordMeaning = "";
+        public string WordMeaning
+        {
+            get => wordMeaning;
+            set
+            {
+                wordMeaning = value;
+                OnPropertyChanged("WordMeaning");
+            }
+        }
+
+        private string wordExample;
+        public string WordExample
+        {
+            get => wordExample;
+            set
+            {
+                wordExample = value;
+                OnPropertyChanged("WordExample");
+            }
+        }
+
         private Category selectedCategory;
         public Category SelectedCategory
         {
@@ -99,6 +132,72 @@ namespace W.O.R.D.S.ViewModels
             {
                 selectedCategory = value;
                 OnPropertyChanged("SelectedCategory");
+            }
+        }
+
+        public ObservableCollection<Level> Levels { get; set; } = new ObservableCollection<Level>
+        {
+            Level.A1, Level.A2, Level.B1, Level.B2, Level.C1, Level.C2
+        };
+
+        private Level selectedLevel;
+        public Level SelectedLevel
+        {
+            get => selectedLevel;
+            set
+            {
+                selectedLevel = value;
+                OnPropertyChanged("SelectedLevel");
+            }
+        }
+
+        public ObservableCollection<PartOfSpeech> PartsOfSpeech { get; set; } = new ObservableCollection<PartOfSpeech>
+        {
+            PartOfSpeech.Noun, PartOfSpeech.Adjective, PartOfSpeech.Verb, PartOfSpeech.Adverb, PartOfSpeech.Preposition, 
+            PartOfSpeech.Collocation, PartOfSpeech.Sentence, PartOfSpeech.Phrasal, PartOfSpeech.Idiom
+        };
+
+        private PartOfSpeech selectedPartOfSpeech;
+        public PartOfSpeech SelectedPartOfSpeech
+        {
+            get => selectedPartOfSpeech;
+            set
+            {
+                selectedPartOfSpeech = value;
+                OnPropertyChanged("SelectedPartOfSpeech");
+            }
+        }
+
+        private bool noLevel = false;
+        public bool NoLevel
+        {
+            get => noLevel;
+            set
+            {
+                noLevel = value;
+                OnPropertyChanged("NoLevel");
+            }
+        }
+
+        private bool noCategory = false;
+        public bool NoCategory
+        {
+            get => noCategory;
+            set
+            {
+                noCategory = value;
+                OnPropertyChanged("NoCategory");
+            }
+        }
+
+        private bool noPartOfSpeech = false;
+        public bool NoPartOfSpeech
+        {
+            get => noPartOfSpeech;
+            set
+            {
+                noPartOfSpeech = value;
+                OnPropertyChanged("NoPartOfSpeech");
             }
         }
         #endregion
@@ -152,19 +251,34 @@ namespace W.O.R.D.S.ViewModels
                           return;
 
                       if (WordName != null && WordName != "")
-                      {
-                          SelectedWord.Name = WordName;
-                      }
+                         SelectedWord.Name = WordName;
 
                       if (WordTranslation != null && WordTranslation != "")
-                      {
-                          SelectedWord.Translation = WordTranslation;
-                      }
+                         SelectedWord.Translation = WordTranslation;
 
-                      SelectedWord.Category = SelectedCategory;
+                      if (!NoLevel)
+                         SelectedWord.Level = SelectedLevel;
+
+                      if (!NoCategory)
+                         SelectedWord.Category = SelectedCategory;
+
+                      if (!NoPartOfSpeech)
+                        SelectedWord.PartOfSpeech = SelectedPartOfSpeech;
+
+                      if (WordTranscription != null && WordTranscription != "")
+                        SelectedWord.Transcription = WordTranscription;
+
+                      if (WordMeaning != null && WordMeaning != "")
+                          SelectedWord.Meaning = WordMeaning;
+
+                      if (WordExample != null && WordExample != "")
+                          SelectedWord.Example = new Example { Name = WordExample };
+
+                      WordName = "";
+                      WordTranslation = "";
                       Search = Search;
 
-                      MessageBox.Show(SelectedCategory.Name);
+                      MessageBox.Show($"Слово {WordName} успешно отредактировано.", "Новое слово", MessageBoxButton.OK, MessageBoxImage.Information);
                   }));
             }
         }
@@ -177,8 +291,24 @@ namespace W.O.R.D.S.ViewModels
                 return addCommand ??
                   (addCommand = new RelayCommand(obj =>
                   {
-                      Word word = new Word("", "", PartOfSpeech.Noun, Level.A1, "", "", new Category("Unknown"), new Example(), 0, -1, new DateTime());
-                      word.Dict = vocabulary;
+                      if (WordName != "" && WordName != null && WordTranslation != "" && WordTranslation != null)
+                      {
+                          Word word = new Word(WordName, WordTranslation, SelectedPartOfSpeech, SelectedLevel, WordTranscription, WordMeaning, SelectedCategory, new Example { Name = WordExample }, 0, -1, new DateTime());
+                          word.Dict = vocabulary;
+
+                          MessageBox.Show($"Слово {WordName} успешно добавлено.", "Новое слово", MessageBoxButton.OK, MessageBoxImage.Information);
+
+                          WordName = "";
+                          WordTranslation = "";
+                          WordTranscription = "";
+                          WordMeaning = "";
+                          WordExample = "";
+                          Search = "";
+                      }
+                      else
+                      {
+                          MessageBox.Show("Укажите слово и перевод!", "Новое слово", MessageBoxButton.OK, MessageBoxImage.Error);
+                      }
                   }));
             }
         }
