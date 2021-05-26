@@ -154,6 +154,7 @@ namespace W.O.R.D.S.ViewModels
         public ObservableCollection<PartOfSpeech> PartsOfSpeech { get; set; } = new ObservableCollection<PartOfSpeech>
         {
             PartOfSpeech.Noun, PartOfSpeech.Adjective, PartOfSpeech.Verb, PartOfSpeech.Adverb, PartOfSpeech.Preposition, 
+            PartOfSpeech.Conjunction, PartOfSpeech.Pronoun,
             PartOfSpeech.Collocation, PartOfSpeech.Sentence, PartOfSpeech.Phrasal, PartOfSpeech.Idiom
         };
 
@@ -276,6 +277,9 @@ namespace W.O.R.D.S.ViewModels
 
                       WordName = "";
                       WordTranslation = "";
+                      WordTranscription = "";
+                      WordMeaning = "";
+                      WordExample = "";
                       Search = Search;
 
                       MessageBox.Show($"Слово {WordName} успешно отредактировано.", "Новое слово", MessageBoxButton.OK, MessageBoxImage.Information);

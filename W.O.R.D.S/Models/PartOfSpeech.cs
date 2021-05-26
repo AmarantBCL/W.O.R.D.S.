@@ -13,6 +13,8 @@ namespace W.O.R.D.S.Models
         Verb,
         Adverb,
         Preposition,
+        Conjunction,
+        Pronoun,
         Collocation,
         Sentence,
         Phrasal,
