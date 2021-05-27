@@ -70,6 +70,7 @@ Leisure
 Life
 Literature
 Logistics
+Materials
 Mathematics
 Measurement
 Medicine
@@ -85,6 +86,7 @@ People
 Personality
 Phones
 Physics
+Places
 Plants
 Politics
 Punishment
