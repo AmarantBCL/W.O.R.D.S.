@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:W.O.R.D.S.Views"
+        xmlns:converters="clr-namespace:W.O.R.D.S.Models.Converters"
         mc:Ignorable="d"
         Title="Dictionary" Height="600" Width="900" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
     <Window.Resources>
@@ -18,6 +19,7 @@
             <Setter Property="Control.Height" Value="32"/>
             <Setter Property="Control.Width" Value="130"/>
         </Style>
+        <converters:ExampleConverter x:Key="ExampleConverter" />
     </Window.Resources>
     <Grid>
         <Grid.RowDefinitions>
@@ -27,6 +29,20 @@
             <RowDefinition Height="40"></RowDefinition>
         </Grid.RowDefinitions>
         <ListView ItemsSource="{Binding Dictionary,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" SelectedItem="{Binding SelectedWord}">
+            <ToolTipService.ToolTip>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Rectangle Fill="PeachPuff" />
+                    <StackPanel Grid.Row="0" Orientation="Horizontal">
+                        <Image Width="16" Height="16" Source="/Images/rhombus.png"></Image>
+                        <TextBlock Text="{Binding SelectedWord.Meaning}" Foreground="Black" Margin="2"/>
+                    </StackPanel>
+                    <!--TextBlock Grid.Row="1" Text="{Binding SelectedWord.Example.Name, Converter={StaticResource ExampleConverter}}" Foreground="Black" Margin="2"/-->
+                </Grid>
+            </ToolTipService.ToolTip>
             <ListView.View>
                 <GridView>
                     <GridViewColumn Width="40" DisplayMemberBinding="{Binding Path=Id}">ID</GridViewColumn>
