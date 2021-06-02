@@ -282,7 +282,7 @@ namespace W.O.R.D.S.ViewModels
                       WordExample = "";
                       Search = Search;
 
-                      MessageBox.Show($"Слово {WordName} успешно отредактировано.", "Новое слово", MessageBoxButton.OK, MessageBoxImage.Information);
+                      //MessageBox.Show($"Слово {WordName} успешно отредактировано.", "Новое слово", MessageBoxButton.OK, MessageBoxImage.Information);
                   }));
             }
         }
@@ -300,7 +300,7 @@ namespace W.O.R.D.S.ViewModels
                           Word word = new Word(WordName, WordTranslation, SelectedPartOfSpeech, SelectedLevel, WordTranscription, WordMeaning, SelectedCategory, new Example { Name = WordExample }, 0, -1, new DateTime());
                           word.Dict = vocabulary;
 
-                          MessageBox.Show($"Слово {WordName} успешно добавлено.", "Новое слово", MessageBoxButton.OK, MessageBoxImage.Information);
+                          //MessageBox.Show($"Слово {WordName} успешно добавлено.", "Новое слово", MessageBoxButton.OK, MessageBoxImage.Information);
 
                           WordName = "";
                           WordTranslation = "";
