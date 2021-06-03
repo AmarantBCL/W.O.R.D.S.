@@ -80,7 +80,13 @@
             <TextBlock VerticalAlignment="Center" Margin="4,0,6,0">Слово:</TextBlock>
             <TextBox Text="{Binding WordName}" Width="100" FontSize="16" VerticalAlignment="Center" Margin="4,0,6,0"></TextBox>
             <TextBlock VerticalAlignment="Center" Margin="4,0,6,0">Перевод:</TextBlock>
-            <TextBox Text="{Binding WordTranslation}" Width="100" FontSize="16" VerticalAlignment="Center" Margin="4,0,6,0"></TextBox>
+            <TextBox Text="{Binding WordTranslation}" Width="100" FontSize="16" VerticalAlignment="Center" Margin="4,0,6,0">
+                <TextBox.InputBindings>
+                    <KeyBinding
+                        Key="Return"
+                        Command="{Binding AddCommand}"/>
+                </TextBox.InputBindings>
+            </TextBox>
             <TextBlock VerticalAlignment="Center" Margin="4,0,6,0">Уровень:</TextBlock>
             <ComboBox ItemsSource="{Binding Levels}" SelectedItem="{Binding SelectedLevel}" Width="50" Style="{StaticResource ComboboxStyle}" Margin="4,0,6,0"></ComboBox>
             <TextBlock VerticalAlignment="Center" Margin="4,0,6,0">Часть речи:</TextBlock>
