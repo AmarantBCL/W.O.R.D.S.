@@ -180,7 +180,9 @@
     <None Include="Files\categories.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <Resource Include="Files\Dictionaries\4000 Essential Words 2.txt" />
+    <Content Include="Files\Dictionaries\4000 Essential Words 2.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Files\Dictionaries\Test.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
