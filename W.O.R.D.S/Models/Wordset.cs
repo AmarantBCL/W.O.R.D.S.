@@ -15,6 +15,7 @@ namespace W.O.R.D.S.Models
         public int Right { get; private set; }
         public int Wrong { get; private set; }
         public string Time { get; private set; }
+        public bool IsLearning { get; set; } = false;
 
         public Wordset(int amount, Vocabulary vocabulary, Category category)
         {
@@ -45,7 +46,14 @@ namespace W.O.R.D.S.Models
         public void Remove(string correct)
         {
             if (correct == "1")
+            {
                 Right++;
+
+                if (IsLearning)
+                {
+                    Set[0].Progress++; // HERE
+                }
+            }
             else
                 Wrong++;
 

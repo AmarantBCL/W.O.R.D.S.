@@ -134,6 +134,10 @@ namespace W.O.R.D.S.ViewModels
                 case "5":
                     Mode = new Mixed();
                     break;
+                case "6":
+                    Mode = new Learning();
+                    WordSet.IsLearning = true;
+                    break;
                 default:
                     break;
             }

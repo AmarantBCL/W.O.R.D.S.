@@ -23,7 +23,7 @@ namespace W.O.R.D.S.Models
         public Category Category { get; set; }
         public Example Example { get; set; }
         public int Group { get; private set; }
-        public int Progress { get; private set; }
+        public int Progress { get; set; }
         public DateTime Time { get; private set; }
         public static List<Word> Vocabulary { get; private set; } = new List<Word>();
         public static int Count { get; private set; } = 0;
