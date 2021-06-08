@@ -28,7 +28,7 @@ namespace W.O.R.D.S.Models
                 switch (word.Progress)
                 {
                     case -1:
-                        word.Progress++;
+                        word.SetProgress();
                         mode = new Flashcard(false);
                         break;
                     case 0:

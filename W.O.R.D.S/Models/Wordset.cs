@@ -51,7 +51,7 @@ namespace W.O.R.D.S.Models
 
                 if (IsLearning)
                 {
-                    Set[0].Progress++; // HERE
+                    Set[0].SetProgress();
                 }
             }
             else

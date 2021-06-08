@@ -92,5 +92,26 @@ namespace W.O.R.D.S.Models
 
             File.WriteAllText(path, sb.ToString());
         }
+
+        public void SetProgress()
+        {
+            if (Group == 0)
+            {
+                Progress++;
+
+                if (Progress >= 5)
+                {
+                    Group++;
+                    Progress = 5;
+                }
+            }
+            else
+            {
+                if (Group < 5)
+                {
+                    Group++;
+                }
+            }
+        }
     }
 }
