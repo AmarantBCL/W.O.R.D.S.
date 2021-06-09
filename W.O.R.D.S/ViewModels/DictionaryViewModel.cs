@@ -317,6 +317,26 @@ namespace W.O.R.D.S.ViewModels
             }
         }
 
+        private RelayCommand resetCommand;
+        public RelayCommand ResetCommand
+        {
+            get
+            {
+                return resetCommand ??
+                  (resetCommand = new RelayCommand(obj =>
+                  {
+                      if (SelectedWord == null)
+                          return;
+
+                      SelectedWord.Group = 0;
+                      SelectedWord.Progress = -1;
+                      Search = Search;
+
+                      MessageBox.Show($"Прогресс по слову {WordName} был успешно сброшен.", "Прогресс слова", MessageBoxButton.OK, MessageBoxImage.Information);
+                  }));
+            }
+        }
+
         public event PropertyChangedEventHandler PropertyChanged;
         public void OnPropertyChanged([CallerMemberName] string prop = "")
         {

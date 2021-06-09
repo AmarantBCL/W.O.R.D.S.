@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using W.O.R.D.S.Models.DTO;
 
 namespace W.O.R.D.S.Models
@@ -17,20 +18,34 @@ namespace W.O.R.D.S.Models
         public string Time { get; private set; }
         public bool IsLearning { get; set; } = false;
 
-        public Wordset(int amount, Vocabulary vocabulary, Category category)
+        public Wordset(int amount, Vocabulary vocabulary, Category category, bool isLearning)
         {
             startTime = DateTime.Now;
             dict = vocabulary;
+            IsLearning = isLearning;
 
             List<int> exceptions = Setting.Exceptions;
 
             if (category.Name == "All")
             {
-                Set = Word.Vocabulary.Distinct()
-                    .Where(x => x.Dict.Name == vocabulary.Name)
-                    .OrderBy(x => Guid.NewGuid())
-                    .Take(amount)
-                    .ToList();
+                if (!IsLearning)
+                {
+                    Set = Word.Vocabulary.Distinct()
+                        .Where(x => x.Dict.Name == vocabulary.Name)
+                        .OrderBy(x => Guid.NewGuid())
+                        .Take(amount)
+                        .ToList();
+                }
+                else
+                {
+                    Set = Word.Vocabulary.Distinct()
+                        .Where(x => x.Dict.Name == vocabulary.Name)
+                        .OrderBy(x => Guid.NewGuid())
+                        .Take(amount)
+                        .OrderBy(x => x.Group)
+                        .OrderBy(x => x.Progress)
+                        .ToList();
+                }
             }
             else
             {
@@ -41,6 +56,15 @@ namespace W.O.R.D.S.Models
                     .Take(amount)
                     .ToList();
             }
+
+            string text = "";
+
+            foreach (var item in Set)
+            {
+                text += $"{item.Name}, G: {item.Group} - P: {item.Progress}\n";
+            }
+
+            MessageBox.Show(text);
         }
 
         public void Remove(string correct)

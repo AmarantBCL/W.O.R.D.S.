@@ -110,7 +110,11 @@ namespace W.O.R.D.S.ViewModels
             this.window = window;
             window.Show();
 
-            WordSet = new Wordset(wordAmount, vocabulary, category);
+            if (gameMode == "6")
+                WordSet = new Wordset(wordAmount, vocabulary, category, true);
+            else
+                WordSet = new Wordset(wordAmount, vocabulary, category, false);
+
             maxWords = WordSet.Set.Count;
             ElementsEnabled = true;
 
@@ -136,7 +140,6 @@ namespace W.O.R.D.S.ViewModels
                     break;
                 case "6":
                     Mode = new Learning();
-                    WordSet.IsLearning = true;
                     break;
                 default:
                     break;
