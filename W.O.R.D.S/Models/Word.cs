@@ -95,6 +95,8 @@ namespace W.O.R.D.S.Models
 
         public void SetProgress()
         {
+            Time = DateTime.Now;
+
             if (Group == 0)
             {
                 Progress++;

@@ -17,6 +17,8 @@ namespace W.O.R.D.S.Models
         public int Wrong { get; private set; }
         public string Time { get; private set; }
         public bool IsLearning { get; set; } = false;
+        public delegate DateTime TimeHandler(double time);
+        public static double[] COEFF = new double[6] { 0.0, 1.0, 1.5, 2.333333333, 7.5, 73.0 };
 
         public Wordset(int amount, Vocabulary vocabulary, Category category, bool isLearning)
         {
@@ -25,6 +27,8 @@ namespace W.O.R.D.S.Models
             IsLearning = isLearning;
 
             List<int> exceptions = Setting.Exceptions;
+
+            TimeHandler Handler = DateTime.Now.AddDays;
 
             if (category.Name == "All")
             {
@@ -40,10 +44,17 @@ namespace W.O.R.D.S.Models
                 {
                     Set = Word.Vocabulary.Distinct()
                         .Where(x => x.Dict.Name == vocabulary.Name)
+                        .Where(x => x.Progress >= 5 && Handler(-(x.Group * COEFF[x.Group])) > x.Time)
+                        .OrderByDescending(x => x.Time)
+                        .ThenBy(x => Guid.NewGuid())
+                        .Union(Word.Vocabulary.Distinct()
+                        .Where(x => x.Dict.Name == vocabulary.Name)
+                        .Where(x => x.Progress < 5)
+                        .OrderByDescending(x => x.Time > new DateTime())
+                        .OrderByDescending(x => x.Progress)
+                        .ThenBy(x => Guid.NewGuid())
+                        ).Take(amount)
                         .OrderBy(x => Guid.NewGuid())
-                        .Take(amount)
-                        .OrderBy(x => x.Group)
-                        .OrderBy(x => x.Progress)
                         .ToList();
                 }
             }
