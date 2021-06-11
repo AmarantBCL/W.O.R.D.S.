@@ -93,7 +93,7 @@ namespace W.O.R.D.S.Models
             File.WriteAllText(path, sb.ToString());
         }
 
-        public void SetProgress()
+        public void MakeProgress()
         {
             Time = DateTime.Now;
 
@@ -112,6 +112,29 @@ namespace W.O.R.D.S.Models
                 if (Group < 5)
                 {
                     Group++;
+                }
+            }
+        }
+
+        public void LowerProgress()
+        {
+            Time = DateTime.Now;
+
+            if (Group == 0)
+            {
+                Progress--;
+
+                if (Progress < 0)
+                {
+                    Progress = 0;
+                }
+            }
+            else
+            {
+                if (Group > 0)
+                {
+                    Progress--;
+                    Group--;
                 }
             }
         }

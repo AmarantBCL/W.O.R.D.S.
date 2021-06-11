@@ -60,22 +60,34 @@ namespace W.O.R.D.S.Models
             }
             else
             {
-                Set = Word.Vocabulary.Distinct()
-                    .Where(x => x.Dict.Name == vocabulary.Name)
-                    .Where(x => x.Category != null && x.Category.Name == category.Name)
-                    .OrderBy(x => Guid.NewGuid())
-                    .Take(amount)
-                    .ToList();
+                if (!IsLearning)
+                {
+                    Set = Word.Vocabulary.Distinct()
+                        .Where(x => x.Dict.Name == vocabulary.Name)
+                        .Where(x => x.Category != null && x.Category.Name == category.Name)
+                        .OrderBy(x => Guid.NewGuid())
+                        .Take(amount)
+                        .ToList();
+                }
+                else
+                {
+                    Set = Word.Vocabulary.Distinct()
+                        .Where(x => x.Dict.Name == vocabulary.Name)
+                        .Where(x => x.Category != null && x.Category.Name == category.Name)
+                        .Where(x => x.Progress >= 5 && Handler(-(x.Group * COEFF[x.Group])) > x.Time)
+                        .OrderByDescending(x => x.Time)
+                        .ThenBy(x => Guid.NewGuid())
+                        .Union(Word.Vocabulary.Distinct()
+                        .Where(x => x.Dict.Name == vocabulary.Name)
+                        .Where(x => x.Progress < 5)
+                        .OrderByDescending(x => x.Time > new DateTime())
+                        .OrderByDescending(x => x.Progress)
+                        .ThenBy(x => Guid.NewGuid())
+                        ).Take(amount)
+                        .OrderBy(x => Guid.NewGuid())
+                        .ToList();
+                }
             }
-
-            string text = "";
-
-            foreach (var item in Set)
-            {
-                text += $"{item.Name}, G: {item.Group} - P: {item.Progress}\n";
-            }
-
-            MessageBox.Show(text);
         }
 
         public void Remove(string correct)
@@ -86,11 +98,18 @@ namespace W.O.R.D.S.Models
 
                 if (IsLearning)
                 {
-                    Set[0].SetProgress();
+                    Set[0].MakeProgress();
                 }
             }
             else
+            {
                 Wrong++;
+
+                if (IsLearning)
+                {
+                    Set[0].LowerProgress();
+                }
+            }
 
             if (Set.Count > 0)
                 Set.RemoveAt(0);
