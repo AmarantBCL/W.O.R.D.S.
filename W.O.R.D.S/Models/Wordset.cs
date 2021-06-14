@@ -79,6 +79,7 @@ namespace W.O.R.D.S.Models
                         .ThenBy(x => Guid.NewGuid())
                         .Union(Word.Vocabulary.Distinct()
                         .Where(x => x.Dict.Name == vocabulary.Name)
+                        .Where(x => x.Category != null && x.Category.Name == category.Name)
                         .Where(x => x.Progress < 5)
                         .OrderByDescending(x => x.Time > new DateTime())
                         .OrderByDescending(x => x.Progress)
