@@ -9,15 +9,15 @@ namespace W.O.R.D.S.Models.DTO
 {
     class Presenter
     {
-        public Visibility RightWrongVisible { get; set; }
-        public Visibility ShowAnswerVisible { get; set; }
-        public Visibility NextVisible { get; set; }
-        public Visibility EnterVisible { get; set; }
-        public Visibility EditVisible { get; set; }
-        public Visibility FlashcardBottomVisible { get; set; }
-        public Visibility VariantsBottomVisible { get; set; }
-        public Visibility TypingBottomVisible { get; set; }
-        public Visibility CloseVisible { get; set; }
+        public Visibility RightWrongVisible { get; set; } = Visibility.Collapsed;
+        public Visibility ShowAnswerVisible { get; set; } = Visibility.Collapsed;
+        public Visibility NextVisible { get; set; } = Visibility.Collapsed;
+        public Visibility EnterVisible { get; set; } = Visibility.Collapsed;
+        public Visibility EditVisible { get; set; } = Visibility.Collapsed;
+        public Visibility FlashcardBottomVisible { get; set; } = Visibility.Collapsed;
+        public Visibility VariantsBottomVisible { get; set; } = Visibility.Collapsed;
+        public Visibility TypingBottomVisible { get; set; } = Visibility.Collapsed;
+        public Visibility CloseVisible { get; set; } = Visibility.Collapsed;
 
         public void HideAll()
         {

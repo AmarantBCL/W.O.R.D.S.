@@ -178,6 +178,12 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Images\nationality.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\numbers.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Images\tools.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -556,7 +562,7 @@
     <Content Include="Images\travelling.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Images\tv.png">
+    <Content Include="Images\media.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Images\unknown.png">
