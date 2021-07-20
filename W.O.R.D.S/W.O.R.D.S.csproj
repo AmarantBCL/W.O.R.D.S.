@@ -187,6 +187,9 @@
     <Content Include="Images\numbers.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Images\thoughts.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Images\tools.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
