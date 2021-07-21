@@ -16,6 +16,9 @@ namespace W.O.R.D.S.Models.DTO
         public static bool Meaning { get; set; } = true;
         public static bool Examples { get; set; } = true;
         public static List<int> Exceptions { get; set; } = new List<int>();
+        public static Vocabulary Vocabulary { get; set; } = Vocabulary.Read()[0];
+        public static int WordsAmount { get; set; } = 10;
+
 
     }
 }

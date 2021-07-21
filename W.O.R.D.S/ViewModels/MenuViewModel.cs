@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using W.O.R.D.S.Infrastructure;
 using W.O.R.D.S.Models;
+using W.O.R.D.S.Models.DTO;
 using W.O.R.D.S.Views;
 
 namespace W.O.R.D.S.ViewModels
@@ -40,16 +41,22 @@ namespace W.O.R.D.S.ViewModels
             }
         }
 
-        private string wordsAmount = "5";
+        private string wordsAmount = Setting.WordsAmount.ToString();
         public string WordsAmount
         {
             get => wordsAmount;
             set
             {
                 if (int.Parse(value) <= 0 || int.Parse(value) > TotalWords)
+                {
                     wordsAmount = "1";
+                    Setting.WordsAmount = 1;
+                }
                 else
+                {
                     wordsAmount = value;
+                    Setting.WordsAmount = int.Parse(value);
+                }
 
                 OnPropertyChanged("WordsAmount");
             }
@@ -66,7 +73,7 @@ namespace W.O.R.D.S.ViewModels
             }
         }
 
-        private Vocabulary selectedVocabulary;
+        private Vocabulary selectedVocabulary = Setting.Vocabulary;
         public Vocabulary SelectedVocabulary
         {
             get => selectedVocabulary;
@@ -80,6 +87,8 @@ namespace W.O.R.D.S.ViewModels
 
                 //Word.GetWordsFromFile(SelectedVocabulary);
                 TotalWords = Word.CountWordsInVocabulary(SelectedVocabulary);// Word.Count;
+                Setting.WordsAmount = TotalWords;
+                Setting.Vocabulary = value;
 
                 //MessageBox.Show(TotalWords.ToString());
             }
@@ -108,9 +117,12 @@ namespace W.O.R.D.S.ViewModels
             foreach (var item in Vocabulary.Read())
             {
                 Vocabularies.Add(item);
+
+                if (item.Name == Setting.Vocabulary.Name)
+                    SelectedVocabulary = Vocabularies[0];
             }
 
-            SelectedVocabulary = Vocabularies[0];
+            //SelectedVocabulary = Setting.Vocabulary;
             //Word.GetWordsFromFile(SelectedVocabulary);
 
             //TotalWords = Word.Count;
