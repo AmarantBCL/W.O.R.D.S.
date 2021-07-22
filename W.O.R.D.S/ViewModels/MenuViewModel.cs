@@ -73,7 +73,7 @@ namespace W.O.R.D.S.ViewModels
             }
         }
 
-        private Vocabulary selectedVocabulary = Setting.Vocabulary;
+        private Vocabulary selectedVocabulary;
         public Vocabulary SelectedVocabulary
         {
             get => selectedVocabulary;
