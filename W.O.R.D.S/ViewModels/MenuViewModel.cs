@@ -117,9 +117,12 @@ namespace W.O.R.D.S.ViewModels
             foreach (var item in Vocabulary.Read())
             {
                 Vocabularies.Add(item);
+            }
 
-                if (item.Name == Setting.Vocabulary.Name)
-                    SelectedVocabulary = Vocabularies[0];
+            foreach (var item in Vocabularies)
+            {
+                if (item == Setting.Vocabulary)
+                    SelectedVocabulary = item;
             }
 
             //SelectedVocabulary = Setting.Vocabulary;
