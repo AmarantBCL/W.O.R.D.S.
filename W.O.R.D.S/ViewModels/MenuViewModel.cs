@@ -102,6 +102,7 @@ namespace W.O.R.D.S.ViewModels
             {
                 selectedCategory = value;
                 OnPropertyChanged("SelectedCategory");
+                Setting.Category = value;
             }
         }
         #endregion
@@ -112,25 +113,31 @@ namespace W.O.R.D.S.ViewModels
             foreach (var item in Category.Read())
             {
                 Categories.Add(item);
+
+                if (item.Name == Setting.Category.Name)
+                    SelectedCategory = item;
             }
 
             foreach (var item in Vocabulary.Read())
             {
                 Vocabularies.Add(item);
-            }
 
-            foreach (var item in Vocabularies)
-            {
-                if (item == Setting.Vocabulary)
+                if (item.Path == Setting.Vocabulary.Path)
                     SelectedVocabulary = item;
             }
+
+            //foreach (var item in Vocabularies)
+            //{
+            //    if (item.Path == Setting.Vocabulary.Path)
+            //        SelectedVocabulary = item;
+            //}
 
             //SelectedVocabulary = Setting.Vocabulary;
             //Word.GetWordsFromFile(SelectedVocabulary);
 
             //TotalWords = Word.Count;
 
-            SelectedCategory = Categories[0];
+            //SelectedCategory = Categories[0];
 
             this.window = window;
             window.Show();

@@ -45,7 +45,7 @@
             </ToolTipService.ToolTip>
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Width="40" DisplayMemberBinding="{Binding Path=Id}">ID</GridViewColumn>
+                    <GridViewColumn Width="50" DisplayMemberBinding="{Binding Path=Id}">ID</GridViewColumn>
                     <GridViewColumn Width="110" DisplayMemberBinding="{Binding Path=Name}">Слово</GridViewColumn>
                     <GridViewColumn Width="190" DisplayMemberBinding="{Binding Path=Translation}">Перевод</GridViewColumn>
                     <GridViewColumn DisplayMemberBinding="{Binding Path=Level}">Уровень</GridViewColumn>

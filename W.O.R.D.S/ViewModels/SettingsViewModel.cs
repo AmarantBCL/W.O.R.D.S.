@@ -21,7 +21,7 @@ namespace W.O.R.D.S.ViewModels
             get => showOrder;
             set
             {
-                Setting.Order = value;
+                Setting.ShowOrder = value;
                 showOrder = value;
                 OnPropertyChanged("ShowOrder");
             }
@@ -29,7 +29,7 @@ namespace W.O.R.D.S.ViewModels
 
         public SettingsViewModel(Window window)
         {
-            showOrder = Setting.Order;
+            showOrder = Setting.ShowOrder;
 
             this.window = window;
             window.Show();

@@ -31,6 +31,11 @@ namespace W.O.R.D.S.Models
 
         public Word(string name, string translation, PartOfSpeech partOfSpeech, Level level, string transcription, string meaning, Category category, Example example, int stage, int progress, DateTime time)
         {
+            if (translation == "кот, кошка")
+            {
+
+            }
+
             Id = Count++;
             Name = name;
             Translation = translation;

@@ -48,6 +48,11 @@ namespace W.O.R.D.S.Models
                         {
                             Word word = JsonConvert.DeserializeObject<Word>(item);
                             word.Dict = vocab;
+
+                            if (word.Example != null && word.Example.Indexes != null)
+                            {
+                                word.Example.FormatExample();
+                            }
                         }
                     }
                 }

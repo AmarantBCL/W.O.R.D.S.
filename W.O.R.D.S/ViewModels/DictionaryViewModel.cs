@@ -273,7 +273,7 @@ namespace W.O.R.D.S.ViewModels
                           SelectedWord.Meaning = WordMeaning;
 
                       if (WordExample != null && WordExample != "")
-                          SelectedWord.Example = new Example { Name = WordExample };
+                          SelectedWord.Example = new Example(WordExample);
 
                       WordName = "";
                       WordTranslation = "";
@@ -297,7 +297,7 @@ namespace W.O.R.D.S.ViewModels
                   {
                       if (WordName != "" && WordName != null && WordTranslation != "" && WordTranslation != null)
                       {
-                          Word word = new Word(WordName, WordTranslation, SelectedPartOfSpeech, SelectedLevel, WordTranscription, WordMeaning, SelectedCategory, new Example { Name = WordExample }, 0, -1, new DateTime());
+                          Word word = new Word(WordName, WordTranslation, SelectedPartOfSpeech, SelectedLevel, WordTranscription, WordMeaning, SelectedCategory, new Example(WordExample), 0, -1, new DateTime());
                           word.Dict = vocabulary;
 
                           //MessageBox.Show($"Слово {WordName} успешно добавлено.", "Новое слово", MessageBoxButton.OK, MessageBoxImage.Information);
