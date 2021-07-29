@@ -27,9 +27,87 @@ namespace W.O.R.D.S.ViewModels
             }
         }
 
+        private bool showCategory;
+        public bool ShowCategory
+        {
+            get => showCategory;
+            set
+            {
+                Setting.ShowCategory = value;
+                showCategory = value;
+                OnPropertyChanged("ShowCategory");
+            }
+        }
+
+        private bool showLevel;
+        public bool ShowLevel
+        {
+            get => showLevel;
+            set
+            {
+                Setting.ShowLevel = value;
+                showLevel = value;
+                OnPropertyChanged("ShowLevel");
+            }
+        }
+
+        private bool showPartOfSpeech;
+        public bool ShowPartOfSpeech
+        {
+            get => showPartOfSpeech;
+            set
+            {
+                Setting.ShowPartOfSpeech = value;
+                showPartOfSpeech = value;
+                OnPropertyChanged("ShowPartOfSpeech");
+            }
+        }
+
+        private bool showTranscription;
+        public bool ShowTranscription
+        {
+            get => showTranscription;
+            set
+            {
+                Setting.ShowTranscription = value;
+                showTranscription = value;
+                OnPropertyChanged("ShowTranscription");
+            }
+        }
+
+        private bool showMeaning;
+        public bool ShowMeaning
+        {
+            get => showMeaning;
+            set
+            {
+                Setting.ShowMeaning = value;
+                showMeaning = value;
+                OnPropertyChanged("ShowMeaning");
+            }
+        }
+
+        private bool showExamples;
+        public bool ShowExamples
+        {
+            get => showExamples;
+            set
+            {
+                Setting.ShowExamples = value;
+                showExamples = value;
+                OnPropertyChanged("ShowExamples");
+            }
+        }
+
         public SettingsViewModel(Window window)
         {
             showOrder = Setting.ShowOrder;
+            showCategory = Setting.ShowCategory;
+            showLevel = Setting.ShowLevel;
+            showPartOfSpeech = Setting.ShowPartOfSpeech;
+            showTranscription = Setting.ShowTranscription;
+            showMeaning = Setting.ShowMeaning;
+            showExamples = Setting.ShowExamples;
 
             this.window = window;
             window.Show();

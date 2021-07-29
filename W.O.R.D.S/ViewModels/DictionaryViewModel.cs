@@ -299,6 +299,7 @@ namespace W.O.R.D.S.ViewModels
                       {
                           Word word = new Word(WordName, WordTranslation, SelectedPartOfSpeech, SelectedLevel, WordTranscription, WordMeaning, SelectedCategory, new Example(WordExample), 0, -1, new DateTime());
                           word.Dict = vocabulary;
+                          word.Example.Index(WordName);
 
                           //MessageBox.Show($"Слово {WordName} успешно добавлено.", "Новое слово", MessageBoxButton.OK, MessageBoxImage.Information);
 
@@ -333,6 +334,24 @@ namespace W.O.R.D.S.ViewModels
                       Search = Search;
 
                       MessageBox.Show($"Прогресс по слову {WordName} был успешно сброшен.", "Прогресс слова", MessageBoxButton.OK, MessageBoxImage.Information);
+                  }));
+            }
+        }
+
+        private RelayCommand testCommand;
+        public RelayCommand TestCommand
+        {
+            get
+            {
+                return testCommand ??
+                  (testCommand = new RelayCommand(obj =>
+                  {
+                      foreach (var word in Dictionary)
+                      {
+                          word.Example.Index(word.Name);
+                      }
+
+                      MessageBox.Show("Все примеры были успешно проиндексированы.", "Индексация примеров", MessageBoxButton.OK, MessageBoxImage.Information);
                   }));
             }
         }

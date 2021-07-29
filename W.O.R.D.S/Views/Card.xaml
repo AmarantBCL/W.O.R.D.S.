@@ -10,6 +10,10 @@
     <Window.Resources>
         <converters:AnswerConverter x:Key="AnswerConverter" />
         <converters:ColorConverter x:Key="ColorConverter" />
+        <Style x:Key="ExampleStyle">
+            <Setter Property="Control.HorizontalAlignment" Value="Center"/>
+            <Setter Property="Control.Foreground" Value="Black"/>
+        </Style>
     </Window.Resources>
     <Grid>
         <Grid.RowDefinitions>
@@ -19,17 +23,17 @@
         </Grid.RowDefinitions>
         <StackPanel Grid.Row="0" Background="PaleTurquoise">
             <DockPanel Margin="4">
-                <TextBlock Text="{Binding Mode.Word.Level}" FontWeight="Bold"></TextBlock>
-                <TextBlock Text="{Binding Count}" HorizontalAlignment="Right"></TextBlock>
+                <TextBlock Text="{Binding Mode.Word.Level}" FontWeight="Bold" Visibility="{Binding Mode.Presenter.ShowLevelVisible}"></TextBlock>
+                <TextBlock Text="{Binding Count}" HorizontalAlignment="Right" Visibility="{Binding Mode.Presenter.ShowOrderVisible}"></TextBlock>
             </DockPanel>
             <DockPanel Margin="4">
-                <TextBlock Text="{Binding Mode.Word.PartOfSpeech}"></TextBlock>
-                <Image Width="16" Height="16" Source="{Binding Mode.Word.Category.Image}" HorizontalAlignment="Right"></Image>
+                <TextBlock Text="{Binding Mode.Word.PartOfSpeech}" Visibility="{Binding Mode.Presenter.ShowPartOfSpeechVisible}"></TextBlock>
+                <Image Width="16" Height="16" Source="{Binding Mode.Word.Category.Image}" HorizontalAlignment="Right" Visibility="{Binding Mode.Presenter.ShowCategoryVisible}"></Image>
             </DockPanel>
         </StackPanel>
         <StackPanel VerticalAlignment="Center">
             <TextBlock Text="{Binding Mode.MainWord}" HorizontalAlignment="Center" TextWrapping="Wrap" FontWeight="Bold" FontSize="28"></TextBlock>
-            <TextBlock Text="{Binding Mode.Transcription}" HorizontalAlignment="Center" Foreground="ForestGreen" FontWeight="Bold" FontSize="24"></TextBlock>
+            <TextBlock Text="{Binding Mode.Transcription}" HorizontalAlignment="Center" Foreground="ForestGreen" FontWeight="Bold" FontSize="24" Visibility="{Binding Mode.Presenter.ShowTranscriptionVisible}"></TextBlock>
         </StackPanel>
         
         <StackPanel VerticalAlignment="Center">
@@ -51,15 +55,17 @@
 
         <StackPanel Grid.Row="1" VerticalAlignment="Center" Visibility="{Binding Mode.Presenter.FlashcardBottomVisible}">
             <TextBlock Text="{Binding Mode.Translation}"  HorizontalAlignment="Center" FontSize="28"></TextBlock>
-            <DockPanel VerticalAlignment="Center" HorizontalAlignment="Center" Margin="8">
+            <DockPanel VerticalAlignment="Center" HorizontalAlignment="Center" Margin="8" Visibility="{Binding Mode.Presenter.ShowMeaningVisible}">
                 <Image Source="/Images/rhombus.png" Width="16" Height="16" Margin="0,0,8,0"></Image>
                 <TextBlock Text="{Binding Mode.Word.Meaning}" Foreground="MidnightBlue" FontSize="16" TextWrapping="Wrap"></TextBlock>
             </DockPanel>
-            <TextBlock HorizontalAlignment="Center" TextWrapping="Wrap">
+            <DockPanel Visibility="{Binding Mode.Presenter.ShowExampleVisible}">
+                <TextBlock TextWrapping="Wrap" Style="{StaticResource ExampleStyle}">
                 <Run Text="{Binding Mode.Word.Example.Left}" FontSize="18" FontStyle="Italic"></Run>
                 <Run Text="{Binding Mode.Word.Example.Main}" FontSize="20" FontStyle="Italic" FontWeight="Bold"></Run>
                 <Run Text="{Binding Mode.Word.Example.Right}" FontSize="18" FontStyle="Italic"></Run>
-            </TextBlock>
+                </TextBlock>
+            </DockPanel>
         </StackPanel>
 
         <StackPanel Grid.Row="1" VerticalAlignment="Center" Visibility="{Binding Mode.Presenter.VariantsBottomVisible}">
@@ -84,14 +90,16 @@
                 </TextBox.InputBindings>
             </TextBox>
             <DockPanel VerticalAlignment="Center" HorizontalAlignment="Center" Margin="8" Visibility="{Binding Mode.Presenter.TypingBottomVisible}">
-                <Image Source="/Images/rhombus.png" Width="16" Height="16" Margin="0,0,8,0"></Image>
-                <TextBlock Text="{Binding Mode.Word.Meaning}" Foreground="MidnightBlue" FontSize="16" TextWrapping="Wrap"></TextBlock>
+                <Image Source="/Images/rhombus.png" Width="16" Height="16" Margin="0,0,8,0" Visibility="{Binding Mode.Presenter.ShowMeaningVisible}"></Image>
+                <TextBlock Text="{Binding Mode.Word.Meaning}" Foreground="MidnightBlue" FontSize="16" TextWrapping="Wrap" Visibility="{Binding Mode.Presenter.ShowMeaningVisible}"></TextBlock>
             </DockPanel>
-            <TextBlock HorizontalAlignment="Center" TextWrapping="Wrap" Visibility="{Binding Mode.Presenter.TypingBottomVisible}">
+            <DockPanel Visibility="{Binding Mode.Presenter.ShowExampleVisible}">
+                <TextBlock TextWrapping="Wrap" Style="{StaticResource ExampleStyle}" Visibility="{Binding Mode.Presenter.TypingBottomVisible}">
                 <Run Text="{Binding Mode.Word.Example.Left}" FontSize="18" FontStyle="Italic"></Run>
                 <Run Text="{Binding Mode.Word.Example.Main}" FontSize="20" FontStyle="Italic" FontWeight="Bold"></Run>
                 <Run Text="{Binding Mode.Word.Example.Right}" FontSize="18" FontStyle="Italic"></Run>
-            </TextBlock>
+                </TextBlock>
+            </DockPanel>
         </StackPanel>
 
         <TextBlock Grid.Row="1" Visibility="{Binding Mode.Presenter.CloseVisible}" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="Indigo" FontSize="26">

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace W.O.R.D.S.Models
 {
@@ -24,6 +25,39 @@ namespace W.O.R.D.S.Models
             Left = Name.Substring(0, Indexes[0]);
             Main = Name.Substring(Indexes[0], Indexes[1] - Indexes[0] + 1);
             Right = Name.Substring(Indexes[1] + 1);
+        }
+
+        public void Index(string wordName)
+        {
+            if (Indexes[0] == 0 && Indexes[1] == 0)
+            {
+                int start = Name.ToLower().IndexOf(wordName);
+                int finish;
+
+                if (start == -1)
+                {
+                    MessageBox.Show($"Пример слова {wordName} не удалось проиндексировать.", "Индексация примера", MessageBoxButton.OK, MessageBoxImage.Error);
+
+                    return;
+                }
+
+                char[] validChars = new char[] { ',', ';', '!', '?', ' ', '.'};
+                int least = Name.Length - 1;
+
+                foreach (var c in validChars)
+                {
+                    finish = Name.ToLower().IndexOf(c, start);
+
+                    if (finish != -1)
+                    {
+                        if (finish < least)
+                            least = finish;
+                    }
+                }
+
+                least -= 1;
+                Indexes = new int[] { start, least };
+            }
         }
 
         public bool ShouldSerializeName()

@@ -70,7 +70,7 @@
         <StackPanel Grid.Row="1" Orientation="Horizontal">
             <TextBox Text="{Binding Search, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Background="PowderBlue" Width="198" FontSize="18" FontWeight="Bold" VerticalAlignment="Center" Margin="4,0,6,0"></TextBox>
             <Button Command="{Binding ResetCommand}" Background="Yellow" Style="{StaticResource ButtonStyle}" Margin="0,0,6,0">Сбросить</Button>
-            <Button Command="{Binding CloseCommand}" Background="RoyalBlue" Style="{StaticResource ButtonStyle}" Margin="0,0,6,0">Выгрузить</Button>
+            <Button Command="{Binding TestCommand}" Background="RoyalBlue" Style="{StaticResource ButtonStyle}" Margin="0,0,6,0">Индексировать</Button>
             <Button Command="{Binding EditCommand}" Background="Silver" Style="{StaticResource ButtonStyle}" Margin="0,0,6,0">Редактировать</Button>
             <Button Command="{Binding AddCommand}" Background="LimeGreen" Style="{StaticResource ButtonStyle}" Margin="0,0,6,0">Добавить</Button>
             <Button Command="{Binding CloseCommand}" Background="LightCoral" Style="{StaticResource ButtonStyle}" Margin="0,0,6,0">Закрыть</Button>

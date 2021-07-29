@@ -19,6 +19,14 @@ namespace W.O.R.D.S.Models.DTO
         public Visibility TypingBottomVisible { get; set; } = Visibility.Collapsed;
         public Visibility CloseVisible { get; set; } = Visibility.Collapsed;
 
+        public Visibility ShowOrderVisible { get; set; } = Visibility.Collapsed;
+        public Visibility ShowCategoryVisible { get; set; } = Visibility.Collapsed;
+        public Visibility ShowLevelVisible { get; set; } = Visibility.Collapsed;
+        public Visibility ShowPartOfSpeechVisible { get; set; } = Visibility.Collapsed;
+        public Visibility ShowTranscriptionVisible { get; set; } = Visibility.Collapsed;
+        public Visibility ShowMeaningVisible { get; set; } = Visibility.Hidden;
+        public Visibility ShowExampleVisible { get; set; } = Visibility.Hidden;
+
         public void HideAll()
         {
             RightWrongVisible = Visibility.Collapsed;
@@ -30,6 +38,39 @@ namespace W.O.R.D.S.Models.DTO
             VariantsBottomVisible = Visibility.Collapsed;
             TypingBottomVisible = Visibility.Collapsed;
             CloseVisible = Visibility.Collapsed;
+            ShowOrderVisible = Visibility.Collapsed;
+            ShowCategoryVisible = Visibility.Collapsed;
+            ShowLevelVisible = Visibility.Collapsed;
+            ShowPartOfSpeechVisible = Visibility.Collapsed;
+            ShowTranscriptionVisible = Visibility.Collapsed;
+            ShowMeaningVisible = Visibility.Hidden;
+            ShowExampleVisible = Visibility.Hidden;
+
+            AdjustSettings();
+        }
+
+        public void AdjustSettings()
+        {
+            if (Setting.ShowOrder)
+                ShowOrderVisible = Visibility.Visible;
+
+            if (Setting.ShowCategory)
+                ShowCategoryVisible = Visibility.Visible;
+
+            if (Setting.ShowLevel)
+                ShowLevelVisible = Visibility.Visible;
+
+            if (Setting.ShowPartOfSpeech)
+                ShowPartOfSpeechVisible = Visibility.Visible;
+
+            if (Setting.ShowTranscription)
+                ShowTranscriptionVisible = Visibility.Visible;
+
+            if (Setting.ShowMeaning)
+               ShowMeaningVisible = Visibility.Visible;
+
+            if (Setting.ShowExamples)
+                ShowExampleVisible = Visibility.Visible;
         }
     }
 }

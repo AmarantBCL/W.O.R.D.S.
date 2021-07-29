@@ -20,12 +20,12 @@
         <GroupBox Grid.Row="0" HorizontalAlignment="Center" Header="Настройки отображения" Padding="5">
             <StackPanel Style="{StaticResource 14px}">
                 <CheckBox IsChecked="{Binding ShowOrder}">Показывать нумерацию карточек</CheckBox>
-                <CheckBox IsChecked="True">Показывать категорию</CheckBox>
-                <CheckBox IsChecked="True">Показывать уровень</CheckBox>
-                <CheckBox IsChecked="True">Показывать часть речи</CheckBox>
-                <CheckBox IsChecked="True">Показывать транскрипцию</CheckBox>
-                <CheckBox IsChecked="True">Показывать значение слова</CheckBox>
-                <CheckBox IsChecked="True">Показывать примеры</CheckBox>
+                <CheckBox IsChecked="{Binding ShowCategory}">Показывать категорию</CheckBox>
+                <CheckBox IsChecked="{Binding ShowLevel}">Показывать уровень</CheckBox>
+                <CheckBox IsChecked="{Binding ShowPartOfSpeech}">Показывать часть речи</CheckBox>
+                <CheckBox IsChecked="{Binding ShowTranscription}">Показывать транскрипцию</CheckBox>
+                <CheckBox IsChecked="{Binding ShowMeaning}">Показывать значение слова</CheckBox>
+                <CheckBox IsChecked="{Binding ShowExamples}">Показывать примеры</CheckBox>
             </StackPanel>
         </GroupBox>
         <GroupBox Grid.Row="1" HorizontalAlignment="Center" Header="Фильтры слов" Padding="5">
