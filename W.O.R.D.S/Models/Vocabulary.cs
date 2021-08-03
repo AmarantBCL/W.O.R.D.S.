@@ -19,8 +19,6 @@ namespace W.O.R.D.S.Models
         {
             Path = name;
             Name = name.Substring(0, name.Length - 4);
-
-
         }
 
         public static List<Vocabulary> Read()

@@ -326,11 +326,18 @@ namespace W.O.R.D.S.ViewModels
                 return resetCommand ??
                   (resetCommand = new RelayCommand(obj =>
                   {
-                      if (SelectedWord == null)
-                          return;
+                      //if (SelectedWord == null) // FOR THE ONE WORD
+                      //    return;
 
-                      SelectedWord.Group = 0;
-                      SelectedWord.Progress = -1;
+                      //SelectedWord.Group = 0;
+                      //SelectedWord.Progress = -1;
+
+                      foreach (var item in Dictionary) // FOR ALL THE WORDS
+                      {
+                          item.Group = 0;
+                          item.Progress = -1;
+                      }
+
                       Search = Search;
 
                       MessageBox.Show($"Прогресс по слову {WordName} был успешно сброшен.", "Прогресс слова", MessageBoxButton.OK, MessageBoxImage.Information);

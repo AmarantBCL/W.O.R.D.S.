@@ -11,8 +11,6 @@ namespace W.O.R.D.S.Models
 {
     class Word
     {
-        private static bool alreadyRead = false;
-
         public int Id { get; private set; }
         public string Name { get; set; }
         public string Translation { get; set; }
@@ -31,11 +29,6 @@ namespace W.O.R.D.S.Models
 
         public Word(string name, string translation, PartOfSpeech partOfSpeech, Level level, string transcription, string meaning, Category category, Example example, int stage, int progress, DateTime time)
         {
-            if (translation == "кот, кошка")
-            {
-
-            }
-
             Id = Count++;
             Name = name;
             Translation = translation;
@@ -79,6 +72,30 @@ namespace W.O.R.D.S.Models
         public static int CountWordsInVocabulary(Vocabulary vocabulary)
         {
             var result = Vocabulary.Where(x => x.Dict.Name == vocabulary.Name)
+                .ToList();
+
+            return result.Count;
+        }
+
+        public static int CountLearningWords(Vocabulary vocabulary)
+        {
+            var result = Vocabulary.Where(x => x.Dict.Name == vocabulary.Name && x.Group < 3 && x.Progress >= 0 && x.Progress < 5)
+                .ToList();
+
+            return result.Count;
+        }
+
+        public static int CountRepeatWords(Vocabulary vocabulary)
+        {
+            var result = Vocabulary.Where(x => x.Dict.Name == vocabulary.Name && x.Group > 0 && x.Progress >= 5)
+                .ToList();
+
+            return result.Count;
+        }
+
+        public static int CountStudiedWords(Vocabulary vocabulary)
+        {
+            var result = Vocabulary.Where(x => x.Dict.Name == vocabulary.Name && x.Group >= 3)
                 .ToList();
 
             return result.Count;

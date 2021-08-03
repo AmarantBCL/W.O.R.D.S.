@@ -51,7 +51,7 @@ namespace W.O.R.D.S.Models
                         .Where(x => x.Dict.Name == vocabulary.Name)
                         .Where(x => x.Progress < 5)
                         .OrderByDescending(x => x.Time > new DateTime())
-                        //.OrderByDescending(x => x.Progress)
+                        .OrderByDescending(x => x.Progress)
                         .ThenBy(x => Guid.NewGuid())
                         ).Take(amount)
                         .OrderBy(x => Guid.NewGuid())
@@ -82,13 +82,21 @@ namespace W.O.R.D.S.Models
                         .Where(x => x.Category != null && x.Category.Name == category.Name)
                         .Where(x => x.Progress < 5)
                         .OrderByDescending(x => x.Time > new DateTime())
-                        //.OrderByDescending(x => x.Progress)
+                        .OrderByDescending(x => x.Progress)
                         .ThenBy(x => Guid.NewGuid())
                         ).Take(amount)
                         .OrderBy(x => Guid.NewGuid())
                         .ToList();
                 }
             }
+        }
+
+        public bool PrepareSet()
+        {
+            if (Set.Count > 0)
+                return true;
+            else
+                return false;
         }
 
         public void Remove(string correct)
@@ -136,6 +144,11 @@ namespace W.O.R.D.S.Models
         {
             double time = (DateTime.Now - startTime).TotalSeconds;
             Time = string.Format("{0:f2}", time);
+        }
+
+        public void SaveProgress()
+        {
+            Word.SaveWordsToFile(dict);
         }
     }
 }

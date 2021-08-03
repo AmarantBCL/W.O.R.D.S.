@@ -214,6 +214,7 @@ namespace W.O.R.D.S.ViewModels
                 return closeCommand ??
                   (closeCommand = new RelayCommand(obj =>
                   {
+                        WordSet.SaveProgress();
                         new MenuViewModel(new MainWindow());
                         window.Close();
                   }));

@@ -41,15 +41,15 @@
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Text="На изучении/повторе/выучено: "/>
                     <TextBlock FontWeight="Bold">
-                        <Run Text="0" Foreground="ForestGreen"/>
+                        <Run Text="{Binding Learning}" Foreground="ForestGreen"/>
                         <Run Text="/ "/>
                     </TextBlock>
                     <TextBlock FontWeight="Bold">
-                        <Run Text="0" Foreground="Firebrick"/>
+                        <Run Text="{Binding Repeat}" Foreground="Firebrick"/>
                         <Run Text="/ "/>
                     </TextBlock>
                     <TextBlock FontWeight="Bold">
-                        <Run Text="0" Foreground="DarkCyan"/>
+                        <Run Text="{Binding Studied}" Foreground="DarkCyan"/>
                     </TextBlock>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">

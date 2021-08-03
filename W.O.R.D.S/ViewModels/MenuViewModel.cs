@@ -80,17 +80,14 @@ namespace W.O.R.D.S.ViewModels
             set
             {
                 selectedVocabulary = value;
-
-
-
                 OnPropertyChanged("SelectedVocabulary");
 
-                //Word.GetWordsFromFile(SelectedVocabulary);
                 TotalWords = Word.CountWordsInVocabulary(SelectedVocabulary);// Word.Count;
-                Setting.WordsAmount = TotalWords;
+                //Setting.WordsAmount = TotalWords;
+                Learning = Word.CountLearningWords(SelectedVocabulary);
+                Repeat = Word.CountRepeatWords(SelectedVocabulary);
+                Studied = Word.CountStudiedWords(SelectedVocabulary);
                 Setting.Vocabulary = value;
-
-                //MessageBox.Show(TotalWords.ToString());
             }
         }
 
@@ -103,6 +100,39 @@ namespace W.O.R.D.S.ViewModels
                 selectedCategory = value;
                 OnPropertyChanged("SelectedCategory");
                 Setting.Category = value;
+            }
+        }
+
+        private int learning;
+        public int Learning
+        {
+            get => learning;
+            set
+            {
+                learning = value;
+                OnPropertyChanged("Learning");
+            }
+        }
+
+        private int repeat;
+        public int Repeat
+        {
+            get => repeat;
+            set
+            {
+                repeat = value;
+                OnPropertyChanged("Repeat");
+            }
+        }
+
+        private int studied;
+        public int Studied
+        {
+            get => studied;
+            set
+            {
+                studied = value;
+                OnPropertyChanged("Studied");
             }
         }
         #endregion
@@ -125,19 +155,6 @@ namespace W.O.R.D.S.ViewModels
                 if (item.Path == Setting.Vocabulary.Path)
                     SelectedVocabulary = item;
             }
-
-            //foreach (var item in Vocabularies)
-            //{
-            //    if (item.Path == Setting.Vocabulary.Path)
-            //        SelectedVocabulary = item;
-            //}
-
-            //SelectedVocabulary = Setting.Vocabulary;
-            //Word.GetWordsFromFile(SelectedVocabulary);
-
-            //TotalWords = Word.Count;
-
-            //SelectedCategory = Categories[0];
 
             this.window = window;
             window.Show();
@@ -175,6 +192,18 @@ namespace W.O.R.D.S.ViewModels
 
                       if (int.TryParse(WordsAmount, out int amount))
                       {
+                          if (GameMode == "6")
+                          {
+                              bool result = new Wordset(amount, SelectedVocabulary, SelectedCategory, true).PrepareSet();
+
+                              if (!result)
+                              {
+                                  MessageBox.Show("Нет слов для тренировки!", "Слова", MessageBoxButton.OK, MessageBoxImage.Error);
+
+                                  return;
+                              }
+                          }
+
                           new Card(GameMode, amount, SelectedVocabulary, SelectedCategory);
                           window.Close();
                       }
