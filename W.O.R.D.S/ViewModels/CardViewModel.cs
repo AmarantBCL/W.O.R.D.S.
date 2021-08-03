@@ -108,6 +108,7 @@ namespace W.O.R.D.S.ViewModels
         public CardViewModel(Window window, string gameMode, int wordAmount, Vocabulary vocabulary, Category category)
         {
             this.window = window;
+            window.Show();
 
             if (gameMode == "6")
                 WordSet = new Wordset(wordAmount, vocabulary, category, true);
@@ -145,7 +146,6 @@ namespace W.O.R.D.S.ViewModels
             }
 
             SwitchCard(false);
-            window.Show();
         }
 
         // Commands
