@@ -18,7 +18,7 @@ namespace W.O.R.D.S.Models
         public string Time { get; private set; }
         public bool IsLearning { get; set; } = false;
         public delegate DateTime TimeHandler(double time);
-        public static double[] COEFF = new double[6] { 0.0, 1.0, 1.5, 2.333333333, 7.5, 73.0 };
+        public static double[] Coeff = new double[6] { 0.0, 1.0, 1.5, 2.333333333, 7.5, 73.0 };
 
         public Wordset(int amount, Vocabulary vocabulary, Category category, bool isLearning)
         {
@@ -28,7 +28,7 @@ namespace W.O.R.D.S.Models
 
             List<int> exceptions = Setting.Exceptions;
 
-            TimeHandler Handler = DateTime.Now.AddDays;
+            TimeHandler Handler = DateTime.Now.AddMinutes;
 
             if (category.Name == "All")
             {
@@ -44,7 +44,7 @@ namespace W.O.R.D.S.Models
                 {
                     Set = Word.Vocabulary.Distinct()
                         .Where(x => x.Dict.Name == vocabulary.Name)
-                        .Where(x => x.Progress >= 5 && Handler(-(x.Group * COEFF[x.Group])) > x.Time)
+                        .Where(x => x.Progress >= 5 && Handler(-(x.Group * Coeff[x.Group])) > x.Time)
                         .OrderByDescending(x => x.Time)
                         .ThenBy(x => Guid.NewGuid())
                         .Union(Word.Vocabulary.Distinct()
@@ -74,7 +74,7 @@ namespace W.O.R.D.S.Models
                     Set = Word.Vocabulary.Distinct()
                         .Where(x => x.Dict.Name == vocabulary.Name)
                         .Where(x => x.Category != null && x.Category.Name == category.Name)
-                        .Where(x => x.Progress >= 5 && Handler(-(x.Group * COEFF[x.Group])) > x.Time)
+                        .Where(x => x.Progress >= 5 && Handler(-(x.Group * Coeff[x.Group])) > x.Time)
                         .OrderByDescending(x => x.Time)
                         .ThenBy(x => Guid.NewGuid())
                         .Union(Word.Vocabulary.Distinct()

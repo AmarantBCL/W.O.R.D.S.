@@ -87,7 +87,7 @@ namespace W.O.R.D.S.Models
 
         public static int CountRepeatWords(Vocabulary vocabulary)
         {
-            var result = Vocabulary.Where(x => x.Dict.Name == vocabulary.Name && x.Group > 0 && x.Progress >= 5)
+            var result = Vocabulary.Where(x => x.Dict.Name == vocabulary.Name && x.Group > 0 && x.Progress >= 5 && x.Group <= 3)
                 .ToList();
 
             return result.Count;
@@ -95,7 +95,7 @@ namespace W.O.R.D.S.Models
 
         public static int CountStudiedWords(Vocabulary vocabulary)
         {
-            var result = Vocabulary.Where(x => x.Dict.Name == vocabulary.Name && x.Group >= 3)
+            var result = Vocabulary.Where(x => x.Dict.Name == vocabulary.Name && x.Group > 3)
                 .ToList();
 
             return result.Count;
@@ -155,7 +155,7 @@ namespace W.O.R.D.S.Models
             {
                 if (Group > 0)
                 {
-                    Progress--;
+                    //Progress--;
                     Group--;
                 }
             }
