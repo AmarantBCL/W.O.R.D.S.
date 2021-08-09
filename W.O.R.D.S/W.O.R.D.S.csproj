@@ -454,7 +454,7 @@
     <Content Include="Images\mathematics.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Images\measurement.png">
+    <Content Include="Images\size.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Images\medicine.png">
@@ -466,7 +466,7 @@
     <Content Include="Images\money.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Images\movement.png">
+    <Content Include="Images\moving.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Images\music.png">
@@ -565,7 +565,7 @@
     <Content Include="Images\time.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Images\traffic.png">
+    <Content Include="Images\city.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Images\transport.png">

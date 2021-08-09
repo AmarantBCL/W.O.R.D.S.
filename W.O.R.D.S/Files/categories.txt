@@ -19,6 +19,7 @@ Cause
 Certainty
 Change
 Chemistry
+City
 Clothes
 Colors
 Communication
@@ -72,12 +73,11 @@ Literature
 Logistics
 Materials
 Mathematics
-Measurement
 Media
 Medicine
 Military
 Money
-Movement
+Moving
 Music
 Mythology
 Nationality
@@ -102,6 +102,7 @@ Senses
 Shapes
 Ships
 Shopping
+Size
 Society
 Sound
 Space
@@ -114,7 +115,6 @@ Thoughts
 Time
 Tools
 Transport
-Traffic
 Travelling
 Vegetables
 Vision
