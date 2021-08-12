@@ -184,6 +184,9 @@
     <Content Include="Files\Dictionaries\All Essential Words.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Images\amount.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Images\nationality.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -298,7 +301,7 @@
     <Content Include="Images\colors.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Images\communication.png">
+    <Content Include="Images\conversations.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Images\computers.png">
@@ -361,7 +364,7 @@
     <Content Include="Images\feelings.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Images\film.png">
+    <Content Include="Images\cinema.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Images\fish.png">

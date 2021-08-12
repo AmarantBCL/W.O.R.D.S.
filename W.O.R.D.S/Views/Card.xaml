@@ -82,7 +82,7 @@
 
         <StackPanel Grid.Row="1" VerticalAlignment="Center">
             <TextBlock Text="{Binding Answer, Converter={StaticResource AnswerConverter}}" Foreground="{Binding Answer, Converter={StaticResource ColorConverter}}" Visibility="{Binding Mode.Presenter.TypingBottomVisible}" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="26" Margin="8"></TextBlock>
-            <TextBox Text="{Binding EditText,UpdateSourceTrigger=PropertyChanged}" Width="260" Height="36" Background="PaleGreen" IsEnabled="{Binding ElementsEnabled}" Visibility="{Binding Mode.Presenter.EditVisible}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="20" Margin="8">
+            <TextBox Text="{Binding EditText,UpdateSourceTrigger=PropertyChanged}" Width="260" Height="36" Background="PaleGreen" IsEnabled="{Binding ElementsEnabled}" MaxLength="{Binding Mode.Word.Name.Length}" Visibility="{Binding Mode.Presenter.EditVisible}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="20" Margin="8">
                 <TextBox.InputBindings>
                     <KeyBinding
                         Key="Return"
