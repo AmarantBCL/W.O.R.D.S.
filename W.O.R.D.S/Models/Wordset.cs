@@ -16,6 +16,7 @@ namespace W.O.R.D.S.Models
         public int Right { get; private set; }
         public int Wrong { get; private set; }
         public string Time { get; private set; }
+        public string Percent { get; private set; }
         public bool IsLearning { get; set; } = false;
         public delegate DateTime TimeHandler(double time);
         public static double[] Coeff = new double[6] { 0.0, 1.0, 1.5, 2.333333333, 7.5, 73.0 };
@@ -140,10 +141,15 @@ namespace W.O.R.D.S.Models
             return result;
         }
 
-        public void CalculateTime()
+        public void CalculateResults()
         {
-            double time = (DateTime.Now - startTime).TotalSeconds;
-            Time = string.Format("{0:f2}", time);
+            TimeSpan time = (DateTime.Now - startTime);//.TotalSeconds;
+            //Time = string.Format("{0:f2}", time);
+            Time = time.ToString(@"hh\:mm\:ss");
+
+
+            double percent = Convert.ToDouble(Right) / (Convert.ToDouble(Right) + Convert.ToDouble(Wrong)) * 10.0;
+            Percent = Math.Floor(percent).ToString() + "/10";
         }
 
         public void SaveProgress()

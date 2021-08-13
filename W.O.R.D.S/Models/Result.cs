@@ -30,7 +30,7 @@ namespace W.O.R.D.S.Models
 
         public void Show(Wordset wordset)
         {
-            wordset.CalculateTime();
+            wordset.CalculateResults();
         }
     }
 }

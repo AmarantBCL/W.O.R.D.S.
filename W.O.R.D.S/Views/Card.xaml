@@ -102,13 +102,22 @@
             </DockPanel>
         </StackPanel>
 
-        <TextBlock Grid.Row="1" Visibility="{Binding Mode.Presenter.CloseVisible}" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="Indigo" FontSize="26">
-            <TextBlock.Text>
-                <MultiBinding StringFormat="Затраченное время: {0} сек.">
-                    <Binding Path="WordSet.Time"/>
-                </MultiBinding>
-            </TextBlock.Text>
-        </TextBlock>
+        <StackPanel Grid.Row="1" VerticalAlignment="Center">
+            <TextBlock Visibility="{Binding Mode.Presenter.CloseVisible}" HorizontalAlignment="Center" Foreground="Black" FontSize="26" FontWeight="Bold" TextDecorations="Underline">
+                <TextBlock.Text>
+                    <MultiBinding StringFormat="Время: {0}">
+                        <Binding Path="WordSet.Time"/>
+                    </MultiBinding>
+                </TextBlock.Text>
+            </TextBlock>
+            <TextBlock Visibility="{Binding Mode.Presenter.CloseVisible}" HorizontalAlignment="Center" Foreground="Black" FontSize="26" FontWeight="Bold">
+                <TextBlock.Text>
+                    <MultiBinding StringFormat="Баллы: {0}">
+                        <Binding Path="WordSet.Percent"/>
+                    </MultiBinding>
+                </TextBlock.Text>
+            </TextBlock>
+        </StackPanel>
 
         <StackPanel Grid.Row="2" Orientation="Horizontal">
             <Button Width="450" Command="{Binding NextCommand}" CommandParameter="1" Visibility="{Binding Mode.Presenter.ShowAnswerVisible}" Background="DarkGreen" FontWeight="Bold" FontSize="18">ПРАВИЛЬНО</Button>
