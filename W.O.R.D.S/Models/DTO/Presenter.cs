@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Media;
 
 namespace W.O.R.D.S.Models.DTO
 {
@@ -27,6 +28,9 @@ namespace W.O.R.D.S.Models.DTO
         public Visibility ShowMeaningVisible { get; set; } = Visibility.Hidden;
         public Visibility ShowExampleVisible { get; set; } = Visibility.Hidden;
 
+        public string WordStatusText { get; set; } = "";
+        public Brush WordStatusColor { get; set; } = Brushes.Firebrick;
+
         public void HideAll()
         {
             RightWrongVisible = Visibility.Collapsed;
@@ -45,6 +49,9 @@ namespace W.O.R.D.S.Models.DTO
             ShowTranscriptionVisible = Visibility.Collapsed;
             ShowMeaningVisible = Visibility.Hidden;
             ShowExampleVisible = Visibility.Hidden;
+
+            WordStatusText = "";
+            WordStatusColor = Brushes.Firebrick;
 
             AdjustSettings();
         }
@@ -71,6 +78,18 @@ namespace W.O.R.D.S.Models.DTO
 
             if (Setting.ShowExamples)
                 ShowExampleVisible = Visibility.Visible;
+        }
+
+        public void SetNewWord()
+        {
+            WordStatusText = "New!";
+            WordStatusColor = Brushes.Firebrick;
+        }
+
+        public void SetRepeat()
+        {
+            WordStatusText = "R";
+            WordStatusColor = Brushes.Green;
         }
     }
 }

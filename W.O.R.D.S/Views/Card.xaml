@@ -30,6 +30,9 @@
                 <TextBlock Text="{Binding Mode.Word.PartOfSpeech}" Visibility="{Binding Mode.Presenter.ShowPartOfSpeechVisible}"></TextBlock>
                 <Image Width="16" Height="16" Source="{Binding Mode.Word.Category.Image}" HorizontalAlignment="Right" Visibility="{Binding Mode.Presenter.ShowCategoryVisible}"></Image>
             </DockPanel>
+            <DockPanel Margin="4">
+                <TextBlock Text="{Binding Mode.Presenter.WordStatusText}" FontWeight="Bold" Foreground="{Binding Mode.Presenter.WordStatusColor}"></TextBlock>
+            </DockPanel>
         </StackPanel>
         <StackPanel VerticalAlignment="Center">
             <TextBlock Text="{Binding Mode.MainWord}" HorizontalAlignment="Center" TextWrapping="Wrap" FontWeight="Bold" FontSize="28"></TextBlock>

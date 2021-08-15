@@ -148,7 +148,7 @@ namespace W.O.R.D.S.Models
             Time = time.ToString(@"hh\:mm\:ss");
 
 
-            double percent = Convert.ToDouble(Right) / (Convert.ToDouble(Right) + Convert.ToDouble(Wrong)) * 10.0;
+            double percent = (Convert.ToDouble(Right) / (Convert.ToDouble(Right) + Convert.ToDouble(Wrong))) * 10.0;
             Percent = Math.Floor(percent).ToString() + "/10";
         }
 
