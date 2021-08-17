@@ -11,8 +11,8 @@
             <Setter Property="Control.FontSize" Value="14"/>
         </Style>
     </Window.Resources>
-    
-    <Grid Background="Ivory">
+
+    <Grid Background="Gainsboro">
         <Grid.RowDefinitions>
             <RowDefinition Height="50"></RowDefinition>
             <RowDefinition></RowDefinition>
@@ -20,7 +20,7 @@
             <RowDefinition Height="50"></RowDefinition>
         </Grid.RowDefinitions>
 
-        <TextBlock Grid.Row="0" Foreground="SteelBlue" TextDecorations="Underline" FontWeight="Bold" FontSize="40" VerticalAlignment="Center" HorizontalAlignment="Center">W.O.R.D.S.</TextBlock>
+        <TextBlock Grid.Row="0" Foreground="Teal" TextDecorations="Underline" FontWeight="Bold" FontSize="40" VerticalAlignment="Center" HorizontalAlignment="Center">W.O.R.D.S.</TextBlock>
 
         <StackPanel Grid.Row="1" VerticalAlignment="Center" Style="{StaticResource 14px}">
             <StackPanel HorizontalAlignment="Center" Margin="5">

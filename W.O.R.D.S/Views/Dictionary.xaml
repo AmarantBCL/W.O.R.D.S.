@@ -21,7 +21,7 @@
         </Style>
         <converters:ExampleConverter x:Key="ExampleConverter" />
     </Window.Resources>
-    <Grid>
+    <Grid Background="Gainsboro">
         <Grid.RowDefinitions>
             <RowDefinition></RowDefinition>
             <RowDefinition Height="40"></RowDefinition>

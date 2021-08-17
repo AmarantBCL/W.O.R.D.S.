@@ -85,12 +85,42 @@
 
         <StackPanel Grid.Row="1" VerticalAlignment="Center">
             <TextBlock Text="{Binding Answer, Converter={StaticResource AnswerConverter}}" Foreground="{Binding Answer, Converter={StaticResource ColorConverter}}" Visibility="{Binding Mode.Presenter.TypingBottomVisible}" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="26" Margin="8"></TextBlock>
-            <TextBox Text="{Binding EditText,UpdateSourceTrigger=PropertyChanged}" Width="260" Height="36" Background="PaleGreen" IsEnabled="{Binding ElementsEnabled}" MaxLength="{Binding Mode.Word.Name.Length}" Visibility="{Binding Mode.Presenter.EditVisible}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="20" Margin="8">
+            <TextBox Text="{Binding EditText,UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center" Width="260" Height="36" Background="PaleGreen" IsEnabled="{Binding ElementsEnabled}" MaxLength="{Binding Mode.Word.Name.Length}" Visibility="{Binding Mode.Presenter.EditVisible}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="20" Margin="8">
                 <TextBox.InputBindings>
                     <KeyBinding
                         Key="Return"
                         Command="{Binding AnswerCommand}"/>
                 </TextBox.InputBindings>
+                <TextBox.Template>
+                    <ControlTemplate TargetType="TextBox">
+                        <Grid>
+                            <TextBox Text="{Binding Text, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}, UpdateSourceTrigger=PropertyChanged}" Background="PaleGreen" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" MaxLength="{Binding Mode.Word.Name.Length}"/>
+                            <TextBlock HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            Margin="5,0,5,0"
+                            Foreground="Gray"
+                            FontStyle="Italic"
+                            IsHitTestVisible="False"
+                            x:Name="UserMessage"
+                            Visibility="Hidden">
+                                <TextBlock.Text>
+                                    <MultiBinding StringFormat="Слово ({0} букв)">
+                                        <Binding Path="Mode.Word.Name.Length"/>
+                                    </MultiBinding>
+                                </TextBlock.Text>
+                            </TextBlock>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <MultiTrigger>
+                                <MultiTrigger.Conditions>
+                                    <Condition Property="Text" Value=""/>
+                                    <Condition Property="IsKeyboardFocusWithin" Value="False"/>
+                                </MultiTrigger.Conditions>
+                                <Setter Property="Visibility" TargetName="UserMessage" Value="Visible"/>
+                            </MultiTrigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </TextBox.Template>
             </TextBox>
             <DockPanel VerticalAlignment="Center" HorizontalAlignment="Center" Margin="8" Visibility="{Binding Mode.Presenter.TypingBottomVisible}">
                 <Image Source="/Images/rhombus.png" Width="16" Height="16" Margin="0,0,8,0" Visibility="{Binding Mode.Presenter.ShowMeaningVisible}"></Image>
