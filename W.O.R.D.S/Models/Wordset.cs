@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Media;
 using W.O.R.D.S.Models.DTO;
 
 namespace W.O.R.D.S.Models
@@ -20,6 +21,7 @@ namespace W.O.R.D.S.Models
         public bool IsLearning { get; set; } = false;
         public delegate DateTime TimeHandler(double time);
         public static double[] Coeff = new double[6] { 0.0, 1.0, 1.5, 2.333333333, 7.5, 73.0 };
+        public Status Status { get; set; } = new Status();
 
         public Wordset(int amount, Vocabulary vocabulary, Category category, bool isLearning)
         {
@@ -141,12 +143,31 @@ namespace W.O.R.D.S.Models
             return result;
         }
 
+        public void ShowWordStatus()
+        {
+            if (Set.Count <= 0)
+                return;
+
+            if (Set[0].Progress == -1 && Set[0].Group == 0)
+            {
+                Status.Text = "New!";
+                Status.Color = Brushes.Firebrick;
+            }
+            else if (Set[0].Progress >= 5 && Set[0].Group >= 1)
+            {
+                Status.Text = "R";
+                Status.Color = Brushes.ForestGreen;
+            }
+            else
+                Status.Text = "";
+        }
+
         public void CalculateResults()
         {
-            TimeSpan time = (DateTime.Now - startTime);//.TotalSeconds;
-            //Time = string.Format("{0:f2}", time);
-            Time = time.ToString(@"hh\:mm\:ss");
+            Status.Text = "";
 
+            TimeSpan time = (DateTime.Now - startTime);
+            Time = time.ToString(@"hh\:mm\:ss");
 
             double percent = (Convert.ToDouble(Right) / (Convert.ToDouble(Right) + Convert.ToDouble(Wrong))) * 10.0;
             Percent = Math.Floor(percent).ToString() + "/10";

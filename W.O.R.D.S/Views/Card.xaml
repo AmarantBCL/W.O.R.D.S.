@@ -22,16 +22,16 @@
             <RowDefinition Height="40"></RowDefinition>
         </Grid.RowDefinitions>
         <StackPanel Grid.Row="0" Background="PaleTurquoise">
-            <DockPanel Margin="4">
+            <DockPanel Margin="2">
                 <TextBlock Text="{Binding Mode.Word.Level}" FontWeight="Bold" Visibility="{Binding Mode.Presenter.ShowLevelVisible}"></TextBlock>
                 <TextBlock Text="{Binding Count}" HorizontalAlignment="Right" Visibility="{Binding Mode.Presenter.ShowOrderVisible}"></TextBlock>
             </DockPanel>
-            <DockPanel Margin="4">
+            <DockPanel Margin="2">
                 <TextBlock Text="{Binding Mode.Word.PartOfSpeech}" Visibility="{Binding Mode.Presenter.ShowPartOfSpeechVisible}"></TextBlock>
                 <Image Width="16" Height="16" Source="{Binding Mode.Word.Category.Image}" HorizontalAlignment="Right" Visibility="{Binding Mode.Presenter.ShowCategoryVisible}"></Image>
             </DockPanel>
-            <DockPanel Margin="4">
-                <TextBlock Text="{Binding Mode.Presenter.WordStatusText}" FontWeight="Bold" Foreground="{Binding Mode.Presenter.WordStatusColor}"></TextBlock>
+            <DockPanel Margin="2">
+                <TextBlock Text="{Binding WordSet.Status.Text}" FontWeight="Bold" Foreground="{Binding WordSet.Status.Color}" FontSize="14"></TextBlock>
             </DockPanel>
         </StackPanel>
         <StackPanel VerticalAlignment="Center">

@@ -47,15 +47,18 @@ namespace W.O.R.D.S.ViewModels
             get => wordsAmount;
             set
             {
-                if (int.Parse(value) <= 0 || int.Parse(value) > TotalWords)
+                if (int.TryParse(value, out int a))
                 {
-                    wordsAmount = "1";
-                    Setting.WordsAmount = 1;
-                }
-                else
-                {
-                    wordsAmount = value;
-                    Setting.WordsAmount = int.Parse(value);
+                    if (int.Parse(value) <= 0 || int.Parse(value) > TotalWords)
+                    {
+                        wordsAmount = "1";
+                        Setting.WordsAmount = 1;
+                    }
+                    else
+                    {
+                        wordsAmount = value;
+                        Setting.WordsAmount = int.Parse(value);
+                    }
                 }
 
                 OnPropertyChanged("WordsAmount");

@@ -336,6 +336,7 @@ namespace W.O.R.D.S.ViewModels
                       {
                           item.Group = 0;
                           item.Progress = -1;
+                          item.Time = new DateTime();
                       }
 
                       Search = Search;

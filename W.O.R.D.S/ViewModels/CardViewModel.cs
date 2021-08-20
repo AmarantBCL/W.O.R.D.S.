@@ -20,8 +20,18 @@ namespace W.O.R.D.S.ViewModels
         #region
         private Window window;
         private int maxWords;
-
         public Wordset WordSet { get; set; }
+
+        private Status status { get; set; }
+        public Status Status
+        {
+            get => status;
+            set
+            {
+                status = value;
+                OnPropertyChanged("Status");
+            }
+        }
         public ICard Mode { get; set; }
 
         private string answer;
@@ -46,7 +56,7 @@ namespace W.O.R.D.S.ViewModels
             }
         }
 
-        private string editText;
+        private string editText = "";
         public string EditText
         {
             get => editText;
@@ -226,6 +236,9 @@ namespace W.O.R.D.S.ViewModels
         #region
         private void SwitchCard(bool isResult)
         {
+            WordSet.ShowWordStatus();
+            OnPropertyChanged("Status");
+
             Mode.Show(WordSet);
 
             if (isResult)
@@ -238,6 +251,7 @@ namespace W.O.R.D.S.ViewModels
                 Count = $"{WordSet.Set.Count}/{maxWords}";
             }
 
+            OnPropertyChanged("WordSet");
             OnPropertyChanged("Mode");
         }
         #endregion
