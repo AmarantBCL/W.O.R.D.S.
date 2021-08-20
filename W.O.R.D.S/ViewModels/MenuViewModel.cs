@@ -85,8 +85,7 @@ namespace W.O.R.D.S.ViewModels
                 selectedVocabulary = value;
                 OnPropertyChanged("SelectedVocabulary");
 
-                TotalWords = Word.CountWordsInVocabulary(SelectedVocabulary);// Word.Count;
-                //Setting.WordsAmount = TotalWords;
+                TotalWords = Word.CountWordsInVocabulary(SelectedVocabulary);
                 Learning = Word.CountLearningWords(SelectedVocabulary);
                 Repeat = Word.CountRepeatWords(SelectedVocabulary);
                 Studied = Word.CountStudiedWords(SelectedVocabulary);
