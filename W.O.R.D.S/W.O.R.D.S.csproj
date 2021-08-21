@@ -76,7 +76,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Models\Context.cs" />
     <Compile Include="Models\Converters\ExampleConverter.cs" />
+    <Compile Include="Models\DTO\TypingAnswer.cs" />
     <Compile Include="Models\DTO\Setting.cs" />
     <Compile Include="Models\DTO\Status.cs" />
     <Compile Include="Models\Learning.cs" />
@@ -182,6 +184,9 @@
     <Content Include="Files\Dictionaries\4000 Essential Words 4.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Files\Dictionaries\4000 Essential Words 5.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Files\Dictionaries\All Essential Words.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -278,7 +283,7 @@
     <Content Include="Images\buildings.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Images\business.png">
+    <Content Include="Images\jobs.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Images\cars.png">
@@ -428,7 +433,7 @@
     <Content Include="Images\jewelry.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Images\jobs.png">
+    <Content Include="Images\business.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Images\justice.png">

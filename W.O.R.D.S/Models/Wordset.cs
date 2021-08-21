@@ -31,7 +31,7 @@ namespace W.O.R.D.S.Models
 
             List<int> exceptions = Setting.Exceptions;
 
-            TimeHandler Handler = DateTime.Now.AddMinutes;
+            TimeHandler Handler = DateTime.Now.AddDays;
 
             if (category.Name == "All")
             {
@@ -148,6 +148,9 @@ namespace W.O.R.D.S.Models
             if (Set.Count <= 0)
                 return;
 
+            if (!IsLearning)
+                return;
+
             if (Set[0].Progress == -1 && Set[0].Group == 0)
             {
                 Status.Text = "New!";
@@ -166,7 +169,7 @@ namespace W.O.R.D.S.Models
         {
             Status.Text = "";
 
-            TimeSpan time = (DateTime.Now - startTime);
+            TimeSpan time = DateTime.Now - startTime;
             Time = time.ToString(@"hh\:mm\:ss");
 
             double percent = (Convert.ToDouble(Right) / (Convert.ToDouble(Right) + Convert.ToDouble(Wrong))) * 10.0;

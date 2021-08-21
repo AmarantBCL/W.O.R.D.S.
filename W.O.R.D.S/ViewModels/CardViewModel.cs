@@ -21,6 +21,7 @@ namespace W.O.R.D.S.ViewModels
         private Window window;
         private int maxWords;
         public Wordset WordSet { get; set; }
+        public ICard Mode { get; set; }
 
         private Status status { get; set; }
         public Status Status
@@ -32,7 +33,17 @@ namespace W.O.R.D.S.ViewModels
                 OnPropertyChanged("Status");
             }
         }
-        public ICard Mode { get; set; }
+
+        private TypingAnswer typingAnswer { get; set; }
+        public TypingAnswer TypingAnswer
+        {
+            get => typingAnswer;
+            set
+            {
+                typingAnswer = value;
+                OnPropertyChanged("TypingAnswer");
+            }
+        }
 
         private string answer;
         public string Answer
@@ -151,6 +162,9 @@ namespace W.O.R.D.S.ViewModels
                 case "6":
                     Mode = new Learning();
                     break;
+                case "7":
+                    Mode = new Context();
+                    break;
                 default:
                     break;
             }
@@ -172,12 +186,12 @@ namespace W.O.R.D.S.ViewModels
 
                       if (EditText != null)
                       {
-                          if (EditText.ToLower() == Mode.Translation.ToLower())
-                              Answer = "1";
+                          if (EditText.ToLower() == TypingAnswer.Text)
+                             Answer = "1";
                           else
                           {
-                              EditText = Mode.Translation;
-                              Answer = "0";
+                             EditText = TypingAnswer.Text;
+                             Answer = "0";
                           }
                       }
 
@@ -249,6 +263,7 @@ namespace W.O.R.D.S.ViewModels
             else
             {
                 Count = $"{WordSet.Set.Count}/{maxWords}";
+                TypingAnswer = new TypingAnswer(Mode);
             }
 
             OnPropertyChanged("WordSet");

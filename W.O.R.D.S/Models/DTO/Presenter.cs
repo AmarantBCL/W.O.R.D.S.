@@ -19,7 +19,7 @@ namespace W.O.R.D.S.Models.DTO
         public Visibility VariantsBottomVisible { get; set; } = Visibility.Collapsed;
         public Visibility TypingBottomVisible { get; set; } = Visibility.Collapsed;
         public Visibility CloseVisible { get; set; } = Visibility.Collapsed;
-
+        public Visibility ContextVisible { get; set; } = Visibility.Collapsed;
         public Visibility ShowOrderVisible { get; set; } = Visibility.Collapsed;
         public Visibility ShowCategoryVisible { get; set; } = Visibility.Collapsed;
         public Visibility ShowLevelVisible { get; set; } = Visibility.Collapsed;
@@ -39,6 +39,7 @@ namespace W.O.R.D.S.Models.DTO
             VariantsBottomVisible = Visibility.Collapsed;
             TypingBottomVisible = Visibility.Collapsed;
             CloseVisible = Visibility.Collapsed;
+            ContextVisible = Visibility.Collapsed;
             ShowOrderVisible = Visibility.Collapsed;
             ShowCategoryVisible = Visibility.Collapsed;
             ShowLevelVisible = Visibility.Collapsed;
