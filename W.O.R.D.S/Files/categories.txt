@@ -24,6 +24,7 @@ Cinema
 City
 Clothes
 Colors
+Communication
 Computers
 Construction
 Conversations
@@ -39,6 +40,7 @@ Doubt
 Drinks
 Eating
 Education
+Effect
 Engineering
 Environment
 Failure
@@ -58,8 +60,7 @@ History
 Hobbies
 Holiday
 Houses
-Illness
-Impact
+Hygiene
 Insects
 Internet
 Issues
@@ -88,7 +89,6 @@ Obligation
 Opinion
 People
 Personality
-Phones
 Physics
 Places
 Plants
