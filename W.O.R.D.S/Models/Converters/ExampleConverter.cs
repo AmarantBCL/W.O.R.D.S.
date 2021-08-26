@@ -13,7 +13,7 @@ namespace W.O.R.D.S.Models.Converters
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            return "Example: " + value.ToString();
+            return "* Example: " + value.ToString();
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)

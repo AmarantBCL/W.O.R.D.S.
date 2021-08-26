@@ -40,7 +40,7 @@
                         <Image Width="16" Height="16" Source="/Images/rhombus.png"></Image>
                         <TextBlock Text="{Binding SelectedWord.Meaning}" Foreground="Black" Margin="2"/>
                     </StackPanel>
-                    <!--TextBlock Grid.Row="1" Text="{Binding SelectedWord.Example.Name, Converter={StaticResource ExampleConverter}}" Foreground="Black" Margin="2"/-->
+                    <TextBlock Grid.Row="1" Text="{Binding SelectedWord.Example.Name, Converter={StaticResource ExampleConverter}}" FontStyle="Italic" Foreground="Black" Margin="2"/>
                 </Grid>
             </ToolTipService.ToolTip>
             <ListView.View>
