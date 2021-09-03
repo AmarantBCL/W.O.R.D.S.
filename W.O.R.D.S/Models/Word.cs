@@ -25,6 +25,7 @@ namespace W.O.R.D.S.Models
         public DateTime Time { get; set; }
         public static List<Word> Vocabulary { get; private set; } = new List<Word>();
         public static int Count { get; private set; } = 0;
+        public static double[] Coeff = new double[6] { 0.0, 1.0, 1.5, 2.333333333, 7.5, 73.0 };
         public Vocabulary Dict { get; set; }
 
         public Word(string name, string translation, PartOfSpeech partOfSpeech, Level level, string transcription, string meaning, Category category, Example example, int stage, int progress, DateTime time)
@@ -79,7 +80,7 @@ namespace W.O.R.D.S.Models
 
         public static int CountLearningWords(Vocabulary vocabulary)
         {
-            var result = Vocabulary.Where(x => x.Dict.Name == vocabulary.Name && x.Group < 3 && x.Progress >= 0 && x.Progress < 5)
+            var result = Vocabulary.Where(x => x.Dict.Name == vocabulary.Name && x.Progress >= 0 && x.Group < 1)
                 .ToList();
 
             return result.Count;
@@ -87,7 +88,7 @@ namespace W.O.R.D.S.Models
 
         public static int CountRepeatWords(Vocabulary vocabulary)
         {
-            var result = Vocabulary.Where(x => x.Dict.Name == vocabulary.Name && x.Group > 0 && x.Progress >= 5 && x.Group <= 3)
+            var result = Vocabulary.Where(x => x.Dict.Name == vocabulary.Name && x.Progress >= 5 && DateTime.Now.AddDays(-(x.Group * Coeff[x.Group])) > x.Time)
                 .ToList();
 
             return result.Count;
@@ -95,7 +96,7 @@ namespace W.O.R.D.S.Models
 
         public static int CountStudiedWords(Vocabulary vocabulary)
         {
-            var result = Vocabulary.Where(x => x.Dict.Name == vocabulary.Name && x.Group > 3)
+            var result = Vocabulary.Where(x => x.Dict.Name == vocabulary.Name && x.Progress >= 0 && DateTime.Now.AddDays(-(x.Group * Coeff[x.Group])) <= x.Time)
                 .ToList();
 
             return result.Count;
