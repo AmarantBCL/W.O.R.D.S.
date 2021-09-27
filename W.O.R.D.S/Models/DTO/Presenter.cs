@@ -27,6 +27,7 @@ namespace W.O.R.D.S.Models.DTO
         public Visibility ShowTranscriptionVisible { get; set; } = Visibility.Collapsed;
         public Visibility ShowMeaningVisible { get; set; } = Visibility.Hidden;
         public Visibility ShowExampleVisible { get; set; } = Visibility.Hidden;
+        public Visibility StarVisible { get; set; } = Visibility.Visible;
 
         public void HideAll()
         {
@@ -47,6 +48,7 @@ namespace W.O.R.D.S.Models.DTO
             ShowTranscriptionVisible = Visibility.Collapsed;
             ShowMeaningVisible = Visibility.Hidden;
             ShowExampleVisible = Visibility.Hidden;
+            StarVisible = Visibility.Visible;
 
             AdjustSettings();
         }

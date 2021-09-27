@@ -10,9 +10,32 @@
     <Window.Resources>
         <converters:AnswerConverter x:Key="AnswerConverter" />
         <converters:ColorConverter x:Key="ColorConverter" />
+        <converters:OpacityConverter x:Key="OpacityConverter" />
         <Style x:Key="ExampleStyle">
             <Setter Property="Control.HorizontalAlignment" Value="Center"/>
             <Setter Property="Control.Foreground" Value="Black"/>
+        </Style>
+        <ImageBrush x:Key="ButtonImage" ImageSource="/Images/star.png"></ImageBrush>
+        <Style x:Key="ButtonImageStyle" TargetType="Button">
+            <Setter Property="Background" Value="{StaticResource ButtonImage}"></Setter>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}">
+                            <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" 
+                    Margin="{TemplateBinding Padding}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" 
+                    SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" RecognizesAccessKey="True"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Foreground" Value="Blue" />
+                                <Setter Property="Cursor" Value="Hand" />
+                                <!-- If we don't tell the background to change on hover, it will remain the same -->
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
         </Style>
     </Window.Resources>
     <Grid>
@@ -30,6 +53,11 @@
                 <TextBlock Text="{Binding Mode.Word.PartOfSpeech}" Visibility="{Binding Mode.Presenter.ShowPartOfSpeechVisible}"></TextBlock>
                 <Image Width="16" Height="16" Source="{Binding Mode.Word.Category.Image}" HorizontalAlignment="Right" Visibility="{Binding Mode.Presenter.ShowCategoryVisible}"></Image>
             </DockPanel>
+            <Button Command="{Binding FavoriteCommand}" Style="{StaticResource ButtonImageStyle}" HorizontalAlignment="Left" Margin="0,0,0,0" Width="25" Height="25" BorderThickness="0" Visibility="{Binding Mode.Presenter.StarVisible}">
+                <Button.Background>
+                    <ImageBrush ImageSource="/Images/star.png" Opacity="{Binding Mode.Word.Favorite, Converter={StaticResource OpacityConverter}}"/>
+                </Button.Background>
+            </Button>
             <DockPanel Margin="2">
                 <TextBlock Text="{Binding WordSet.Status.Text}" FontWeight="Bold" Foreground="{Binding WordSet.Status.Color}" FontSize="14"></TextBlock>
             </DockPanel>

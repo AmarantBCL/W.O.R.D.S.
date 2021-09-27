@@ -78,6 +78,7 @@
     </ApplicationDefinition>
     <Compile Include="Models\Context.cs" />
     <Compile Include="Models\Converters\ExampleConverter.cs" />
+    <Compile Include="Models\Converters\OpacityConverter.cs" />
     <Compile Include="Models\DTO\TypingAnswer.cs" />
     <Compile Include="Models\DTO\Setting.cs" />
     <Compile Include="Models\DTO\Status.cs" />
@@ -193,6 +194,9 @@
     <Content Include="Files\Dictionaries\All Essential Words.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Files\Dictionaries\Favorites.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Images\amount.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -206,6 +210,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Images\senses.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\star.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Images\thoughts.png">

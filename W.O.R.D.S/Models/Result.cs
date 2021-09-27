@@ -20,6 +20,7 @@ namespace W.O.R.D.S.Models
         public Result()
         {
             Presenter.HideAll();
+            Presenter.StarVisible = Visibility.Collapsed;
             Presenter.CloseVisible = Visibility.Visible;
         }
 

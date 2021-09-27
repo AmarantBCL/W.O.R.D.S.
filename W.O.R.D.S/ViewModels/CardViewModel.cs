@@ -186,7 +186,7 @@ namespace W.O.R.D.S.ViewModels
 
                       if (EditText != null)
                       {
-                          if (EditText.ToLower() == TypingAnswer.Text)
+                          if (EditText.ToLower() == TypingAnswer.Text.ToLower())
                              Answer = "1";
                           else
                           {
@@ -226,6 +226,32 @@ namespace W.O.R.D.S.ViewModels
                           Mode = new Result();
                           SwitchCard(true);
                       }
+                  }));
+            }
+        }
+
+        private RelayCommand favoriteCommand;
+        public RelayCommand FavoriteCommand
+        {
+            get
+            {
+                return favoriteCommand ??
+                  (favoriteCommand = new RelayCommand(obj =>
+                  {
+                      Mode.Word.Favorite = !Mode.Word.Favorite;
+                      Word word = Mode.Word;
+
+                      if (word.Favorite)
+                      {
+                          Word favWord = new Word(word.Name, word.Translation, word.PartOfSpeech, word.Level, word.Transcription, word.Meaning, word.Category, word.Example, 0, -1, new DateTime(), word.Favorite);
+                          favWord.Dict = Vocabulary.Fav;
+                      }
+                      else
+                      {
+                          Word.DeleteWord(word.Name, word.Translation);
+                      }
+
+                      OnPropertyChanged("Mode");
                   }));
             }
         }

@@ -14,6 +14,7 @@ namespace W.O.R.D.S.Models
         private static bool isAlreadyRead = false;
         public string Path { get; set; }
         public string Name { get; set; }
+        public static Vocabulary Fav {get; set; }
 
         public Vocabulary(string name)
         {
@@ -39,6 +40,11 @@ namespace W.O.R.D.S.Models
                 {
                     string wordsPath = @"Files/Dictionaries/" + file.Name;
                     string[] lines = File.ReadAllLines(wordsPath);
+
+                    if (file.Name == "Favorites.txt")
+                    {
+                        Fav = vocab;
+                    }
 
                     foreach (var item in lines)
                     {

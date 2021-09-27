@@ -282,7 +282,7 @@ namespace W.O.R.D.S.ViewModels
                       WordExample = "";
                       Search = Search;
 
-                      //MessageBox.Show($"Слово {WordName} успешно отредактировано.", "Новое слово", MessageBoxButton.OK, MessageBoxImage.Information);
+                      MessageBox.Show($"Слово {WordName} успешно отредактировано.", "Новое слово", MessageBoxButton.OK, MessageBoxImage.Information);
                   }));
             }
         }
@@ -297,11 +297,11 @@ namespace W.O.R.D.S.ViewModels
                   {
                       if (WordName != "" && WordName != null && WordTranslation != "" && WordTranslation != null)
                       {
-                          Word word = new Word(WordName, WordTranslation, SelectedPartOfSpeech, SelectedLevel, WordTranscription, WordMeaning, SelectedCategory, new Example(WordExample), 0, -1, new DateTime());
+                          Word word = new Word(WordName, WordTranslation, SelectedPartOfSpeech, SelectedLevel, WordTranscription, WordMeaning, SelectedCategory, new Example(WordExample), 0, -1, new DateTime(), false);
                           word.Dict = vocabulary;
                           word.Example.Index(WordName);
 
-                          //MessageBox.Show($"Слово {WordName} успешно добавлено.", "Новое слово", MessageBoxButton.OK, MessageBoxImage.Information);
+                          MessageBox.Show($"Слово {WordName} успешно добавлено.", "Новое слово", MessageBoxButton.OK, MessageBoxImage.Information);
 
                           WordName = "";
                           WordTranslation = "";

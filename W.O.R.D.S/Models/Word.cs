@@ -23,12 +23,13 @@ namespace W.O.R.D.S.Models
         public int Group { get; set; }
         public int Progress { get; set; }
         public DateTime Time { get; set; }
+        public bool Favorite { get; set; }
         public static List<Word> Vocabulary { get; private set; } = new List<Word>();
         public static int Count { get; private set; } = 0;
         public static double[] Coeff = new double[6] { 0.0, 1.0, 1.5, 2.333333333, 7.5, 73.0 };
         public Vocabulary Dict { get; set; }
 
-        public Word(string name, string translation, PartOfSpeech partOfSpeech, Level level, string transcription, string meaning, Category category, Example example, int stage, int progress, DateTime time)
+        public Word(string name, string translation, PartOfSpeech partOfSpeech, Level level, string transcription, string meaning, Category category, Example example, int stage, int progress, DateTime time, bool favorite)
         {
             Id = Count++;
             Name = name;
@@ -42,6 +43,7 @@ namespace W.O.R.D.S.Models
             Group = stage;
             Progress = progress;
             Time = time;
+            Favorite = favorite;
             Vocabulary.Add(this);
         }
 
@@ -64,7 +66,7 @@ namespace W.O.R.D.S.Models
 
         public static List<Word> GetWordsFromVocabulary(Vocabulary vocabulary)
         {
-            var result = Vocabulary.Where(x => x.Dict.Name == vocabulary.Name)
+            var result = Vocabulary.Where(x => x != null && x.Dict.Name == vocabulary.Name)
                 .ToList();
 
             return result;
@@ -114,6 +116,23 @@ namespace W.O.R.D.S.Models
             }
 
             File.WriteAllText(path, sb.ToString());
+        }
+
+        public static void DeleteWord(string name, string translation)
+        {
+            Word delWord;
+
+            foreach (var word in Vocabulary)
+            {
+                if (word.Dict.Name == "Favorites" && word.Name == name && word.Translation == translation)
+                {
+                    delWord = word;
+                    Vocabulary.Remove(delWord);
+                    delWord = null;
+
+                    return;
+                }
+            }
         }
 
         public void MakeProgress()

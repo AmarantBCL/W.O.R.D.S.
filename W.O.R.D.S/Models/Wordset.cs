@@ -179,6 +179,7 @@ namespace W.O.R.D.S.Models
         public void SaveProgress()
         {
             Word.SaveWordsToFile(dict);
+            Word.SaveWordsToFile(Vocabulary.Fav);
         }
     }
 }
