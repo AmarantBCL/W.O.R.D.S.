@@ -18,6 +18,11 @@ namespace W.O.R.D.S.Models
 
         public Example(string name)
         {
+            if (name == null)
+            {
+                name = "-";
+            }
+
             Name = name;
         }
 
@@ -32,6 +37,11 @@ namespace W.O.R.D.S.Models
         {
             if (Indexes[0, 0] == 0 && Indexes[0, 1] == 0)
             {
+                if (Name == null)
+                {
+                    return;
+                }
+
                 int start = Name.ToLower().IndexOf(wordName);
                 int finish;
 

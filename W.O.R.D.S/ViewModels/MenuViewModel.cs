@@ -225,6 +225,13 @@ namespace W.O.R.D.S.ViewModels
                 return dictionaryCommand ??
                   (dictionaryCommand = new RelayCommand(obj =>
                   {
+                      if (SelectedVocabulary.Name == "Favorites")
+                      {
+                          MessageBox.Show("Этот словарь нельзя редактировать!", "Слова", MessageBoxButton.OK, MessageBoxImage.Error);
+
+                          return;
+                      }
+
                       new Dictionary(SelectedVocabulary);
                       window.Close();
                   }));
