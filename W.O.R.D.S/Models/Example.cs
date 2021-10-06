@@ -11,7 +11,7 @@ namespace W.O.R.D.S.Models
     public class Example
     {
         public string Name { get; set; }
-        public int[] Indexes { get; set; } = { 0, 0 };
+        public int[,] Indexes { get; set; } = { { 0, 0 }, { 0, 0 } };
         public string Left { get; set; }
         public string Main { get; set; }
         public string Right { get; set; }
@@ -23,14 +23,14 @@ namespace W.O.R.D.S.Models
 
         public void FormatExample()
         {
-            Left = Name.Substring(0, Indexes[0]);
-            Main = Name.Substring(Indexes[0], Indexes[1] - Indexes[0] + 1);
-            Right = Name.Substring(Indexes[1] + 1);
+            Left = Name.Substring(0, Indexes[0, 0]);
+            Main = Name.Substring(Indexes[0, 0], Indexes[0, 1] - Indexes[0, 0] + 1);
+            Right = Name.Substring(Indexes[0, 1] + 1);
         }
 
         public void Index(string wordName)
         {
-            if (Indexes[0] == 0 && Indexes[1] == 0)
+            if (Indexes[0, 0] == 0 && Indexes[0, 1] == 0)
             {
                 int start = Name.ToLower().IndexOf(wordName);
                 int finish;
@@ -57,7 +57,7 @@ namespace W.O.R.D.S.Models
                 }
 
                 least -= 1;
-                Indexes = new int[] { start, least };
+                Indexes = new int[,] { { start, least }, { 0, 0 } };
             }
         }
 
