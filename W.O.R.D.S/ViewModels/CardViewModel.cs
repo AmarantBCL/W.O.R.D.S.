@@ -170,6 +170,9 @@ namespace W.O.R.D.S.ViewModels
             }
 
             SwitchCard(false);
+
+            // ONLY TEST!
+            Word.FindRepeats();
         }
 
         // Commands
@@ -248,7 +251,7 @@ namespace W.O.R.D.S.ViewModels
                       }
                       else
                       {
-                          Word.DeleteWord(word.Name, word.Translation);
+                          Word.DeleteWordFromFavs(word.Name, word.Translation);
                       }
 
                       OnPropertyChanged("Mode");

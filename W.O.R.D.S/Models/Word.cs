@@ -118,7 +118,7 @@ namespace W.O.R.D.S.Models
             File.WriteAllText(path, sb.ToString());
         }
 
-        public static void DeleteWord(string name, string translation)
+        public static void DeleteWordFromFavs(string name, string translation)
         {
             Word delWord;
 
@@ -133,6 +133,22 @@ namespace W.O.R.D.S.Models
                     return;
                 }
             }
+        }
+
+        // ONLY FOR TEST!
+        public static void FindRepeats()
+        {
+            string path = @"F:/MERGED_VOCAB.txt";
+            StringBuilder sb = new StringBuilder();
+
+            var result = Vocabulary.Distinct().Where(x => x.Dict.Name != "All Essential Words").OrderBy(x => x.Name).ToList();
+
+            foreach (var item in result)
+            {
+                sb.AppendLine($"{item.Name} - {item.Translation} ({item.Dict.Name})");
+            }
+
+            File.WriteAllText(path, sb.ToString());
         }
 
         public void MakeProgress()
