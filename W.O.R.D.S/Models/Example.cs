@@ -18,7 +18,7 @@ namespace W.O.R.D.S.Models
 
         public Example(string name)
         {
-            if (name == null)
+            if (name == "")
             {
                 name = "-";
             }

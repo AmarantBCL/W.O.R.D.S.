@@ -270,7 +270,37 @@ namespace W.O.R.D.S.ViewModels
                         SelectedWord.Transcription = WordTranscription;
 
                       if (WordMeaning != null && WordMeaning != "")
-                          SelectedWord.Meaning = WordMeaning;
+                      {
+                          if (vocabulary.Name == "Teacher's Method Intermediate 1") // LAME. DELETE AFTERWARDS.
+                          {
+                              string result = WordMeaning;
+
+                              if (SelectedWord.PartOfSpeech == PartOfSpeech.Noun)
+                              {
+                                  SelectedWord.Meaning = $"A {SelectedWord.Name} is {result}.";
+                              } 
+                              else if (SelectedWord.PartOfSpeech == PartOfSpeech.Verb)
+                              {
+                                  Random random = new Random();
+                                  int a = random.Next(1);
+
+                                  string divider = a == 0 ? "is" : "means";
+
+                                  SelectedWord.Meaning = $"To {SelectedWord.Name} {divider} {result}.";
+                              }
+                              else
+                              {
+                                  string firstLetter = SelectedWord.Name.Substring(0, 1).ToUpper();
+                                  string restOfTheWord = SelectedWord.Name.Substring(1);
+
+                                  SelectedWord.Meaning = $"{firstLetter + restOfTheWord} is {result}.";
+                              }
+                          }
+                          else
+                          {
+                              SelectedWord.Meaning = WordMeaning;
+                          }
+                      }  
 
                       if (WordExample != null && WordExample != "")
                           SelectedWord.Example = new Example(WordExample);
