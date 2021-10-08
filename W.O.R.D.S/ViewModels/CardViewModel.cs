@@ -78,6 +78,17 @@ namespace W.O.R.D.S.ViewModels
             }
         }
 
+        private string secondEditText = "";
+        public string SecondEditText
+        {
+            get => secondEditText;
+            set
+            {
+                secondEditText = value;
+                OnPropertyChanged("SecondEditText");
+            }
+        }
+
         private Option selectedVariant;
         public Option SelectedVariant
         {
@@ -190,11 +201,29 @@ namespace W.O.R.D.S.ViewModels
                       if (EditText != null)
                       {
                           if (EditText.ToLower() == TypingAnswer.Text.ToLower())
-                             Answer = "1";
+                          {
+                              if (Mode is Context)
+                              {
+                                  if (SecondEditText.ToLower() == TypingAnswer.SecondText.ToLower())
+                                  {
+                                      SecondEditText = TypingAnswer.SecondText;
+                                      Answer = "1";
+                                  }
+                                  else
+                                  {
+                                      Answer = "0";
+                                  }
+                              }
+                              else
+                              {
+                                  Answer = "1";
+                              }
+                          }
                           else
                           {
-                             EditText = TypingAnswer.Text;
-                             Answer = "0";
+                              EditText = TypingAnswer.Text;
+                              SecondEditText = TypingAnswer.SecondText;
+                              Answer = "0";
                           }
                       }
 

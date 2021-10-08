@@ -35,16 +35,28 @@ namespace W.O.R.D.S.Models
             Presenter.HideAll();
             Presenter.EnterVisible = Visibility.Visible;
             Presenter.EditVisible = Visibility.Visible;
+
+            if (Word.Example.Second != "")
+            {
+                Presenter.SecondEditVisible = Visibility.Visible;
+            }
+
             Presenter.ContextVisible = Visibility.Visible;
         }
 
         public void Answer()
         {
-            Transcription = "[" + Word.Transcription + "]";
+            Transcription = Word.Transcription != "" ? "[" + Word.Transcription + "]" : "";
 
             Presenter.HideAll();
             Presenter.NextVisible = Visibility.Visible;
             Presenter.EditVisible = Visibility.Visible;
+            
+            if (Word.Example.Second != "")
+            {
+                Presenter.SecondEditVisible = Visibility.Visible;
+            }
+
             Presenter.ContextVisible = Visibility.Visible;
             Presenter.ShowExampleVisible = Visibility.Hidden;
             Presenter.TypingBottomVisible = Visibility.Visible;

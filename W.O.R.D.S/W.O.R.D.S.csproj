@@ -212,6 +212,12 @@
     <Content Include="Images\numbers.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Images\preferences.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\qualities.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Images\senses.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

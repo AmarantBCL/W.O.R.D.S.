@@ -34,7 +34,7 @@ namespace W.O.R.D.S.Models
                 {
                     MainWord = Word.Name;
                     Translation = Word.Translation;
-                    Transcription = "[" + Word.Transcription + "]";
+                    Transcription = Word.Transcription != "" ? "[" + Word.Transcription + "]" : "";
                 }
                 else
                 {
@@ -54,7 +54,7 @@ namespace W.O.R.D.S.Models
 
         public void Answer()
         {
-            Transcription = "[" + Word.Transcription + "]";
+            Transcription = Word.Transcription != "" ? "[" + Word.Transcription + "]" : "";
 
             Presenter.HideAll();
             Presenter.ShowAnswerVisible = Visibility.Visible;

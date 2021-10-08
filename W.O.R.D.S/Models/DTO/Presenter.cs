@@ -15,6 +15,7 @@ namespace W.O.R.D.S.Models.DTO
         public Visibility NextVisible { get; set; } = Visibility.Collapsed;
         public Visibility EnterVisible { get; set; } = Visibility.Collapsed;
         public Visibility EditVisible { get; set; } = Visibility.Collapsed;
+        public Visibility SecondEditVisible { get; set; } = Visibility.Collapsed;
         public Visibility FlashcardBottomVisible { get; set; } = Visibility.Collapsed;
         public Visibility VariantsBottomVisible { get; set; } = Visibility.Collapsed;
         public Visibility TypingBottomVisible { get; set; } = Visibility.Collapsed;
@@ -36,6 +37,7 @@ namespace W.O.R.D.S.Models.DTO
             NextVisible = Visibility.Collapsed;
             EnterVisible = Visibility.Collapsed;
             EditVisible = Visibility.Collapsed;
+            SecondEditVisible = Visibility.Collapsed;
             FlashcardBottomVisible = Visibility.Collapsed;
             VariantsBottomVisible = Visibility.Collapsed;
             TypingBottomVisible = Visibility.Collapsed;

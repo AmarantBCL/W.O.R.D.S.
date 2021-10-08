@@ -95,6 +95,8 @@
                 <Run Text="{Binding Mode.Word.Example.Left}" FontSize="18" FontStyle="Italic"></Run>
                 <Run Text="{Binding Mode.Word.Example.Main}" FontSize="20" FontStyle="Italic" FontWeight="Bold"></Run>
                 <Run Text="{Binding Mode.Word.Example.Right}" FontSize="18" FontStyle="Italic"></Run>
+                <Run Text="{Binding Mode.Word.Example.Second}" FontSize="20" FontStyle="Italic" FontWeight="Bold"></Run>
+                <Run Text="{Binding Mode.Word.Example.Final}" FontSize="18" FontStyle="Italic"></Run>
                 </TextBlock>
             </DockPanel>
         </StackPanel>
@@ -156,6 +158,46 @@
                 </TextBox>
 
                 <TextBlock Text="{Binding Mode.Word.Example.Right}" FontSize="20" VerticalAlignment="Center" Visibility="{Binding Mode.Presenter.ContextVisible}"></TextBlock>
+
+                <TextBox Text="{Binding SecondEditText,UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center" Width="200" Height="36" Background="PaleGreen" IsEnabled="{Binding ElementsEnabled}" MaxLength="{Binding Mode.Word.Example.Second.Length}" Visibility="{Binding Mode.Presenter.SecondEditVisible}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="20" Margin="8">
+                    <TextBox.InputBindings>
+                        <KeyBinding
+                            Key="Return"
+                            Command="{Binding AnswerCommand}"/>
+                    </TextBox.InputBindings>
+                    <TextBox.Template>
+                        <ControlTemplate TargetType="TextBox">
+                            <Grid>
+                                <TextBox Text="{Binding Text, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}, UpdateSourceTrigger=PropertyChanged}" Background="PaleGreen" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" MaxLength="{Binding TypingAnswer.Second.Length}"/>
+                                <TextBlock HorizontalAlignment="Center"
+                                VerticalAlignment="Center"
+                                Margin="5,0,5,0"
+                                Foreground="Gray"
+                                FontStyle="Italic"
+                                IsHitTestVisible="False"
+                                x:Name="UserMessage"
+                                Visibility="Hidden">
+                                    <TextBlock.Text>
+                                        <MultiBinding StringFormat="Слово ({0} букв)">
+                                            <Binding Path="TypingAnswer.SecondText.Length"/>
+                                        </MultiBinding>
+                                    </TextBlock.Text>
+                                </TextBlock>
+                            </Grid>
+                            <ControlTemplate.Triggers>
+                                <MultiTrigger>
+                                    <MultiTrigger.Conditions>
+                                        <Condition Property="Text" Value=""/>
+                                        <Condition Property="IsKeyboardFocusWithin" Value="False"/>
+                                    </MultiTrigger.Conditions>
+                                    <Setter Property="Visibility" TargetName="UserMessage" Value="Visible"/>
+                                </MultiTrigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </TextBox.Template>
+                </TextBox>
+
+                <TextBlock Text="{Binding Mode.Word.Example.Final}" FontSize="20" VerticalAlignment="Center" Visibility="{Binding Mode.Presenter.ContextVisible}"></TextBlock>
             </StackPanel>
 
             <DockPanel VerticalAlignment="Center" HorizontalAlignment="Center" Margin="8" Visibility="{Binding Mode.Presenter.TypingBottomVisible}">

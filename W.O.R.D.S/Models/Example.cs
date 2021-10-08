@@ -15,12 +15,14 @@ namespace W.O.R.D.S.Models
         public string Left { get; set; }
         public string Main { get; set; }
         public string Right { get; set; }
+        public string Second { get; set; }
+        public string Final { get; set; }
 
         public Example(string name)
         {
             if (name == "")
             {
-                name = "-";
+                name = " ";
             }
 
             Name = name;
@@ -28,9 +30,34 @@ namespace W.O.R.D.S.Models
 
         public void FormatExample()
         {
-            Left = Name.Substring(0, Indexes[0, 0]);
-            Main = Name.Substring(Indexes[0, 0], Indexes[0, 1] - Indexes[0, 0] + 1);
-            Right = Name.Substring(Indexes[0, 1] + 1);
+            if (Name == " ")
+            {
+                Left = "";
+                Main = "";
+                Right = "";
+                Second = "";
+                Final = "";
+
+                return;
+            }
+
+            if (Indexes[1, 0] == 0 && Indexes[1, 1] == 0)
+            {
+                Left = Name.Substring(0, Indexes[0, 0]);
+                Main = Name.Substring(Indexes[0, 0], Indexes[0, 1] - Indexes[0, 0] + 1);
+                Right = Name.Substring(Indexes[0, 1] + 1);
+                Second = "";
+                Final = "";
+            }
+            else
+            {
+                Left = Name.Substring(0, Indexes[0, 0]);
+                Main = Name.Substring(Indexes[0, 0], Indexes[0, 1] - Indexes[0, 0] + 1);
+                Right = Name.Substring(Indexes[0, 1] + 1, Indexes[1, 0] - Indexes[0, 1] - 1);
+                Second = Name.Substring(Indexes[1, 0], Indexes[1, 1] - Indexes[1, 0] + 1);
+                Final = Name.Substring(Indexes[1, 1] + 1);
+            }
+
         }
 
         public void Index(string wordName)
@@ -98,6 +125,16 @@ namespace W.O.R.D.S.Models
         }
 
         public bool ShouldSerializeRight()
+        {
+            return false;
+        }
+
+        public bool ShouldSerializeSecond()
+        {
+            return false;
+        }
+
+        public bool ShouldSerializeFinal()
         {
             return false;
         }
