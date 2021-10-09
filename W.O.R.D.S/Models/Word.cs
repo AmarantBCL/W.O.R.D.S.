@@ -135,6 +135,19 @@ namespace W.O.R.D.S.Models
             }
         }
 
+        public static bool IsAlreadyInVocabulary(string wordName, string dictName)
+        {
+            foreach (var word in Vocabulary)
+            {
+                if (word.Dict.Name == dictName && word.Name == wordName)
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
         // ONLY FOR TEST!
         public static void FindRepeats()
         {

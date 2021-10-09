@@ -102,7 +102,7 @@ namespace W.O.R.D.S.ViewModels
                 if (selectedVariant == null)
                     return;
 
-                Mode.Transcription = "[" + Mode.Word.Transcription + "]";
+                Mode.Transcription = Mode.Word.Transcription != "" ? "[" + Mode.Word.Transcription + "]" : "";
                 OnPropertyChanged("Mode");
 
                 if (selectedVariant.Text == Mode.Translation)
@@ -252,6 +252,7 @@ namespace W.O.R.D.S.ViewModels
                           Answer = "0";
                           ElementsEnabled = true;
                           EditText = "";
+                          SecondEditText = "";
                       }
                       else
                       {

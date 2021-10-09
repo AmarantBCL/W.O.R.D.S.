@@ -76,7 +76,9 @@ namespace W.O.R.D.S.ViewModels
             set
             {
                 wordName = value;
+                Search = value;
                 OnPropertyChanged("WordName");
+                OnPropertyChanged("Search");
             }
         }
 
@@ -327,6 +329,13 @@ namespace W.O.R.D.S.ViewModels
                   {
                       if (WordName != "" && WordName != null && WordTranslation != "" && WordTranslation != null)
                       {
+                          bool isAlreadyInVocab = Word.IsAlreadyInVocabulary(WordName, vocabulary.Name);
+
+                          if (isAlreadyInVocab)
+                          {
+                              MessageBox.Show($"Слово {WordName} уже есть в словаре!", "Новое слово", MessageBoxButton.OK, MessageBoxImage.Error);
+                          }
+
                           Word word = new Word(WordName, WordTranslation, SelectedPartOfSpeech, SelectedLevel, WordTranscription, WordMeaning, SelectedCategory, new Example(WordExample), 0, -1, new DateTime(), false);
                           word.Dict = vocabulary;
                           word.Example.Index(WordName);

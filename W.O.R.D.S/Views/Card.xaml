@@ -209,6 +209,8 @@
                 <Run Text="{Binding Mode.Word.Example.Left}" FontSize="18" FontStyle="Italic"></Run>
                 <Run Text="{Binding Mode.Word.Example.Main}" FontSize="20" FontStyle="Italic" FontWeight="Bold"></Run>
                 <Run Text="{Binding Mode.Word.Example.Right}" FontSize="18" FontStyle="Italic"></Run>
+                <Run Text="{Binding Mode.Word.Example.Second}" FontSize="20" FontStyle="Italic" FontWeight="Bold"></Run>
+                <Run Text="{Binding Mode.Word.Example.Final}" FontSize="18" FontStyle="Italic"></Run>
                 </TextBlock>
             </DockPanel>
         </StackPanel>

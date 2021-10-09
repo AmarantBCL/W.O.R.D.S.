@@ -78,7 +78,7 @@
 
         <StackPanel Grid.Row="2" Orientation="Horizontal">
             <TextBlock VerticalAlignment="Center" Margin="4,0,6,0">Слово:</TextBlock>
-            <TextBox Text="{Binding WordName}" Width="100" FontSize="16" VerticalAlignment="Center" Margin="4,0,6,0"></TextBox>
+            <TextBox Text="{Binding WordName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="100" FontSize="16" VerticalAlignment="Center" Margin="4,0,6,0"></TextBox>
             <TextBlock VerticalAlignment="Center" Margin="4,0,6,0">Перевод:</TextBlock>
             <TextBox Text="{Binding WordTranslation}" Width="100" FontSize="16" VerticalAlignment="Center" Margin="4,0,6,0">
                 <TextBox.InputBindings>

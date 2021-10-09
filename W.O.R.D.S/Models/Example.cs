@@ -20,7 +20,7 @@ namespace W.O.R.D.S.Models
 
         public Example(string name)
         {
-            if (name == "")
+            if (name == null || name == "")
             {
                 name = " ";
             }
@@ -74,7 +74,7 @@ namespace W.O.R.D.S.Models
 
                 if (start == -1)
                 {
-                    MessageBox.Show($"Пример слова {wordName} не удалось проиндексировать.", "Индексация примера", MessageBoxButton.OK, MessageBoxImage.Error);
+                    //MessageBox.Show($"Пример слова {wordName} не удалось проиндексировать.", "Индексация примера", MessageBoxButton.OK, MessageBoxImage.Error);
 
                     return;
                 }
