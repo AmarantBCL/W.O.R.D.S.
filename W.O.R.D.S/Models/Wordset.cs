@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -92,6 +93,8 @@ namespace W.O.R.D.S.Models
                         .ToList();
                 }
             }
+
+            SaveWordList();
         }
 
         public bool PrepareSet()
@@ -125,6 +128,26 @@ namespace W.O.R.D.S.Models
 
             if (Set.Count > 0)
                 Set.RemoveAt(0);
+        }
+
+        // ONLY FOR TEST!
+        public void SaveWordList()
+        {
+            string path = @"C:/WORD_LIST.txt";
+            StringBuilder sb = new StringBuilder();
+
+            foreach (var item in Set)
+            {
+                int a = item.Example.Indexes[0, 0];
+                int b = item.Example.Indexes[0, 1];
+
+                string example = item.PartOfSpeech != PartOfSpeech.Sentence && a == 0 && b == 0 ? "-------------------> [NO EXAMPLE!]" : "";
+
+                if (example != "")
+                    sb.AppendLine($"{item.Name} - {item.Translation} {example}");
+            }
+
+            File.WriteAllText(path, sb.ToString());
         }
 
         public List<Word> GenerateVariants(Word word)

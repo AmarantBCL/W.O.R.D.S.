@@ -171,7 +171,7 @@ namespace W.O.R.D.S.ViewModels
             }
         }
 
-        private bool noLevel = false;
+        private bool noLevel = true;
         public bool NoLevel
         {
             get => noLevel;
@@ -182,7 +182,7 @@ namespace W.O.R.D.S.ViewModels
             }
         }
 
-        private bool noCategory = false;
+        private bool noCategory = true;
         public bool NoCategory
         {
             get => noCategory;
@@ -193,7 +193,7 @@ namespace W.O.R.D.S.ViewModels
             }
         }
 
-        private bool noPartOfSpeech = false;
+        private bool noPartOfSpeech = true;
         public bool NoPartOfSpeech
         {
             get => noPartOfSpeech;
@@ -273,7 +273,7 @@ namespace W.O.R.D.S.ViewModels
 
                       if (WordMeaning != null && WordMeaning != "")
                       {
-                          if (vocabulary.Name == "Teacher's Method Intermediate 1") // LAME. DELETE AFTERWARDS.
+                          if (vocabulary.Name == "Teacher's Method Intermediate 1" || vocabulary.Name == "Test") // LAME. DELETE AFTERWARDS.
                           {
                               string result = WordMeaning;
 
