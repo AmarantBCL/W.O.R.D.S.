@@ -11,6 +11,7 @@ namespace W.O.R.D.S.Models
 {
     class Word
     {
+        private const string PATH = @"D:/MERGED_VOCAB.txt";
         public int Id { get; private set; }
         public string Name { get; set; }
         public string Translation { get; set; }
@@ -151,7 +152,7 @@ namespace W.O.R.D.S.Models
         // ONLY FOR TEST!
         public static void FindRepeats()
         {
-            string path = @"F:/MERGED_VOCAB.txt";
+            string path = PATH;
             StringBuilder sb = new StringBuilder();
 
             var result = Vocabulary.Distinct().Where(x => x.Dict.Name != "All Essential Words").OrderBy(x => x.Name).ToList();

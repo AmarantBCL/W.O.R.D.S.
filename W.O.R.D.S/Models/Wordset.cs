@@ -12,6 +12,8 @@ namespace W.O.R.D.S.Models
 {
     class Wordset
     {
+        private const string PATH = @"D:/WORD_LIST.txt";
+
         private DateTime startTime;
         private Vocabulary dict;
         public List<Word> Set { get; private set; }
@@ -133,7 +135,7 @@ namespace W.O.R.D.S.Models
         // ONLY FOR TEST!
         public void SaveWordList()
         {
-            string path = @"F:/WORD_LIST.txt";
+            string path = PATH;
             StringBuilder sb = new StringBuilder();
 
             foreach (var item in Set)
