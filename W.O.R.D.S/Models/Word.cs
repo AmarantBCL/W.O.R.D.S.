@@ -151,7 +151,7 @@ namespace W.O.R.D.S.Models
         // ONLY FOR TEST!
         public static void FindRepeats()
         {
-            string path = @"C:/MERGED_VOCAB.txt";
+            string path = @"F:/MERGED_VOCAB.txt";
             StringBuilder sb = new StringBuilder();
 
             var result = Vocabulary.Distinct().Where(x => x.Dict.Name != "All Essential Words").OrderBy(x => x.Name).ToList();

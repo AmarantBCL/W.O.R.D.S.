@@ -61,7 +61,13 @@
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
                     <GridViewColumn DisplayMemberBinding="{Binding Path=Transcription}">Транскрипция</GridViewColumn>
-                    <GridViewColumn DisplayMemberBinding="{Binding Path=Progress}">Прогресс</GridViewColumn>
+                    <GridViewColumn DisplayMemberBinding="{Binding Path=Example.Name}">Прогресс
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
                     <GridViewColumn DisplayMemberBinding="{Binding Path=Time}">Время</GridViewColumn>
                 </GridView>
             </ListView.View>

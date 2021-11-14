@@ -133,7 +133,7 @@ namespace W.O.R.D.S.Models
         // ONLY FOR TEST!
         public void SaveWordList()
         {
-            string path = @"C:/WORD_LIST.txt";
+            string path = @"F:/WORD_LIST.txt";
             StringBuilder sb = new StringBuilder();
 
             foreach (var item in Set)
