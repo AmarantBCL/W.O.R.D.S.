@@ -11,7 +11,7 @@ namespace W.O.R.D.S.Models
 {
     class Word
     {
-        private const string PATH = @"D:/MERGED_VOCAB.txt";
+        private const string PATH = @"F:/MERGED_VOCAB.txt";
         public int Id { get; private set; }
         public string Name { get; set; }
         public string Translation { get; set; }
@@ -136,6 +136,20 @@ namespace W.O.R.D.S.Models
             }
         }
 
+        public static void DeleteWordFromVocabulary(Word word, Vocabulary vocabulary)
+        {
+            foreach (var item in Vocabulary)
+            {
+                if (item.Name == word.Name && item.Translation == word.Translation && item.Dict.Name == vocabulary.Name)
+                {
+                    Vocabulary.Remove(word);
+                    word = null;
+
+                    return;
+                }
+            }
+        }
+
         public static bool IsAlreadyInVocabulary(string wordName, string dictName)
         {
             foreach (var word in Vocabulary)
@@ -155,11 +169,15 @@ namespace W.O.R.D.S.Models
             string path = PATH;
             StringBuilder sb = new StringBuilder();
 
-            var result = Vocabulary.Distinct().Where(x => x.Dict.Name != "All Essential Words").OrderBy(x => x.Name).ToList();
+            var result = Vocabulary.Distinct()
+                .Where(x => x.Dict.Name != "All Essential Words")
+                .OrderBy(x => x.Name)
+                .ToList();
 
             foreach (var item in result)
             {
-                sb.AppendLine($"{item.Name} - {item.Translation} ({item.Dict.Name})");
+                //sb.AppendLine($"{item.Name} - {item.Translation} ({item.Dict.Name})"); 
+                sb.AppendLine(JsonConvert.SerializeObject(item));
             }
 
             File.WriteAllText(path, sb.ToString());

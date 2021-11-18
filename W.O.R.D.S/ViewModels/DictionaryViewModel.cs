@@ -55,6 +55,7 @@ namespace W.O.R.D.S.ViewModels
 
                 OnPropertyChanged("Dictionary");
                 OnPropertyChanged("Search");
+                ExNumber = 0;
             }
         }
 
@@ -155,7 +156,7 @@ namespace W.O.R.D.S.ViewModels
 
         public ObservableCollection<PartOfSpeech> PartsOfSpeech { get; set; } = new ObservableCollection<PartOfSpeech>
         {
-            PartOfSpeech.Noun, PartOfSpeech.Adjective, PartOfSpeech.Verb, PartOfSpeech.Adverb, PartOfSpeech.Preposition, 
+            PartOfSpeech.Noun, PartOfSpeech.Adjective, PartOfSpeech.Verb, PartOfSpeech.Adverb, PartOfSpeech.Preposition,
             PartOfSpeech.Conjunction, PartOfSpeech.Pronoun,
             PartOfSpeech.Collocation, PartOfSpeech.Sentence, PartOfSpeech.Phrasal, PartOfSpeech.Idiom
         };
@@ -203,6 +204,54 @@ namespace W.O.R.D.S.ViewModels
                 OnPropertyChanged("NoPartOfSpeech");
             }
         }
+
+        private bool noExamples = false;
+        public bool NoExamples
+        {
+            get => noExamples;
+            set
+            {
+                noExamples = value;
+
+                if (!noExamples)
+                {
+                    Dictionary = new ObservableCollection<Word>();
+
+                    foreach (var word in Word.GetWordsFromVocabulary(vocabulary))
+                    {
+                        Dictionary.Add(word);
+                    }
+                }
+                else
+                {
+                    Dictionary = new ObservableCollection<Word>();
+
+                    foreach (var word in Word.GetWordsFromVocabulary(vocabulary))
+                    {
+                        if (word.Example != null && word.Example.Name == " " || word.Example.Name == "")
+                            Dictionary.Add(word);
+                    }
+                }
+
+                OnPropertyChanged("Dictionary");
+                OnPropertyChanged("NoExamples");
+            }
+        }
+
+        private int exNumber = 0;
+        public int ExNumber
+        {
+            get => exNumber;
+            set
+            {
+                var result = Word.GetWordsFromVocabulary(vocabulary)
+                    .Where(x => x.Example != null && x.Example.Name == " " || x.Example.Name == "")
+                    .Count();
+
+                exNumber = result;
+                OnPropertyChanged("ExNumber");
+            }
+        }
         #endregion
 
         public DictionaryViewModel(Window window, Vocabulary vocabulary)
@@ -224,6 +273,7 @@ namespace W.O.R.D.S.ViewModels
             }
 
             SelectedCategory = Categories[1];
+            ExNumber = 0;
         }
 
         private RelayCommand closeCommand;
@@ -273,7 +323,7 @@ namespace W.O.R.D.S.ViewModels
 
                       if (WordMeaning != null && WordMeaning != "")
                       {
-                          if (vocabulary.Name == "Teacher's Method Intermediate 1" || vocabulary.Name == "Test") // LAME. DELETE AFTERWARDS.
+                          if (vocabulary.Name == "Teacher's Method Intermediate 1" || vocabulary.Name == "MERGED VOCABULARY" || vocabulary.Name == "Test") // LAME. DELETE AFTERWARDS.
                           {
                               string result = WordMeaning;
 
@@ -365,22 +415,26 @@ namespace W.O.R.D.S.ViewModels
                 return resetCommand ??
                   (resetCommand = new RelayCommand(obj =>
                   {
-                      //if (SelectedWord == null) // FOR THE ONE WORD
-                      //    return;
+                      if (SelectedWord == null) // FOR THE ONE WORD
+                          return;
 
                       //SelectedWord.Group = 0;
                       //SelectedWord.Progress = -1;
 
-                      foreach (var item in Dictionary) // FOR ALL THE WORDS
-                      {
-                          item.Group = 0;
-                          item.Progress = -1;
-                          item.Time = new DateTime();
-                      }
+                      Word.DeleteWordFromVocabulary(SelectedWord, vocabulary);
+                      SelectedWord = null;
 
-                      Search = Search;
+                      //foreach (var item in Dictionary) // FOR ALL THE WORDS
+                      //{
+                      //    item.Group = 0;
+                      //    item.Progress = -1;
+                      //    item.Time = new DateTime();
+                      //}
 
-                      MessageBox.Show($"Прогресс по слову {WordName} был успешно сброшен.", "Прогресс слова", MessageBoxButton.OK, MessageBoxImage.Information);
+                      Search = "";
+
+                      //MessageBox.Show($"Прогресс по слову {WordName} был успешно сброшен.", "Прогресс слова", MessageBoxButton.OK, MessageBoxImage.Information);
+                      MessageBox.Show($"Слово {WordName} было успешно удалено.", "Удаление слова", MessageBoxButton.OK, MessageBoxImage.Information);
                   }));
             }
         }

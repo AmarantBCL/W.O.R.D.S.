@@ -75,7 +75,7 @@
 
         <StackPanel Grid.Row="1" Orientation="Horizontal">
             <TextBox Text="{Binding Search, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Background="PowderBlue" Width="198" FontSize="18" FontWeight="Bold" VerticalAlignment="Center" Margin="4,0,6,0"></TextBox>
-            <Button Command="{Binding ResetCommand}" Background="Yellow" Style="{StaticResource ButtonStyle}" Margin="0,0,6,0">Сбросить</Button>
+            <Button Command="{Binding ResetCommand}" Background="Crimson" Style="{StaticResource ButtonStyle}" Margin="0,0,6,0">Удалить</Button>
             <Button Command="{Binding TestCommand}" Background="RoyalBlue" Style="{StaticResource ButtonStyle}" Margin="0,0,6,0">Индексировать</Button>
             <Button Command="{Binding EditCommand}" Background="Silver" Style="{StaticResource ButtonStyle}" Margin="0,0,6,0">Редактировать</Button>
             <Button Command="{Binding AddCommand}" Background="LimeGreen" Style="{StaticResource ButtonStyle}" Margin="0,0,6,0">Добавить</Button>
@@ -113,11 +113,13 @@
 
         <StackPanel Grid.Row="3" Orientation="Horizontal">
             <TextBlock VerticalAlignment="Center" Margin="4,0,6,0">Транскрипция:</TextBlock>
-            <TextBox Text="{Binding WordTranscription}" Width="200" FontSize="16" VerticalAlignment="Center" Margin="4,0,6,0"></TextBox>
+            <TextBox Text="{Binding WordTranscription}" Width="160" FontSize="16" VerticalAlignment="Center" Margin="4,0,6,0"></TextBox>
             <TextBlock VerticalAlignment="Center" Margin="4,0,6,0">Значение:</TextBlock>
             <TextBox Text="{Binding WordMeaning}" Width="200" FontSize="16" VerticalAlignment="Center" Margin="4,0,6,0"></TextBox>
             <TextBlock VerticalAlignment="Center" Margin="4,0,6,0">Пример:</TextBlock>
             <TextBox Text="{Binding WordExample}" Width="200" FontSize="16" VerticalAlignment="Center" Margin="4,0,6,0"></TextBox>
+            <!--CheckBox IsChecked="{Binding NoExamples}" VerticalAlignment="Center" Margin="4,0,6,0">Ex</-->
+            <TextBlock Text="{Binding ExNumber}" TextDecorations="Underline" VerticalAlignment="Center" Margin="4,0,6,0"></TextBlock>
             <CheckBox IsChecked="{Binding NoPartOfSpeech}" VerticalAlignment="Center">Ч</CheckBox>
         </StackPanel>
     </Grid>
