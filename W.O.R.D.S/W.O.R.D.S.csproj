@@ -230,7 +230,7 @@
     <Content Include="Images\thoughts.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Images\tools.png">
+    <Content Include="Images\items.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <None Include="Files\categories.txt">

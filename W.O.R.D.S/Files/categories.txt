@@ -64,6 +64,7 @@ Hygiene
 Insects
 Internet
 Issues
+Items
 Jewelry
 Jobs
 Justice
@@ -116,7 +117,6 @@ Technology
 Theater
 Thoughts
 Time
-Tools
 Transport
 Travelling
 Vegetables
