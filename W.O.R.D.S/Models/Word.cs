@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using W.O.R.D.S.Models.DTO;
 
 namespace W.O.R.D.S.Models
 {
@@ -16,6 +17,7 @@ namespace W.O.R.D.S.Models
         public string Name { get; set; }
         public string Translation { get; set; }
         public PartOfSpeech PartOfSpeech { get; set; }
+        public WordClass WordClass { get; set; }
         public Level Level { get; set; }
         public string Transcription { get; set; }
         public string Meaning { get; set; }
@@ -45,6 +47,7 @@ namespace W.O.R.D.S.Models
             Progress = progress;
             Time = time;
             Favorite = favorite;
+            SetWordClass();
             Vocabulary.Add(this);
         }
 
@@ -63,6 +66,11 @@ namespace W.O.R.D.S.Models
             Transcription = Transcription.Trim(new char[] { '[', ']' });
 
             return true;
+        }
+
+        public bool ShouldSerializeWordClass()
+        {
+            return false;
         }
 
         public static List<Word> GetWordsFromVocabulary(Vocabulary vocabulary)
@@ -161,6 +169,23 @@ namespace W.O.R.D.S.Models
             }
 
             return false;
+        }
+
+        private void SetWordClass()
+        {
+            if (PartOfSpeech == PartOfSpeech.Collocation || PartOfSpeech == PartOfSpeech.Phrasal || 
+                PartOfSpeech == PartOfSpeech.Idiom)
+            {
+                WordClass = WordClass.Phrase;
+            }
+            else if (PartOfSpeech == PartOfSpeech.Sentence)
+            {
+                WordClass = WordClass.Sentence;
+            }
+            else
+            {
+                WordClass = WordClass.Word;
+            }
         }
 
         // ONLY FOR TEST!

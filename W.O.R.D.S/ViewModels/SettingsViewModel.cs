@@ -105,6 +105,9 @@ namespace W.O.R.D.S.ViewModels
             get => showWords;
             set
             {
+                if (showWords && !showPhrases && !showSentences)
+                    return;
+
                 Setting.ShowWords = value;
                 showWords = value;
                 OnPropertyChanged("ShowWords");
@@ -117,6 +120,9 @@ namespace W.O.R.D.S.ViewModels
             get => showPhrases;
             set
             {
+                if (showPhrases && !showWords && !showSentences)
+                    return;
+
                 Setting.ShowPhrases = value;
                 showPhrases = value;
                 OnPropertyChanged("ShowPhrases");
@@ -129,6 +135,9 @@ namespace W.O.R.D.S.ViewModels
             get => showSentences;
             set
             {
+                if (showSentences && !showWords && !showPhrases)
+                    return;
+
                 Setting.ShowSentences = value;
                 showSentences = value;
                 OnPropertyChanged("ShowExamples");
@@ -145,9 +154,9 @@ namespace W.O.R.D.S.ViewModels
             showMeaning = Setting.ShowMeaning;
             showExamples = Setting.ShowExamples;
 
-            showTranscription = Setting.ShowTranscription;
-            showMeaning = Setting.ShowMeaning;
-            showExamples = Setting.ShowExamples;
+            showWords = Setting.ShowWords;
+            showPhrases = Setting.ShowPhrases;
+            showSentences = Setting.ShowSentences;
 
             this.window = window;
             window.Show();

@@ -36,21 +36,19 @@ namespace W.O.R.D.S.Models
 
             TimeHandler Handler = DateTime.Now.AddDays;
 
+            GetInitialList(vocabulary);
+
             if (category.Name == "All")
             {
                 if (!IsLearning)
                 {
-                    Set = Word.Vocabulary.Distinct()
-                        .Where(x => x.Dict.Name == vocabulary.Name)
-                        .OrderBy(x => Guid.NewGuid())
+                    Set = Set.OrderBy(x => Guid.NewGuid())
                         .Take(amount)
                         .ToList();
                 }
                 else
                 {
-                    Set = Word.Vocabulary.Distinct()
-                        .Where(x => x.Dict.Name == vocabulary.Name)
-                        .Where(x => x.Progress >= 5 && Handler(-(x.Group * Coeff[x.Group])) > x.Time)
+                    Set = Set.Where(x => x.Progress >= 5 && Handler(-(x.Group * Coeff[x.Group])) > x.Time)
                         .OrderByDescending(x => x.Time)
                         .ThenBy(x => Guid.NewGuid())
                         .Union(Word.Vocabulary.Distinct()
@@ -68,18 +66,14 @@ namespace W.O.R.D.S.Models
             {
                 if (!IsLearning)
                 {
-                    Set = Word.Vocabulary.Distinct()
-                        .Where(x => x.Dict.Name == vocabulary.Name)
-                        .Where(x => x.Category != null && x.Category.Name == category.Name)
+                    Set = Set.Where(x => x.Category != null && x.Category.Name == category.Name)
                         .OrderBy(x => Guid.NewGuid())
                         .Take(amount)
                         .ToList();
                 }
                 else
                 {
-                    Set = Word.Vocabulary.Distinct()
-                        .Where(x => x.Dict.Name == vocabulary.Name)
-                        .Where(x => x.Category != null && x.Category.Name == category.Name)
+                    Set = Set.Where(x => x.Category != null && x.Category.Name == category.Name)
                         .Where(x => x.Progress >= 5 && Handler(-(x.Group * Coeff[x.Group])) > x.Time)
                         .OrderByDescending(x => x.Time)
                         .ThenBy(x => Guid.NewGuid())
@@ -205,6 +199,24 @@ namespace W.O.R.D.S.Models
         {
             Word.SaveWordsToFile(dict);
             Word.SaveWordsToFile(Vocabulary.Fav);
+        }
+
+        private void GetInitialList(Vocabulary vocabulary)
+        {
+            Set = Word.Vocabulary.Distinct().
+                Where(x => x.Dict.Name == vocabulary.Name).
+                ToList();
+
+            var set1 = Setting.ShowWords ? Set.Where(x => x.WordClass == WordClass.Word)
+                .ToList() : new List<Word>();
+            var set2 = Setting.ShowPhrases ? Set.Where(x => x.WordClass == WordClass.Phrase)
+                .ToList() : new List<Word>();
+            var set3 = Setting.ShowSentences ? Set.Where(x => x.WordClass == WordClass.Sentence)
+                .ToList() : new List<Word>();
+
+            Set = set1.Union(set2)
+                .Union(set3)
+                .ToList();
         }
     }
 }
