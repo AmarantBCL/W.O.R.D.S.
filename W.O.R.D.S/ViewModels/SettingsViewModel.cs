@@ -99,12 +99,52 @@ namespace W.O.R.D.S.ViewModels
             }
         }
 
+        private bool showWords;
+        public bool ShowWords
+        {
+            get => showWords;
+            set
+            {
+                Setting.ShowWords = value;
+                showWords = value;
+                OnPropertyChanged("ShowWords");
+            }
+        }
+
+        private bool showPhrases;
+        public bool ShowPhrases
+        {
+            get => showPhrases;
+            set
+            {
+                Setting.ShowPhrases = value;
+                showPhrases = value;
+                OnPropertyChanged("ShowPhrases");
+            }
+        }
+
+        private bool showSentences;
+        public bool ShowSentences
+        {
+            get => showSentences;
+            set
+            {
+                Setting.ShowSentences = value;
+                showSentences = value;
+                OnPropertyChanged("ShowExamples");
+            }
+        }
+
         public SettingsViewModel(Window window)
         {
             showOrder = Setting.ShowOrder;
             showCategory = Setting.ShowCategory;
             showLevel = Setting.ShowLevel;
             showPartOfSpeech = Setting.ShowPartOfSpeech;
+            showTranscription = Setting.ShowTranscription;
+            showMeaning = Setting.ShowMeaning;
+            showExamples = Setting.ShowExamples;
+
             showTranscription = Setting.ShowTranscription;
             showMeaning = Setting.ShowMeaning;
             showExamples = Setting.ShowExamples;

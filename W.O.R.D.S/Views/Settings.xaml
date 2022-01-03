@@ -30,9 +30,9 @@
         </GroupBox>
         <GroupBox Grid.Row="1" HorizontalAlignment="Center" Header="Фильтры слов" Padding="5">
             <StackPanel Style="{StaticResource 14px}">
-                <CheckBox IsChecked="True">Показывать слова</CheckBox>
-                <CheckBox IsChecked="True">Показывать фразы</CheckBox>
-                <CheckBox IsChecked="True">Показывать предложения</CheckBox>
+                <CheckBox IsChecked="{Binding ShowWords}">Показывать слова</CheckBox>
+                <CheckBox IsChecked="{Binding ShowPhrases}">Показывать фразы</CheckBox>
+                <CheckBox IsChecked="{Binding ShowSentences}">Показывать предложения</CheckBox>
             </StackPanel>
         </GroupBox>
         

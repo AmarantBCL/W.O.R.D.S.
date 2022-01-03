@@ -245,7 +245,7 @@ namespace W.O.R.D.S.ViewModels
             set
             {
                 var result = Word.GetWordsFromVocabulary(vocabulary)
-                    .Where(x => x.Example != null && x.Example.Name == " " || x.Example.Name == "" || x.PartOfSpeech != PartOfSpeech.Sentence)
+                    .Where(x => x.Example == null || (x.Example != null && (x.Example.Name == " " || x.Example.Name == "")) && x.PartOfSpeech != PartOfSpeech.Sentence)
                     .Count();
 
                 exNumber = result;
