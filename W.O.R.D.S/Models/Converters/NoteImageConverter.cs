@@ -14,11 +14,20 @@ namespace W.O.R.D.S.Models.Converters
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            string key = value.ToString();
+            Word word = (Word)value;
+
+            if (word == null)
+                return "";
+
+            string key = word.Name;
+
             if (Thesaurus.Article.ContainsKey(key))
             {
-                string image = Thesaurus.Article[key];
-                return "/Icons/" + image.ToLower() + ".png";
+                if (word.Note != "")
+                {
+                    string image = Thesaurus.Article[key];
+                    return "/Icons/" + image.ToLower() + ".png";
+                }
             }
 
             return "";

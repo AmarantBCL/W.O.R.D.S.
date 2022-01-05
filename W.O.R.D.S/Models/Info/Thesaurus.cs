@@ -16,7 +16,11 @@ namespace W.O.R.D.S.Models.Info
             { "blaze", "Fire" },
             { "comprise", "Blocks" },
             { "consist", "Blocks" },
+            { "discover", "Search" },
+            { "find", "Search" },
+            { "shout", "Shout" },
             { "trace", "Search" },
+            { "yell", "Shout" },
         };
     }
 }

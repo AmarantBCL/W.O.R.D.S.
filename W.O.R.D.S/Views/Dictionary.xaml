@@ -49,7 +49,7 @@
                             <ColumnDefinition Width="20"></ColumnDefinition>
                             <ColumnDefinition></ColumnDefinition>
                         </Grid.ColumnDefinitions>
-                        <Image Grid.Column="0" Width="16" Height="16" Margin="0, 0, 2, 0" VerticalAlignment="Top" HorizontalAlignment="Left" Source="{Binding SelectedWord.Name, Converter={StaticResource NoteImageConverter}}"></Image>
+                        <Image Grid.Column="0" Width="16" Height="16" Margin="0, 0, 2, 0" VerticalAlignment="Top" HorizontalAlignment="Left" Source="{Binding SelectedWord, Converter={StaticResource NoteImageConverter}}"></Image>
                         <TextBlock Grid.Column="1" Text="{Binding SelectedWord.Note, Converter={StaticResource NoteConverter}}" FontStyle="Italic" Foreground="Blue" Margin="2"/>
                     </Grid>
                     <!--StackPanel Grid.Row="2" Orientation="Horizontal">
