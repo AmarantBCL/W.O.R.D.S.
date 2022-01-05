@@ -78,11 +78,14 @@
     </ApplicationDefinition>
     <Compile Include="Models\Context.cs" />
     <Compile Include="Models\Converters\ExampleConverter.cs" />
+    <Compile Include="Models\Converters\NoteConverter.cs" />
+    <Compile Include="Models\Converters\NoteImageConverter.cs" />
     <Compile Include="Models\Converters\OpacityConverter.cs" />
     <Compile Include="Models\DTO\TypingAnswer.cs" />
     <Compile Include="Models\DTO\Setting.cs" />
     <Compile Include="Models\DTO\Status.cs" />
     <Compile Include="Models\DTO\WordClass.cs" />
+    <Compile Include="Models\Info\Thesaurus.cs" />
     <Compile Include="Models\Learning.cs" />
     <Compile Include="ViewModels\SettingsViewModel.cs" />
     <Compile Include="Views\Settings.xaml.cs">
@@ -203,6 +206,21 @@
     </Content>
     <Content Include="Files\Dictionaries\Teacher%27s Method Intermediate 1.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Icons\apology.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Icons\arrival.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Icons\blocks.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Icons\fire.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Icons\search.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Images\amount.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>

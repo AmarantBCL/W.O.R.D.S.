@@ -276,7 +276,7 @@ namespace W.O.R.D.S.ViewModels
 
                       if (word.Favorite)
                       {
-                          Word favWord = new Word(word.Name, word.Translation, word.PartOfSpeech, word.Level, word.Transcription, word.Meaning, word.Category, word.Example, 0, -1, new DateTime(), word.Favorite);
+                          Word favWord = new Word(word.Name, word.Translation, word.PartOfSpeech, word.Level, word.Transcription, word.Meaning, word.Category, word.Example, word.Note, 0, -1, new DateTime(), word.Favorite);
                           favWord.Dict = Vocabulary.Fav;
                       }
                       else

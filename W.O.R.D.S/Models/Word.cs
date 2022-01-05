@@ -27,12 +27,13 @@ namespace W.O.R.D.S.Models
         public int Progress { get; set; }
         public DateTime Time { get; set; }
         public bool Favorite { get; set; }
+        public string Note { get; set; }
         public static List<Word> Vocabulary { get; private set; } = new List<Word>();
         public static int Count { get; private set; } = 0;
         public static double[] Coeff = new double[6] { 0.0, 1.0, 1.5, 2.333333333, 7.5, 73.0 };
         public Vocabulary Dict { get; set; }
 
-        public Word(string name, string translation, PartOfSpeech partOfSpeech, Level level, string transcription, string meaning, Category category, Example example, int stage, int progress, DateTime time, bool favorite)
+        public Word(string name, string translation, PartOfSpeech partOfSpeech, Level level, string transcription, string meaning, Category category, Example example, string note, int stage, int progress, DateTime time, bool favorite)
         {
             Id = Count++;
             Name = name;
@@ -43,6 +44,7 @@ namespace W.O.R.D.S.Models
             Meaning = meaning;
             Category = category;
             Example = example;
+            Note = note;
             Group = stage;
             Progress = progress;
             Time = time;
