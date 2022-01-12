@@ -19,13 +19,13 @@ namespace W.O.R.D.S.Models.Converters
             if (word == null)
                 return "";
 
-            string key = word.Name;
-
-            if (Thesaurus.Article.ContainsKey(key))
+            if (word.Note != "")
             {
-                if (word.Note != "")
+                string tag = Thesaurus.GetTag(word.Note);
+
+                if (Thesaurus.Article.ContainsKey(tag))
                 {
-                    string image = Thesaurus.Article[key];
+                    string image = Thesaurus.Article[tag];
                     return "/Icons/" + image.ToLower() + ".png";
                 }
             }

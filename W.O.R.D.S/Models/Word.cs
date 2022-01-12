@@ -10,7 +10,7 @@ using W.O.R.D.S.Models.DTO;
 
 namespace W.O.R.D.S.Models
 {
-    class Word
+    public class Word
     {
         private const string PATH = @"D:/MERGED_VOCAB.txt";
         public int Id { get; private set; }
