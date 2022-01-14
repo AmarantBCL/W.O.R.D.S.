@@ -30,7 +30,7 @@
             <RowDefinition Height="40"></RowDefinition>
             <RowDefinition Height="40"></RowDefinition>
         </Grid.RowDefinitions>
-        <ListView ItemsSource="{Binding Dictionary,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" SelectedItem="{Binding SelectedWord}">
+        <ListView ItemsSource="{Binding Dictionary,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" SelectedItem="{Binding SelectedWord}" ToolTipService.ShowDuration="60000">
             <ToolTipService.ToolTip>
                 <Grid>
                     <Grid.RowDefinitions>

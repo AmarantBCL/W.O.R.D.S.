@@ -14,6 +14,7 @@ namespace W.O.R.D.S.Models.Info
         public static Dictionary<string, string> Article = new Dictionary<string, string>
         {
             { "Обвинение", "accuse" },
+            { "Допущение", "admit" },
             { "Извинения", "apology" },
             { "Поимка преступников", "arrest" },
             { "Прибытие в место", "arrival" },
@@ -32,10 +33,12 @@ namespace W.O.R.D.S.Models.Info
             { "Огонь", "fire" },
             { "Радость и удовольствие", "happy" },
             { "Удар", "hit" },
+            { "Держание", "hold" },
             { "Тепло", "hot" },
             { "Повреждения", "hurt" },
             { "Увеличение", "increase" },
             { "Знания", "know" },
+            { "Смех", "laugh" },
             { "Изучение", "learn" },
             { "Смешивание", "mix" },
             { "Ловля животных", "net" },
@@ -43,6 +46,7 @@ namespace W.O.R.D.S.Models.Info
             { "Поиск и нахождение", "search" },
             { "Свет", "shine" },
             { "Крик", "shout" },
+            { "Утверждение", "state" },
             { "Предположение", "suppose" },
             { "Общение", "talk" },
             { "Передвижение с кем-либо", "take" },
