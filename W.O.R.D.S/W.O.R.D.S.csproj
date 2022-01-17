@@ -315,6 +315,9 @@
     <Content Include="Icons\obey.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Icons\promise.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Icons\remember.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

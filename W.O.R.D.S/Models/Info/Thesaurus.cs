@@ -14,7 +14,7 @@ namespace W.O.R.D.S.Models.Info
         public static Dictionary<string, string> Article = new Dictionary<string, string>
         {
             { "Обвинение", "accuse" },
-            { "Допущение", "admit" },
+            { "Допущение", "admit" }, // + concede, confess (Признание?)
             { "Извинения", "apology" }, // много чёрных тонов, слабо распознаётся изображение
             { "Появление", "appear" },
             { "Поимка преступников", "arrest" },
@@ -35,7 +35,9 @@ namespace W.O.R.D.S.Models.Info
             { "Подъём", "climb" },
             { "Холод", "cold" },
             { "Дорожно-транспортное происшествие", "crash" },
+            // { "Обман", "deceive" }, // = con
             { "Сложность", "difficult" },
+            // { "Неодобрение", "disapproval" }, // = condemn
             { "Объяснение", "explain" },
             { "Падение", "fall" },
             { "Драка и бой", "fight" },
@@ -45,6 +47,7 @@ namespace W.O.R.D.S.Models.Info
             { "Держание", "hold" }, // плоховато видно на светлом фоне
             { "Тепло", "hot" },
             { "Повреждения", "hurt" }, // не самая удачная иконка
+            // { "Воображение", "imagine" }, // = conceive
             { "Увеличение", "increase" },
             { "Ум", "intelligent" },
             { "Знания", "know" },
@@ -53,11 +56,12 @@ namespace W.O.R.D.S.Models.Info
             { "Смешивание", "mix" },
             { "Ловля животных", "net" }, // тусклая иконка
             { "Подчинение", "obey" },
+            { "Обещание", "promise" },
             { "Воспоминание", "remember" },
             { "Поиск и нахождение", "search" },
             { "Свет", "shine" },
             { "Крик", "shout" },
-            { "Начало", "start" }, // не видно надписи на иконке
+            { "Начало", "start" },
             { "Утверждение", "state" },
             { "Предположение", "suppose" },
             { "Общение", "talk" },
