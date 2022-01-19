@@ -21,6 +21,7 @@ namespace W.O.R.D.S.Models.Info
             { "Прибытие в место", "arrival" },
             { "Привлекательность", "attract" },
             { "Красота", "beauty" },
+            // { "Большой размер", "big" }, // = considerable, big, large, enormous
             { "Счёт", "bill" },
             { "Составная часть", "blocks" },
             { "Смелость", "brave" },
@@ -33,9 +34,10 @@ namespace W.O.R.D.S.Models.Info
             { "Чистота", "clean" },
             { "Ясность", "clear" },
             { "Подъём", "climb" },
-            { "Холод", "cold" },
+            { "Холод", "cold" }, // + cold
             { "Дорожно-транспортное происшествие", "crash" },
             // { "Обман", "deceive" }, // = con
+            // { "Разница", "difference" }, = difference
             { "Сложность", "difficult" },
             // { "Неодобрение", "disapproval" }, // = condemn
             { "Объяснение", "explain" },
@@ -56,6 +58,7 @@ namespace W.O.R.D.S.Models.Info
             { "Смешивание", "mix" },
             { "Ловля животных", "net" }, // тусклая иконка
             { "Подчинение", "obey" },
+            // { "Убеждение", "persuade" }, // = persuade, convince
             { "Обещание", "promise" },
             { "Воспоминание", "remember" },
             { "Поиск и нахождение", "search" },
