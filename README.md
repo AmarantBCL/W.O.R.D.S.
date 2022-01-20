@@ -17,3 +17,17 @@ The main WPF application using MVVM pattern for personal practical purposes in E
 * Ability to edit any vocabulary in any way you want.
 * Grade and timing statistics.
 * Favorite words adding.
+* Thesaurus with synonyms, word explanations, grammar and collocations.
+
+## Screenshots
+
+![1](https://imagizer.imageshack.com/img923/1790/xwQQZG.png)
+![2](https://imagizer.imageshack.com/img922/9999/2Ha7wH.png)
+![3](https://imagizer.imageshack.com/img923/8361/X5aKYX.png)
+![4](https://imagizer.imageshack.com/img923/4809/Ie49Hq.png)
+![5](https://imagizer.imageshack.com/img922/6426/agOVfQ.png)
+![6](https://imagizer.imageshack.com/img922/2218/wQNIx1.png)
+![7](https://imagizer.imageshack.com/img923/1884/wacooH.png)
+![8](https://imagizer.imageshack.com/img924/9929/QKsPnD.png)
+![9](https://imagizer.imageshack.com/img924/7685/X1kRtg.png)
+![10](https://imagizer.imageshack.com/img924/6957/aG59tZ.png)

@@ -15,7 +15,7 @@
             <Setter Property="Control.HorizontalAlignment" Value="Center"/>
             <Setter Property="Control.Foreground" Value="Black"/>
         </Style>
-        <ImageBrush x:Key="ButtonImage" ImageSource="/Images/star.png"></ImageBrush>
+        <ImageBrush x:Key="ButtonImage" ImageSource="/Images/Other/star.png"></ImageBrush>
         <Style x:Key="ButtonImageStyle" TargetType="Button">
             <Setter Property="Background" Value="{StaticResource ButtonImage}"></Setter>
             <Setter Property="Template">
@@ -23,8 +23,8 @@
                     <ControlTemplate TargetType="{x:Type Button}">
                         <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}">
                             <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" 
-                    Margin="{TemplateBinding Padding}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" 
-                    SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" RecognizesAccessKey="True"/>
+                            Margin="{TemplateBinding Padding}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" 
+                            SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" RecognizesAccessKey="True"/>
                         </Border>
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsMouseOver" Value="True">
@@ -53,11 +53,18 @@
                 <TextBlock Text="{Binding Mode.Word.PartOfSpeech}" Visibility="{Binding Mode.Presenter.ShowPartOfSpeechVisible}"></TextBlock>
                 <Image Width="16" Height="16" Source="{Binding Mode.Word.Category.Image}" HorizontalAlignment="Right" Visibility="{Binding Mode.Presenter.ShowCategoryVisible}"></Image>
             </DockPanel>
-            <Button Command="{Binding FavoriteCommand}" Style="{StaticResource ButtonImageStyle}" HorizontalAlignment="Left" Margin="0,0,0,0" Width="25" Height="25" BorderThickness="0" Visibility="{Binding Mode.Presenter.StarVisible}">
-                <Button.Background>
-                    <ImageBrush ImageSource="/Images/star.png" Opacity="{Binding Mode.Word.Favorite, Converter={StaticResource OpacityConverter}}"/>
-                </Button.Background>
-            </Button>
+            <DockPanel Margin="2">
+                <Button Command="{Binding FavoriteCommand}" Style="{StaticResource ButtonImageStyle}" HorizontalAlignment="Left" Margin="0,0,0,0" Width="25" Height="25" BorderThickness="0" Visibility="{Binding Mode.Presenter.StarVisible}">
+                    <Button.Background>
+                        <ImageBrush ImageSource="/Images/Other/star.png" Opacity="{Binding Mode.Word.Favorite, Converter={StaticResource OpacityConverter}}"/>
+                    </Button.Background>
+                </Button>
+                <Button Command="{Binding EditCommand}" Style="{StaticResource ButtonImageStyle}" HorizontalAlignment="Right" Margin="0,0,0,0" Width="20" Height="20" BorderThickness="0" Visibility="{Binding Mode.Presenter.StarVisible}">
+                    <Button.Background>
+                        <ImageBrush ImageSource="/Images/Other/edit.png"/>
+                    </Button.Background>
+                </Button>
+            </DockPanel>
             <DockPanel Margin="2">
                 <TextBlock Text="{Binding WordSet.Status.Text}" FontWeight="Bold" Foreground="{Binding WordSet.Status.Color}" FontSize="14"></TextBlock>
             </DockPanel>

@@ -11,6 +11,7 @@ using System.Windows.Media;
 using W.O.R.D.S.Infrastructure;
 using W.O.R.D.S.Models;
 using W.O.R.D.S.Models.DTO;
+using W.O.R.D.S.Views;
 
 namespace W.O.R.D.S.ViewModels
 {
@@ -19,6 +20,7 @@ namespace W.O.R.D.S.ViewModels
         // Properties
         #region
         private Window window;
+        private Edit editWindow;
         private int maxWords;
         public Wordset WordSet { get; set; }
         public ICard Mode { get; set; }
@@ -285,6 +287,20 @@ namespace W.O.R.D.S.ViewModels
                       }
 
                       OnPropertyChanged("Mode");
+                  }));
+            }
+        }
+
+        private RelayCommand editCommand;
+        public RelayCommand EditCommand
+        {
+            get
+            {
+                return editCommand ??
+                  (editCommand = new RelayCommand(obj =>
+                  {
+                      editWindow = new Edit(Mode.Word);
+                      editWindow.Show();
                   }));
             }
         }

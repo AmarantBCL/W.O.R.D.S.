@@ -12,7 +12,7 @@ namespace W.O.R.D.S.Models
 {
     public class Word
     {
-        private const string PATH = @"F:/MERGED_VOCAB.txt";
+        private const string PATH = @"D:/MERGED_VOCAB.txt";
         public int Id { get; private set; }
         public string Name { get; set; }
         public string Translation { get; set; }
