@@ -64,8 +64,11 @@ namespace W.O.R.D.S.ViewModels
         public ObservableCollection<PartOfSpeech> PartsOfSpeech { get; set; } = new ObservableCollection<PartOfSpeech>(
             Enum.GetValues(typeof(PartOfSpeech)).Cast<PartOfSpeech>().ToList());
 
-        public ObservableCollection<Level> Levels { get; set; } = new ObservableCollection<Level>(
-            Enum.GetValues(typeof(Level)).Cast<Level>().ToList());
+        public ObservableCollection<Level> Levels { get; set; } = new ObservableCollection<Level>
+        {
+            Level.A1, Level.A2, Level.B1, Level.B2, Level.C1, Level.C2
+        };
+
 
         public ObservableCollection<Category> Categories { get; set; } = new ObservableCollection<Category>();
 
