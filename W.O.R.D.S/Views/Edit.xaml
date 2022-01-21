@@ -93,6 +93,22 @@
                     </ComboBox.ItemTemplate>
                 </ComboBox>
             </Grid>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <WrapPanel Grid.Column="0">
+                    <TextBlock Margin="4" HorizontalAlignment="Right" Style="{DynamicResource BoldStyle}">Indexes #1:</TextBlock>
+                    <TextBox Text="{Binding Word.Example.Indexes[0][0]}" Grid.Column="1" Width="30" MaxLength="2" Margin="4"/>
+                    <TextBox Text="{Binding Word.Example.Indexes[0][1]}" Grid.Column="2" Width="30" MaxLength="2" Margin="4"/>
+                </WrapPanel>
+                <WrapPanel Grid.Column="1">
+                    <TextBlock Margin="4" HorizontalAlignment="Right" Style="{DynamicResource BoldStyle}">Indexes #2:</TextBlock>
+                    <TextBox Text="{Binding Word.Example.Indexes[1][0]}" Grid.Column="1" Width="30" MaxLength="2" Margin="4"/>
+                    <TextBox Text="{Binding Word.Example.Indexes[1][1]}" Grid.Column="2" Width="30" MaxLength="2" Margin="4"/>
+                </WrapPanel>
+            </Grid>
         </StackPanel>
         <DockPanel Grid.Row="1" VerticalAlignment="Bottom" Margin="4">
             <Button Command="{Binding OKCommand}" Background="ForestGreen" IsDefault="True" FontWeight="Bold" Width="242" Height="24">СОХРАНИТЬ</Button>
