@@ -17,7 +17,7 @@ namespace W.O.R.D.S.Models.Converters
             Word word = (Word)value;
 
             if (word == null)
-                return "";
+                return "/Icons/blank.png";
 
             if (word.Note != "")
             {
@@ -30,7 +30,7 @@ namespace W.O.R.D.S.Models.Converters
                 }
             }
 
-            return "";
+            return "/Icons/blank.png";
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)

@@ -59,6 +59,7 @@ namespace W.O.R.D.S.Models
             Presenter.HideAll();
             Presenter.ShowAnswerVisible = Visibility.Visible;
             Presenter.FlashcardBottomVisible = Visibility.Visible;
+            Presenter.AnswerVisible = Visibility.Visible;
         }
     }
 }

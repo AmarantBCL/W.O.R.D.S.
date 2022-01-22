@@ -11,6 +11,7 @@
         <converters:AnswerConverter x:Key="AnswerConverter" />
         <converters:ColorConverter x:Key="ColorConverter" />
         <converters:OpacityConverter x:Key="OpacityConverter" />
+        <converters:NoteImageConverter x:Key="NoteImageConverter" />
         <Style x:Key="ExampleStyle">
             <Setter Property="Control.HorizontalAlignment" Value="Center"/>
             <Setter Property="Control.Foreground" Value="Black"/>
@@ -69,9 +70,15 @@
                 <TextBlock Text="{Binding WordSet.Status.Text}" FontWeight="Bold" Foreground="{Binding WordSet.Status.Color}" FontSize="14"></TextBlock>
             </DockPanel>
         </StackPanel>
+        
         <StackPanel VerticalAlignment="Center">
             <TextBlock Text="{Binding Mode.MainWord}" HorizontalAlignment="Center" TextWrapping="Wrap" FontWeight="Bold" FontSize="28"></TextBlock>
             <TextBlock Text="{Binding Mode.Transcription}" HorizontalAlignment="Center" Foreground="ForestGreen" FontWeight="Bold" FontSize="24" Visibility="{Binding Mode.Presenter.ShowTranscriptionVisible}"></TextBlock>
+            <Button Command="{Binding EditCommand}" Style="{StaticResource ButtonImageStyle}" HorizontalAlignment="Center" Margin="0,4,0,0" Width="24" Height="24" BorderThickness="0" Visibility="{Binding Mode.Presenter.AnswerVisible}">
+                <Button.Background>
+                    <ImageBrush ImageSource="{Binding Mode.Word, Converter={StaticResource NoteImageConverter}}"/>
+                </Button.Background>
+            </Button>
         </StackPanel>
         
         <StackPanel VerticalAlignment="Center">
@@ -175,7 +182,7 @@
                     <TextBox.Template>
                         <ControlTemplate TargetType="TextBox">
                             <Grid>
-                                <TextBox Text="{Binding Text, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}, UpdateSourceTrigger=PropertyChanged}" Background="PaleGreen" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" MaxLength="{Binding TypingAnswer.Second.Length}"/>
+                                <TextBox Text="{Binding Text, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}, UpdateSourceTrigger=PropertyChanged}" Background="PaleGreen" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" MaxLength="{Binding TypingAnswer.SecondText.Length}"/>
                                 <TextBlock HorizontalAlignment="Center"
                                 VerticalAlignment="Center"
                                 Margin="5,0,5,0"

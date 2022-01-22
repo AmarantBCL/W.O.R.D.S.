@@ -45,6 +45,7 @@ namespace W.O.R.D.S.Models
             Presenter.NextVisible = Visibility.Visible;
             Presenter.EditVisible = Visibility.Visible;
             Presenter.TypingBottomVisible = Visibility.Visible;
+            Presenter.AnswerVisible = Visibility.Visible;
         }
     }
 }

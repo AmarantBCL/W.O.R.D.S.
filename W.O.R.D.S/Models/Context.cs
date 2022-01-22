@@ -60,6 +60,7 @@ namespace W.O.R.D.S.Models
             Presenter.ContextVisible = Visibility.Visible;
             Presenter.ShowExampleVisible = Visibility.Hidden;
             Presenter.TypingBottomVisible = Visibility.Visible;
+            Presenter.AnswerVisible = Visibility.Visible;
         }
     }
 }

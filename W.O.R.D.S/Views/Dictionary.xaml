@@ -46,10 +46,10 @@
                     <TextBlock Grid.Row="1" Text="{Binding SelectedWord.Example.Name, Converter={StaticResource ExampleConverter}}" FontStyle="Italic" Foreground="Black" Margin="2"/>
                     <Grid Grid.Row="2">
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="20"></ColumnDefinition>
+                            <ColumnDefinition Width="26"></ColumnDefinition>
                             <ColumnDefinition></ColumnDefinition>
                         </Grid.ColumnDefinitions>
-                        <Image Grid.Column="0" Width="16" Height="16" Margin="0, 0, 2, 0" VerticalAlignment="Top" HorizontalAlignment="Left" Source="{Binding SelectedWord, Converter={StaticResource NoteImageConverter}}"></Image>
+                        <Image Grid.Column="0" Width="24" Height="24" Margin="0, 0, 2, 0" VerticalAlignment="Top" HorizontalAlignment="Left" Source="{Binding SelectedWord, Converter={StaticResource NoteImageConverter}}"></Image>
                         <TextBlock Grid.Column="1" Text="{Binding SelectedWord.Note, Converter={StaticResource NoteConverter}}" FontStyle="Italic" Foreground="Blue" Margin="2"/>
                     </Grid>
                     <!--StackPanel Grid.Row="2" Orientation="Horizontal">

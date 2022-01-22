@@ -242,6 +242,9 @@
     <Content Include="Icons\bill.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Icons\blank.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Icons\blocks.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

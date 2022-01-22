@@ -105,6 +105,7 @@ namespace W.O.R.D.S.ViewModels
                     return;
 
                 Mode.Transcription = Mode.Word.Transcription != "" ? "[" + Mode.Word.Transcription + "]" : "";
+                Mode.Answer();
                 OnPropertyChanged("Mode");
 
                 if (selectedVariant.Text == Mode.Translation)

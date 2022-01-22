@@ -8,7 +8,7 @@ using System.Windows.Media;
 
 namespace W.O.R.D.S.Models.DTO
 {
-    class Presenter
+    public class Presenter
     {
         public Visibility RightWrongVisible { get; set; } = Visibility.Collapsed;
         public Visibility ShowAnswerVisible { get; set; } = Visibility.Collapsed;
@@ -21,6 +21,7 @@ namespace W.O.R.D.S.Models.DTO
         public Visibility TypingBottomVisible { get; set; } = Visibility.Collapsed;
         public Visibility CloseVisible { get; set; } = Visibility.Collapsed;
         public Visibility ContextVisible { get; set; } = Visibility.Collapsed;
+        public Visibility AnswerVisible { get; set; } = Visibility.Hidden;
         public Visibility ShowOrderVisible { get; set; } = Visibility.Collapsed;
         public Visibility ShowCategoryVisible { get; set; } = Visibility.Collapsed;
         public Visibility ShowLevelVisible { get; set; } = Visibility.Collapsed;
@@ -43,6 +44,7 @@ namespace W.O.R.D.S.Models.DTO
             TypingBottomVisible = Visibility.Collapsed;
             CloseVisible = Visibility.Collapsed;
             ContextVisible = Visibility.Collapsed;
+            AnswerVisible = Visibility.Hidden;
             ShowOrderVisible = Visibility.Collapsed;
             ShowCategoryVisible = Visibility.Collapsed;
             ShowLevelVisible = Visibility.Collapsed;

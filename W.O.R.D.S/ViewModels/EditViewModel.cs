@@ -1,21 +1,17 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using W.O.R.D.S.Infrastructure;
 using W.O.R.D.S.Models;
-using W.O.R.D.S.Views;
 
 namespace W.O.R.D.S.ViewModels
 {
-    class EditViewModel : INotifyPropertyChanged
+    public class EditViewModel : INotifyPropertyChanged
     {
-        private Window window;
+        private readonly Window window;
 
         private Word word;
         public Word Word
@@ -69,15 +65,25 @@ namespace W.O.R.D.S.ViewModels
             Level.A1, Level.A2, Level.B1, Level.B2, Level.C1, Level.C2
         };
 
-
         public ObservableCollection<Category> Categories { get; set; } = new ObservableCollection<Category>();
+
+        private int[] indexator = new int[4];
+        public int[] Indexator
+        {
+            get => indexator;
+            set
+            {
+                indexator = value;
+                OnPropertyChanged("Indexator");
+            }
+        }
 
         public EditViewModel(Window window, Word word)
         {
             this.window = window;
             this.word = word;
 
-            foreach (var item in Category.Read())
+            foreach (Category item in Category.Read())
             {
                 Categories.Add(item);
                 if (word.Category.Name == item.Name)
@@ -88,6 +94,10 @@ namespace W.O.R.D.S.ViewModels
 
             SelectedPartOfSpeech = word.PartOfSpeech;
             SelectedLevel = word.Level;
+            Indexator[0] = word.Example.Indexes[0, 0];
+            Indexator[1] = word.Example.Indexes[0, 1];
+            Indexator[2] = word.Example.Indexes[1, 0];
+            Indexator[3] = word.Example.Indexes[1, 1];
         }
 
         private RelayCommand okCommand;
@@ -101,6 +111,9 @@ namespace W.O.R.D.S.ViewModels
                       word.PartOfSpeech = SelectedPartOfSpeech;
                       word.Level = SelectedLevel;
                       word.Category = SelectedCategory;
+                      int[,] indexes = { { Indexator[0], Indexator[1] }, { Indexator[2], Indexator[3] } };
+                      word.Example.Indexes = indexes;
+                      word.Example.FormatExample();
                       Word.SaveWordsToFile(word.Dict);
                       MessageBox.Show($"Слово {word.Name} было успешно отредактировано!");
                       window.Close();

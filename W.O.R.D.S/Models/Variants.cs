@@ -70,7 +70,8 @@ namespace W.O.R.D.S.Models
 
         public void Answer()
         {
-            throw new NotImplementedException();
+            Transcription = Word.Transcription != "" ? "[" + Word.Transcription + "]" : "";
+            Presenter.AnswerVisible = Visibility.Visible;
         }
     }
 }
