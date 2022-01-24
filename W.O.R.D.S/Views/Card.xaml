@@ -74,10 +74,15 @@
         <StackPanel VerticalAlignment="Center">
             <TextBlock Text="{Binding Mode.MainWord}" HorizontalAlignment="Center" TextWrapping="Wrap" FontWeight="Bold" FontSize="28"></TextBlock>
             <TextBlock Text="{Binding Mode.Transcription}" HorizontalAlignment="Center" Foreground="ForestGreen" FontWeight="Bold" FontSize="24" Visibility="{Binding Mode.Presenter.ShowTranscriptionVisible}"></TextBlock>
-            <Button Command="{Binding EditCommand}" Style="{StaticResource ButtonImageStyle}" HorizontalAlignment="Center" Margin="0,4,0,0" Width="24" Height="24" BorderThickness="0" Visibility="{Binding Mode.Presenter.AnswerVisible}">
+            <Button Style="{StaticResource ButtonImageStyle}" HorizontalAlignment="Center" Margin="0,4,0,0" Width="24" Height="24" BorderThickness="0" Visibility="{Binding Mode.Presenter.AnswerVisible}" ToolTipService.ShowDuration="60000">
                 <Button.Background>
                     <ImageBrush ImageSource="{Binding Mode.Word, Converter={StaticResource NoteImageConverter}}"/>
                 </Button.Background>
+                <Button.ToolTip>
+                    <ToolTip >
+                        <TextBlock Text="{Binding Mode.Word.Note}" Foreground="Blue" Background="PeachPuff"></TextBlock>
+                    </ToolTip>
+                </Button.ToolTip>
             </Button>
         </StackPanel>
         

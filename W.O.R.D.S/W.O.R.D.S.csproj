@@ -296,6 +296,9 @@
     <Content Include="Icons\fight.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Icons\get.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Icons\happy.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
