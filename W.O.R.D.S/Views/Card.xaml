@@ -80,7 +80,7 @@
                 </Button.Background>
                 <Button.ToolTip>
                     <ToolTip >
-                        <TextBlock Text="{Binding Mode.Word.Note}" Foreground="Blue" Background="PeachPuff"></TextBlock>
+                        <TextBlock Text="{Binding Mode.Word.Note}" Foreground="Blue"></TextBlock>
                     </ToolTip>
                 </Button.ToolTip>
             </Button>
