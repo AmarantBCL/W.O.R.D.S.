@@ -111,9 +111,7 @@ namespace W.O.R.D.S.ViewModels
                       word.PartOfSpeech = SelectedPartOfSpeech;
                       word.Level = SelectedLevel;
                       word.Category = SelectedCategory;
-                      int[,] indexes = { { Indexator[0], Indexator[1] }, { Indexator[2], Indexator[3] } };
-                      word.Example.Indexes = indexes;
-                      word.Example.FormatExample();
+                      EditExampleAndThesaurus();
                       Word.SaveWordsToFile(word.Dict);
                       MessageBox.Show($"Слово {word.Name} было успешно отредактировано!");
                       window.Close();
@@ -132,6 +130,18 @@ namespace W.O.R.D.S.ViewModels
                       window.Close();
                   }));
             }
+        }
+
+        private void EditExampleAndThesaurus()
+        {
+            string note = word.Note.Replace("\\n", "\n");
+            word.Note = note;
+            Example ex = word.Example;
+            string exampleStr = ex.Left + ex.Main + ex.Right + ex.Second + ex.Final;
+            word.Example.Name = exampleStr;
+            int[,] indexes = { { Indexator[0], Indexator[1] }, { Indexator[2], Indexator[3] } };
+            word.Example.Indexes = indexes;
+            word.Example.FormatExample();
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
