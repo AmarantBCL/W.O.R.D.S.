@@ -320,6 +320,9 @@
     <Content Include="Icons\laugh.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Icons\look.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Icons\mix.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -340,6 +343,9 @@
     </Content>
     <Resource Include="Icons\start.png" />
     <Content Include="Icons\state.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Icons\steal.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Icons\talk.png">
