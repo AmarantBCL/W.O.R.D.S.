@@ -43,6 +43,11 @@ namespace W.O.R.D.S.Models
 
             if (Indexes[1, 0] == 0 && Indexes[1, 1] == 0)
             {
+                if (Name == "")
+                {
+                    return;
+                }
+
                 Left = Name.Substring(0, Indexes[0, 0]);
                 Main = Name.Substring(Indexes[0, 0], Indexes[0, 1] - Indexes[0, 0] + 1);
                 Right = Name.Substring(Indexes[0, 1] + 1);

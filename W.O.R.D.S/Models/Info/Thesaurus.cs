@@ -13,6 +13,7 @@ namespace W.O.R.D.S.Models.Info
 
         public static Dictionary<string, string> Article = new Dictionary<string, string>
         {
+            { "?", "unknown" },
             { "Обвинение", "accuse" },
             { "Допущение", "admit" }, // + concede, confess (Признание?)
             { "Извинения", "apology" }, // много чёрных тонов, слабо распознаётся изображение
@@ -37,6 +38,7 @@ namespace W.O.R.D.S.Models.Info
             { "Холод", "cold" }, // + cold
             { "Дорожно-транспортное происшествие", "crash" },
             // { "Обман", "deceive" }, // = con
+            { "Уменьшение", "decrease" }, // = decrease
             // { "Разница", "difference" }, = difference
             { "Сложность", "difficult" },
             // { "Неодобрение", "disapproval" }, // = condemn
@@ -51,7 +53,7 @@ namespace W.O.R.D.S.Models.Info
             { "Тепло", "hot" },
             { "Повреждения", "hurt" }, // не самая удачная иконка
             // { "Воображение", "imagine" }, // = conceive
-            { "Увеличение", "increase" },
+            { "Увеличение", "increase" }, // + extend
             { "Ум", "intelligent" },
             { "Знания", "know" },
             { "Смех", "laugh" },

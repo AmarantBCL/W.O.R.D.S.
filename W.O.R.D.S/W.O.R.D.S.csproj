@@ -381,6 +381,9 @@
     <Content Include="Icons\take.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Icons\unknown.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Icons\width.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
