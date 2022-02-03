@@ -208,6 +208,28 @@ namespace W.O.R.D.S.Models
             }
 
             File.WriteAllText(path, sb.ToString());
+
+            // NEW
+            string path2 = @"F:/DOUBLICATES.txt";
+            StringBuilder sb2 = new StringBuilder();
+
+            var vocab = Vocabulary.Where(x => x.Dict.Name == "MERGED VOCABULARY")
+                .GroupBy(x => x.Name)
+                .Select(g => new
+                {
+                    Name = g.Key,
+                    Count = g.Count(),
+                    Words = g.Select(x => x)
+                }).Where(g => g.Count > 1)
+                .ToList();
+
+            foreach (var group in vocab)
+            {
+                foreach (Word word in group.Words)
+                    sb2.AppendLine($"{word.Name} - {word.Translation}");
+            }
+
+            File.WriteAllText(path2, sb2.ToString());
         }
 
         public void MakeProgress()
