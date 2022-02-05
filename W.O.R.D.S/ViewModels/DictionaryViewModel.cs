@@ -468,6 +468,9 @@ namespace W.O.R.D.S.ViewModels
                       foreach (var word in Dictionary)
                       {
                           word.Example.Index(word.Name);
+                          word.Group = 0;
+                          word.Progress = -1;
+                          word.Time = new DateTime();
 
                           if (word.Translation == "n")
                           {

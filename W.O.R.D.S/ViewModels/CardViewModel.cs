@@ -339,7 +339,15 @@ namespace W.O.R.D.S.ViewModels
             else
             {
                 Count = $"{WordSet.Set.Count}/{maxWords}";
-                TypingAnswer = new TypingAnswer(Mode);
+                if (Mode is Learning)
+                {
+                    Learning mode = (Learning)Mode;
+                    TypingAnswer = new TypingAnswer(mode.Mode);
+                }
+                else
+                {
+                    TypingAnswer = new TypingAnswer(Mode);
+                }
             }
 
             OnPropertyChanged("WordSet");

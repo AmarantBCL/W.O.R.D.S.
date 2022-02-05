@@ -10,7 +10,7 @@ namespace W.O.R.D.S.Models
 {
     class Learning : ICard
     {
-        private ICard mode;
+        public ICard Mode { get; set; }
 
         public Word Word { get; set; }
         public string MainWord { get; set; }
@@ -29,22 +29,25 @@ namespace W.O.R.D.S.Models
                 {
                     case -1:
                         word.MakeProgress();
-                        mode = new Flashcard(false);
+                        Mode = new Flashcard(false);
                         break;
                     case 0:
-                        mode = new Flashcard(false);
+                        Mode = new Flashcard(false);
                         break;
                     case 1:
-                        mode = new Flashcard(true);
+                        Mode = new Flashcard(true);
                         break;
                     case 2:
-                        mode = new Variants(false);
+                        Mode = new Variants(false);
                         break;
                     case 3:
-                        mode = new Variants(true);
+                        Mode = new Variants(true);
                         break;
                     case 4:
-                        mode = new Typing();
+                        Mode = new Typing();
+                        break;
+                    case 5:
+                        Mode = new Context();
                         break;
                     default:
                         break;
@@ -52,27 +55,27 @@ namespace W.O.R.D.S.Models
             }
             else
             {
-                mode = new Mixed();
+                Mode = new Mixed();
             }
 
-            mode.Show(wordset);
+            Mode.Show(wordset);
             CopyMode();
         }
 
         public void Answer()
         {
-            mode.Answer();
+            Mode.Answer();
             CopyMode();
         }
 
         private void CopyMode()
         {
-            Word = mode.Word;
-            MainWord = mode.MainWord;
-            Translation = mode.Translation;
-            Transcription = mode.Transcription;
-            Items = mode.Items;
-            Presenter = mode.Presenter;
+            Word = Mode.Word;
+            MainWord = Mode.MainWord;
+            Translation = Mode.Translation;
+            Transcription = Mode.Transcription;
+            Items = Mode.Items;
+            Presenter = Mode.Presenter;
         }
     }
 }

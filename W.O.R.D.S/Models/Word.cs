@@ -13,6 +13,7 @@ namespace W.O.R.D.S.Models
     public class Word
     {
         private const string PATH = @"F:/MERGED_VOCAB.txt";
+        private const int MAX_STAGE = 6;
         public int Id { get; private set; }
         public string Name { get; set; }
         public string Translation { get; set; }
@@ -101,7 +102,7 @@ namespace W.O.R.D.S.Models
 
         public static int CountRepeatWords(Vocabulary vocabulary)
         {
-            var result = Vocabulary.Where(x => x.Dict.Name == vocabulary.Name && x.Progress >= 5 && DateTime.Now.AddDays(-(x.Group * Coeff[x.Group])) > x.Time)
+            var result = Vocabulary.Where(x => x.Dict.Name == vocabulary.Name && x.Progress >= MAX_STAGE && DateTime.Now.AddDays(-(x.Group * Coeff[x.Group])) > x.Time)
                 .ToList();
 
             return result.Count;
@@ -247,10 +248,10 @@ namespace W.O.R.D.S.Models
             {
                 Progress++;
 
-                if (Progress >= 5)
+                if (Progress >= MAX_STAGE)
                 {
                     Group++;
-                    Progress = 5;
+                    Progress = MAX_STAGE;
                 }
             }
             else
