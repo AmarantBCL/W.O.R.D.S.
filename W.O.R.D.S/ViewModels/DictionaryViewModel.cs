@@ -205,6 +205,17 @@ namespace W.O.R.D.S.ViewModels
             }
         }
 
+        private bool oxfordCambridge = true;
+        public bool OxfordCambridge
+        {
+            get => oxfordCambridge;
+            set
+            {
+                oxfordCambridge = value;
+                OnPropertyChanged("OxfordCambridge");
+            }
+        }
+
         private bool noExamples = false;
         public bool NoExamples
         {
@@ -276,6 +287,39 @@ namespace W.O.R.D.S.ViewModels
             ExNumber = 0;
         }
 
+        private void SetOxfordCambridgeFormat(Word word, Vocabulary vocabulary)
+        {
+            if (OxfordCambridge) // LAME. DELETE AFTERWARDS.
+            {
+                string result = WordMeaning;
+
+                if (word.PartOfSpeech == PartOfSpeech.Noun)
+                {
+                    word.Meaning = $"A {word.Name} is {result}.";
+                }
+                else if (word.PartOfSpeech == PartOfSpeech.Verb)
+                {
+                    Random random = new Random();
+                    int a = random.Next(1);
+
+                    string divider = a == 0 ? "is" : "means";
+
+                    word.Meaning = $"To {word.Name} {divider} {result}.";
+                }
+                else
+                {
+                    string firstLetter = word.Name.Substring(0, 1).ToUpper();
+                    string restOfTheWord = word.Name.Substring(1);
+
+                    word.Meaning = $"{firstLetter + restOfTheWord} is {result}.";
+                }
+            }
+            else
+            {
+                word.Meaning = WordMeaning;
+            }
+        }
+
         private RelayCommand closeCommand;
         public RelayCommand CloseCommand
         {
@@ -323,35 +367,7 @@ namespace W.O.R.D.S.ViewModels
 
                       if (WordMeaning != null && WordMeaning != "")
                       {
-                          if (vocabulary.Name == "Teacher's Method Intermediate 1" || vocabulary.Name == "MERGED VOCABULARY" || vocabulary.Name == "Test") // LAME. DELETE AFTERWARDS.
-                          {
-                              string result = WordMeaning;
-
-                              if (SelectedWord.PartOfSpeech == PartOfSpeech.Noun)
-                              {
-                                  SelectedWord.Meaning = $"A {SelectedWord.Name} is {result}.";
-                              } 
-                              else if (SelectedWord.PartOfSpeech == PartOfSpeech.Verb)
-                              {
-                                  Random random = new Random();
-                                  int a = random.Next(1);
-
-                                  string divider = a == 0 ? "is" : "means";
-
-                                  SelectedWord.Meaning = $"To {SelectedWord.Name} {divider} {result}.";
-                              }
-                              else
-                              {
-                                  string firstLetter = SelectedWord.Name.Substring(0, 1).ToUpper();
-                                  string restOfTheWord = SelectedWord.Name.Substring(1);
-
-                                  SelectedWord.Meaning = $"{firstLetter + restOfTheWord} is {result}.";
-                              }
-                          }
-                          else
-                          {
-                              SelectedWord.Meaning = WordMeaning;
-                          }
+                          SetOxfordCambridgeFormat(SelectedWord, vocabulary);
                       }  
 
                       if (WordExample != null && WordExample != "")
@@ -389,6 +405,8 @@ namespace W.O.R.D.S.ViewModels
                           Word word = new Word(WordName, WordTranslation, SelectedPartOfSpeech, SelectedLevel, WordTranscription, WordMeaning, SelectedCategory, new Example(WordExample), "", 0, -1, new DateTime(), false);
                           word.Dict = vocabulary;
                           word.Example.Index(WordName);
+
+                          SetOxfordCambridgeFormat(word, vocabulary);
 
                           //MessageBox.Show($"Слово {WordName} успешно добавлено.", "Новое слово", MessageBoxButton.OK, MessageBoxImage.Information);
 

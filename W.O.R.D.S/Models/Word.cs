@@ -118,10 +118,17 @@ namespace W.O.R.D.S.Models
         public static void SaveWordsToFile(Vocabulary vocabulary)
         {
             string path = @"Files/Dictionaries/" + vocabulary.Path;
-
             StringBuilder sb = new StringBuilder();
 
-            foreach (var word in GetWordsFromVocabulary(vocabulary))
+            var result = GetWordsFromVocabulary(vocabulary).ToList();
+
+            if (vocabulary.Name == "MERGED VOCABULARY")
+            {
+                result = result.OrderBy(x => x.Name)
+                    .ToList();
+            }
+
+            foreach (var word in result)
             {
                 sb.AppendLine(JsonConvert.SerializeObject(word));
             }

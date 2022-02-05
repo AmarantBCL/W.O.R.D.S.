@@ -132,10 +132,11 @@
             <TextBlock VerticalAlignment="Center" Margin="4,0,6,0">Значение:</TextBlock>
             <TextBox Text="{Binding WordMeaning}" Width="200" FontSize="16" VerticalAlignment="Center" Margin="4,0,6,0"></TextBox>
             <TextBlock VerticalAlignment="Center" Margin="4,0,6,0">Пример:</TextBlock>
-            <TextBox Text="{Binding WordExample}" Width="200" FontSize="16" VerticalAlignment="Center" Margin="4,0,6,0"></TextBox>
+            <TextBox Text="{Binding WordExample}" Width="185" FontSize="16" VerticalAlignment="Center" Margin="4,0,6,0"></TextBox>
             <!--CheckBox IsChecked="{Binding NoExamples}" VerticalAlignment="Center" Margin="4,0,6,0">Ex</-->
             <TextBlock Text="{Binding ExNumber}" TextDecorations="Underline" VerticalAlignment="Center" Margin="4,0,6,0"></TextBlock>
             <CheckBox IsChecked="{Binding NoPartOfSpeech}" VerticalAlignment="Center">Ч</CheckBox>
+            <CheckBox IsChecked="{Binding OxfordCambridge}" VerticalAlignment="Center" Margin="4,0,0,0">O</CheckBox>
         </StackPanel>
     </Grid>
 </Window>
