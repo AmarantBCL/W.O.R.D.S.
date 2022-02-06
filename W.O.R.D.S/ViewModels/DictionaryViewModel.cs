@@ -471,48 +471,9 @@ namespace W.O.R.D.S.ViewModels
                           word.Group = 0;
                           word.Progress = -1;
                           word.Time = new DateTime();
-
-                          if (word.Translation == "n")
-                          {
-                              word.PartOfSpeech = PartOfSpeech.Noun;
-                          }
-                          else if (word.Translation == "a")
-                          {
-                              word.PartOfSpeech = PartOfSpeech.Adjective;
-                          }
-                          else if (word.Translation == "v")
-                          {
-                              word.PartOfSpeech = PartOfSpeech.Verb;
-                          }
-                          else if (word.Translation == "adv")
-                          {
-                              word.PartOfSpeech = PartOfSpeech.Adverb;
-                          }
-                          else if (word.Translation == "pron")
-                          {
-                              word.PartOfSpeech = PartOfSpeech.Pronoun;
-                          }
-                          else if (word.Translation == "prep")
-                          {
-                              word.PartOfSpeech = PartOfSpeech.Preposition;
-                          }
-                          else if (word.Translation == "conj")
-                          {
-                              word.PartOfSpeech = PartOfSpeech.Conjunction;
-                          }
-                          else if (word.Translation == "COL")
-                          {
-                              word.PartOfSpeech = PartOfSpeech.Collocation;
-                          }
-                          else if (word.Translation == "PHRASAL")
-                          {
-                              word.PartOfSpeech = PartOfSpeech.Phrasal;
-                          }
-                          else if (word.Translation == "SENT")
-                          {
-                              word.PartOfSpeech = PartOfSpeech.Sentence;
-                          }
                       }
+
+                      Vocabulary.CheckNewWords(vocabulary);
 
                       MessageBox.Show("Все примеры были успешно проиндексированы.", "Индексация примеров", MessageBoxButton.OK, MessageBoxImage.Information);
                   }));

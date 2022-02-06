@@ -215,6 +215,9 @@
     <Content Include="Files\Dictionaries\Teacher%27s Method Intermediate 1.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Files\NEW_WORDS.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Icons\accuse.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
