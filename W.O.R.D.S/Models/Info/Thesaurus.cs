@@ -64,6 +64,7 @@ namespace W.O.R.D.S.Models.Info
             { "Взгляд", "look" },
             { "Смешивание", "mix" },
             { "Ловля животных", "net" }, // тусклая иконка
+            { "Норма", "normal" },
             { "Подчинение", "obey" },
             { "Убеждение", "persuade" }, // = persuade, convince
             { "Обещание", "promise" },

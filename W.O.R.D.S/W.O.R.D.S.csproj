@@ -353,6 +353,9 @@
     <Content Include="Icons\net.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Icons\normal.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Icons\obey.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
