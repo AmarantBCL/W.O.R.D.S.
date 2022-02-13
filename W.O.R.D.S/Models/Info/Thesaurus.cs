@@ -38,11 +38,12 @@ namespace W.O.R.D.S.Models.Info
             { "Подъём", "climb" },
             { "Холод", "cold" }, // + cold
             { "Дорожно-транспортное происшествие", "crash" },
-            // { "Обман", "deceive" }, // = con
+            { "Обман", "deceive" }, // = con
             { "Уменьшение", "decrease" }, // = decrease
+            { "Защита", "defend" },
             // { "Разница", "difference" }, = difference
             { "Сложность", "difficult" },
-            // { "Неодобрение", "disapproval" }, // = condemn
+            { "Неодобрение", "disapproval" }, // = condemn
             { "Объяснение", "explain" },
             { "Падение", "fall" },
             { "Драка и бой", "fight" },
@@ -64,7 +65,7 @@ namespace W.O.R.D.S.Models.Info
             { "Смешивание", "mix" },
             { "Ловля животных", "net" }, // тусклая иконка
             { "Подчинение", "obey" },
-            // { "Убеждение", "persuade" }, // = persuade, convince
+            { "Убеждение", "persuade" }, // = persuade, convince
             { "Обещание", "promise" },
             { "Воспоминание", "remember" },
             { "Поиск и нахождение", "search" },
