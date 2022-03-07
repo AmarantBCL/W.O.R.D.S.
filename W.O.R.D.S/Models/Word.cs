@@ -12,7 +12,7 @@ namespace W.O.R.D.S.Models
 {
     public class Word
     {
-        private const string PATH = @"F:/MERGED_VOCAB.txt";
+        private const string PATH = @"D:/MERGED_VOCAB.txt";
         private const int MAX_STAGE = 6;
         public int Id { get; private set; }
         public string Name { get; set; }
@@ -218,7 +218,7 @@ namespace W.O.R.D.S.Models
             File.WriteAllText(path, sb.ToString());
 
             // NEW
-            string path2 = @"F:/DOUBLICATES.txt";
+            string path2 = @"D:/DOUBLICATES.txt";
             StringBuilder sb2 = new StringBuilder();
 
             var vocab = Vocabulary.Where(x => x.Dict.Name == "MERGED VOCABULARY")
