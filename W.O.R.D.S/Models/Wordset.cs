@@ -12,7 +12,7 @@ namespace W.O.R.D.S.Models
 {
     class Wordset
     {
-        private const string PATH = @"D:/WORD_LIST.txt";
+        private const string PATH = @"F:/WORD_LIST.txt";
 
         private DateTime startTime;
         private Vocabulary dict;
