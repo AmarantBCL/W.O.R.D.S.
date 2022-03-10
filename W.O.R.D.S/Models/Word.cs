@@ -12,7 +12,7 @@ namespace W.O.R.D.S.Models
 {
     public class Word
     {
-        private const string PATH = @"F:/MERGED_VOCAB.txt";
+        private const string PATH = @"D:/MERGED_VOCAB.txt";
         private const int MAX_STAGE = 6;
         public int Id { get; private set; }
         public string Name { get; set; }
@@ -217,8 +217,8 @@ namespace W.O.R.D.S.Models
 
             File.WriteAllText(path, sb.ToString());
 
-            // NEW
-            string path2 = @"F:/DOUBLICATES.txt";
+            // FIND DOUBLICATES
+            string path2 = @"D:/DOUBLICATES.txt";
             StringBuilder sb2 = new StringBuilder();
 
             var vocab = Vocabulary.Where(x => x.Dict.Name == "MERGED VOCABULARY")
@@ -238,6 +238,23 @@ namespace W.O.R.D.S.Models
             }
 
             File.WriteAllText(path2, sb2.ToString());
+
+            // FIND COLLOCATIONS & SENTENCES
+            //string path3 = @"D:/COLLOC.txt";
+            //StringBuilder sb3 = new StringBuilder();
+
+            //var voc = Vocabulary.Where(x => x.Dict.Name == "MERGED VOCABULARY")
+            //    .Where(x => x.Name.Contains(" ") && x.Level != Level.B1)
+            //    .Where(x => x.PartOfSpeech == PartOfSpeech.Collocation || x.PartOfSpeech == PartOfSpeech.Sentence ||
+            //    x.PartOfSpeech == PartOfSpeech.Idiom)
+            //    .ToList();
+
+            //foreach (var word in voc)
+            //{
+            //    sb3.AppendLine($"{word.Name} - {word.Translation}");
+            //}
+
+            //File.WriteAllText(path3, sb3.ToString());
         }
 
         public void MakeProgress()
