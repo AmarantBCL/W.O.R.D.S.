@@ -297,7 +297,7 @@ namespace W.O.R.D.S.ViewModels
                 {
                     word.Meaning = $"A {word.Name} is {result}.";
                 }
-                else if (word.PartOfSpeech == PartOfSpeech.Verb)
+                else if (word.PartOfSpeech == PartOfSpeech.Verb || word.PartOfSpeech == PartOfSpeech.Phrasal)
                 {
                     Random random = new Random();
                     int a = random.Next(1);
