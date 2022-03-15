@@ -89,6 +89,9 @@ namespace W.O.R.D.S.Models
             string pattern = @"(.+)\s-\s(.+)\s\[(.?|.+)\]\s\[(\w+),\s(\w+\d+),\s(\w+)\]\s\[(.?|.+)\]\s\[(.?|.+)\]";
             string[] lines = File.ReadAllLines(path);
 
+            // In Debug/NEW_WORDS.txt
+            // WORD - TRANSLATION [TRANSCRIPTION] [PART_OF_SPEECH_KEY, LEVEL, CATEGORY] [MEANING] [EXAMPLE]
+
             List<Category> categories = new List<Category>();
             foreach (var item in Category.Read())
             {
