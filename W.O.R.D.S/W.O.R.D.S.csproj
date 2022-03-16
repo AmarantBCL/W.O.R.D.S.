@@ -78,6 +78,7 @@
     </ApplicationDefinition>
     <Compile Include="Models\Context.cs" />
     <Compile Include="Models\Converters\ExampleConverter.cs" />
+    <Compile Include="Models\Converters\ExampleListConverter.cs" />
     <Compile Include="Models\Converters\NoteConverter.cs" />
     <Compile Include="Models\Converters\NoteImageConverter.cs" />
     <Compile Include="Models\Converters\OpacityConverter.cs" />
@@ -194,25 +195,10 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Files\Dictionaries\4000 Essential Words 4.txt">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Files\Dictionaries\4000 Essential Words 5.txt">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Files\Dictionaries\4000 Essential Words 6.txt">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Files\Dictionaries\All Essential Words.txt">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
     <Content Include="Files\Dictionaries\Favorites.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Files\Dictionaries\MERGED VOCABULARY.txt">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Files\Dictionaries\Teacher%27s Method Intermediate 1.txt">
+    <Content Include="Files\Dictionaries\Xamples.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Files\NEW_WORDS.txt">
@@ -465,36 +451,6 @@
     <None Include="Files\categories.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <Content Include="Files\Dictionaries\4000 Essential Words 2.txt">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Files\Dictionaries\4000 Essential Words 3.txt">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Files\Dictionaries\Test.txt">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Files\Dictionaries\4000 Essential Words 1.txt">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Files\Dictionaries\Custom.txt">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Files\Dictionaries\EVIU Beginner.txt">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Files\Dictionaries\EVIU Elementary.txt">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Files\Dictionaries\EVIU Pre-Intermediate &amp; Intermediate.txt">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Files\Dictionaries\Revision Elementary.txt">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Files\Dictionaries\Revision Pre-Intermediate &amp; Intermediate.txt">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
     <Content Include="Images\accessories.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

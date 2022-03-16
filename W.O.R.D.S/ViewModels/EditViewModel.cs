@@ -12,6 +12,7 @@ namespace W.O.R.D.S.ViewModels
     public class EditViewModel : INotifyPropertyChanged
     {
         private readonly Window window;
+        private readonly Example editExample;
 
         private Word word;
         public Word Word
@@ -94,10 +95,11 @@ namespace W.O.R.D.S.ViewModels
 
             SelectedPartOfSpeech = word.PartOfSpeech;
             SelectedLevel = word.Level;
-            Indexator[0] = word.Example.Indexes[0, 0];
-            Indexator[1] = word.Example.Indexes[0, 1];
-            Indexator[2] = word.Example.Indexes[1, 0];
-            Indexator[3] = word.Example.Indexes[1, 1];
+            editExample = word.GetExample();
+            Indexator[0] = editExample.Indexes[0, 0];
+            Indexator[1] = editExample.Indexes[0, 1];
+            Indexator[2] = editExample.Indexes[1, 0];
+            Indexator[3] = editExample.Indexes[1, 1];
         }
 
         private RelayCommand okCommand;
@@ -136,12 +138,11 @@ namespace W.O.R.D.S.ViewModels
         {
             string note = word.Note.Replace("\\n", "\n");
             word.Note = note;
-            Example ex = word.Example;
-            string exampleStr = ex.Left + ex.Main + ex.Right + ex.Second + ex.Final;
-            word.Example.Name = exampleStr;
+            string exampleStr = editExample.Left + editExample.Main + editExample.Right + editExample.Second + editExample.Final;
+            editExample.Name = exampleStr;
             int[,] indexes = { { Indexator[0], Indexator[1] }, { Indexator[2], Indexator[3] } };
-            word.Example.Indexes = indexes;
-            word.Example.FormatExample();
+            editExample.Indexes = indexes;
+            editExample.FormatExample();
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

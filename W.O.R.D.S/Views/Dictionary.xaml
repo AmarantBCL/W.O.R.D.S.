@@ -22,6 +22,7 @@
         <converters:ExampleConverter x:Key="ExampleConverter" />
         <converters:NoteConverter x:Key="NoteConverter" />
         <converters:NoteImageConverter x:Key="NoteImageConverter" />
+        <converters:ExampleListConverter x:Key="ExampleListConverter" />
     </Window.Resources>
     <Grid Background="Gainsboro">
         <Grid.RowDefinitions>
@@ -43,7 +44,7 @@
                         <Image Width="16" Height="16" Source="/Images/rhombus.png"></Image>
                         <TextBlock Text="{Binding SelectedWord.Meaning}" Foreground="Black" Margin="2"/>
                     </StackPanel>
-                    <TextBlock Grid.Row="1" Text="{Binding SelectedWord.Example.Name, Converter={StaticResource ExampleConverter}}" FontStyle="Italic" Foreground="Black" Margin="2"/>
+                    <TextBlock Grid.Row="1" Text="{Binding SelectedWord.Examples, Converter={StaticResource ExampleConverter}}" FontStyle="Italic" Foreground="Black" Margin="2"/>
                     <Grid Grid.Row="2">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="26"></ColumnDefinition>
@@ -76,13 +77,16 @@
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
                     <GridViewColumn DisplayMemberBinding="{Binding Path=Transcription}">Транскрипция</GridViewColumn>
-                    <GridViewColumn DisplayMemberBinding="{Binding Path=Example.Name}">Прогресс
+                    <GridViewColumn DisplayMemberBinding="{Binding Path=Examples, Converter={StaticResource ExampleListConverter}}">Пример</GridViewColumn>
+                    <!--<GridViewColumn DisplayMemberBinding="{Binding Path=Examples}">Пример
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="{Binding Category.Name}"></TextBlock>
+                                </StackPanel>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
-                    </GridViewColumn>
+                    </GridViewColumn>-->
                     <GridViewColumn DisplayMemberBinding="{Binding Path=Time}">Время</GridViewColumn>
                 </GridView>
             </ListView.View>

@@ -36,7 +36,9 @@ namespace W.O.R.D.S.Models
             Presenter.EnterVisible = Visibility.Visible;
             Presenter.EditVisible = Visibility.Visible;
 
-            if (Word.Example.Second != "")
+            Example example = Word.GetExample();
+
+            if (example.Second != "")
             {
                 Presenter.SecondEditVisible = Visibility.Visible;
             }
@@ -51,8 +53,10 @@ namespace W.O.R.D.S.Models
             Presenter.HideAll();
             Presenter.NextVisible = Visibility.Visible;
             Presenter.EditVisible = Visibility.Visible;
-            
-            if (Word.Example.Second != "")
+
+            Example example = Word.GetExample();
+
+            if (example.Second != "")
             {
                 Presenter.SecondEditVisible = Visibility.Visible;
             }

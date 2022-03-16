@@ -66,7 +66,23 @@ namespace W.O.R.D.S.ViewModels
             set
             {
                 selectedWord = value;
+                if (selectedWord != null && selectedWord.GetExample() != null)
+                {
+                    ShownExample = selectedWord.GetExample();
+                    OnPropertyChanged("ShownExample");
+                }
                 OnPropertyChanged("SelectedWord");
+            }
+        }
+
+        private Example shownExample;
+        public Example ShownExample
+        {
+            get => shownExample;
+            set
+            {
+                shownExample = value;
+                OnPropertyChanged("WordName");
             }
         }
 
@@ -239,8 +255,11 @@ namespace W.O.R.D.S.ViewModels
 
                     foreach (var word in Word.GetWordsFromVocabulary(vocabulary))
                     {
-                        if (word.Example != null && word.Example.Name == " " || word.Example.Name == "")
-                            Dictionary.Add(word);
+                        foreach (var example in word.Examples)
+                        {
+                            if (example != null && example.Name == " " || example.Name == "")
+                                Dictionary.Add(word);
+                        }
                     }
                 }
 
@@ -256,7 +275,8 @@ namespace W.O.R.D.S.ViewModels
             set
             {
                 var result = Word.GetWordsFromVocabulary(vocabulary)
-                    .Where(x => x.Example == null || (x.Example != null && (x.Example.Name == " " || x.Example.Name == "")) && x.PartOfSpeech != PartOfSpeech.Sentence)
+                    //.Where(x => x.Example == null || (x.Example != null && (x.Example.Name == " " || x.Example.Name == "")) && x.PartOfSpeech != PartOfSpeech.Sentence)
+                    .Where(x => x.Examples.Count == 0 && x.PartOfSpeech != PartOfSpeech.Sentence)
                     .Count();
 
                 exNumber = result;
@@ -371,7 +391,22 @@ namespace W.O.R.D.S.ViewModels
                       }  
 
                       if (WordExample != null && WordExample != "")
-                          SelectedWord.Example = new Example(WordExample);
+                      {
+                          foreach (var example in SelectedWord.Examples)
+                          {
+                              if (example.Name == " " || example.Name == "")
+                              {
+                                  example.Name = WordExample;
+                                  break;
+                              }
+                              else
+                              {
+                                  SelectedWord.Examples.Add(new Example(WordExample));
+                                  break;
+                              }
+                          }
+                          
+                      }  
 
                       WordName = "";
                       WordTranslation = "";
@@ -402,9 +437,11 @@ namespace W.O.R.D.S.ViewModels
                               MessageBox.Show($"Слово {WordName} уже есть в словаре!", "Новое слово", MessageBoxButton.OK, MessageBoxImage.Error);
                           }
 
-                          Word word = new Word(WordName, WordTranslation, SelectedPartOfSpeech, SelectedLevel, WordTranscription, WordMeaning, SelectedCategory, new Example(WordExample), "", 0, -1, new DateTime(), false);
+                          List<Example> exampleList = new List<Example>();
+                          exampleList.Add(new Example(WordExample));
+                          Word word = new Word(WordName, WordTranslation, SelectedPartOfSpeech, SelectedLevel, WordTranscription, WordMeaning, SelectedCategory, exampleList, "", 0, -1, new DateTime(), false);
                           word.Dict = vocabulary;
-                          word.Example.Index(WordName);
+                          word.GetExample().Index(WordName);
 
                           SetOxfordCambridgeFormat(word, vocabulary);
 
@@ -467,7 +504,10 @@ namespace W.O.R.D.S.ViewModels
                   {
                       foreach (var word in Dictionary)
                       {
-                          word.Example.Index(word.Name);
+                          foreach (var example in word.Examples)
+                          {
+                              example.Index(word.Name);
+                          }
                           word.Group = 0;
                           word.Progress = -1;
                           word.Time = new DateTime();

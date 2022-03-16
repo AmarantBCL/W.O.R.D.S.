@@ -69,9 +69,12 @@ namespace W.O.R.D.S.Models
                             Word word = JsonConvert.DeserializeObject<Word>(item);
                             word.Dict = vocab;
 
-                            if (word.Example != null && word.Example.Indexes != null)
+                            foreach (var example in word.Examples)
                             {
-                                word.Example.FormatExample();
+                                if (example != null && example.Indexes != null)
+                                {
+                                    example.FormatExample();
+                                }
                             }
                         }
                     }
@@ -115,7 +118,7 @@ namespace W.O.R.D.S.Models
                         string level = match.Groups[5].Value;
                         string category = match.Groups[6].Value;
                         string meaning = match.Groups[7].Value;
-                        string example = match.Groups[8].Value;
+                        string examples = match.Groups[8].Value;
 
                         Category cat = new Category("All");
                         foreach (var item in categories)
@@ -125,10 +128,13 @@ namespace W.O.R.D.S.Models
                                 cat = item;
                             }
                         }
+
+                        List<Example> exampleList = new List<Example>();
+
                         Word word = new Word(name, translation, PART_OF_SPEECH_KEYS[partOfSpeech], (Level)Enum.Parse(typeof(Level), 
-                            level), transcription, meaning, cat, new Example(example), "", 0, -1, new DateTime(), false);
+                            level), transcription, meaning, cat, exampleList, "", 0, -1, new DateTime(), false);
                         word.Dict = vocabulary;
-                        word.Example.Index(name);
+                        //word.Example.Index(name); MUST BE INDEXED!
                     }
                 }
                 else

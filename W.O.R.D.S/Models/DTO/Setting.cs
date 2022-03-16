@@ -19,7 +19,7 @@ namespace W.O.R.D.S.Models.DTO
         public static bool ShowPhrases { get; set; } = true;
         public static bool ShowSentences { get; set; } = true;
         public static List<int> Exceptions { get; set; } = new List<int>();
-        public static Vocabulary Vocabulary { get; set; } = Vocabulary.Read()[Vocabulary.Read().Count - 5];
+        public static Vocabulary Vocabulary { get; set; } = Vocabulary.Read()[Vocabulary.Read().Count - 1];
         public static int WordsAmount { get; set; } = 5;
         public static Category Category { get; set; } = Category.Read()[0];
         public static string GameMode { get; set; } = "1";

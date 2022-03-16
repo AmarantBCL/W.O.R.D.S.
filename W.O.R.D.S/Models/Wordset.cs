@@ -134,13 +134,14 @@ namespace W.O.R.D.S.Models
 
             foreach (var item in Set)
             {
-                int a = item.Example.Indexes[0, 0];
-                int b = item.Example.Indexes[0, 1];
+                Example example = item.GetExample();
+                int a = example.Indexes[0, 0];
+                int b = example.Indexes[0, 1];
 
-                string example = item.PartOfSpeech != PartOfSpeech.Sentence && a == 0 && b == 0 ? "-------------------> [NO EXAMPLE!]" : "";
+                string exampleStr = item.PartOfSpeech != PartOfSpeech.Sentence && a == 0 && b == 0 ? "-------------------> [NO EXAMPLE!]" : "";
 
-                if (example != "")
-                    sb.AppendLine($"{item.Name} - {item.Translation} {example}");
+                if (exampleStr != "")
+                    sb.AppendLine($"{item.Name} - {item.Translation} {exampleStr}");
             }
 
             File.WriteAllText(path, sb.ToString());

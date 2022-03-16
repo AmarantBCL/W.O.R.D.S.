@@ -23,7 +23,7 @@ namespace W.O.R.D.S.Models
         public string Transcription { get; set; }
         public string Meaning { get; set; }
         public Category Category { get; set; }
-        public Example Example { get; set; }
+        public List<Example> Examples { get; set; }
         public int Group { get; set; }
         public int Progress { get; set; }
         public DateTime Time { get; set; }
@@ -34,7 +34,7 @@ namespace W.O.R.D.S.Models
         public static double[] Coeff = new double[6] { 0.0, 1.0, 1.5, 2.333333333, 7.5, 73.0 };
         public Vocabulary Dict { get; set; }
 
-        public Word(string name, string translation, PartOfSpeech partOfSpeech, Level level, string transcription, string meaning, Category category, Example example, string note, int stage, int progress, DateTime time, bool favorite)
+        public Word(string name, string translation, PartOfSpeech partOfSpeech, Level level, string transcription, string meaning, Category category, List<Example> examples, string note, int stage, int progress, DateTime time, bool favorite)
         {
             Id = Count++;
             Name = name;
@@ -44,7 +44,7 @@ namespace W.O.R.D.S.Models
             Transcription = transcription == "" ? "" : transcription; // [ + ]
             Meaning = meaning;
             Category = category;
-            Example = example;
+            Examples = examples;
             Note = note;
             Group = stage;
             Progress = progress;
@@ -179,6 +179,14 @@ namespace W.O.R.D.S.Models
             }
 
             return false;
+        }
+
+        public Example GetExample()
+        {
+            Random random = new Random();
+            int number = random.Next(Examples.Count);
+
+            return Examples[number];
         }
 
         private void SetWordClass()

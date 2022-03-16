@@ -16,13 +16,14 @@ namespace W.O.R.D.S.Models.DTO
         {
             if (mode is Context)
             {
-                if (mode.Word.Example.Main == "-")
+                Example example = mode.Word.GetExample();
+                if (example.Main == "-")
                     Text = mode.Translation;     
                 else
-                    Text = mode.Word.Example.Main.ToLower();
+                    Text = example.Main.ToLower();
 
-                if (mode.Word.Example.Second != "")
-                    SecondText = mode.Word.Example.Second;
+                if (example.Second != "")
+                    SecondText = example.Second;
             }
             else
                 Text = mode.Translation;

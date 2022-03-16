@@ -91,6 +91,17 @@ namespace W.O.R.D.S.ViewModels
             }
         }
 
+        private Example shownExample;
+        public Example ShownExample
+        {
+            get => shownExample;
+            set
+            {
+                shownExample = value;
+                OnPropertyChanged("ShownExample");
+            }
+        }
+
         private Option selectedVariant;
         public Option SelectedVariant
         {
@@ -279,7 +290,7 @@ namespace W.O.R.D.S.ViewModels
 
                       if (word.Favorite)
                       {
-                          Word favWord = new Word(word.Name, word.Translation, word.PartOfSpeech, word.Level, word.Transcription, word.Meaning, word.Category, word.Example, word.Note, 0, -1, new DateTime(), word.Favorite);
+                          Word favWord = new Word(word.Name, word.Translation, word.PartOfSpeech, word.Level, word.Transcription, word.Meaning, word.Category, word.Examples, word.Note, 0, -1, new DateTime(), word.Favorite);
                           favWord.Dict = Vocabulary.Fav;
                       }
                       else
@@ -349,6 +360,9 @@ namespace W.O.R.D.S.ViewModels
                     TypingAnswer = new TypingAnswer(Mode);
                 }
             }
+
+            if (Mode.Word != null)
+                ShownExample = Mode.Word.GetExample();
 
             OnPropertyChanged("WordSet");
             OnPropertyChanged("Mode");

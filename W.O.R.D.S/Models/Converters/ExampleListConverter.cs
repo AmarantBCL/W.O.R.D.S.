@@ -9,7 +9,7 @@ using System.Windows.Data;
 
 namespace W.O.R.D.S.Models.Converters
 {
-    public class ExampleConverter : IValueConverter
+    class ExampleListConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
@@ -20,7 +20,7 @@ namespace W.O.R.D.S.Models.Converters
                 result += example.Name + "\n";
             }
 
-            return "* Examples: " + result.Trim();
+            return result.Trim();
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
