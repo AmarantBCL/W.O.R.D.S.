@@ -1,0 +1,1 @@
+{"Name":"cat","Translation":"кот, кошка","PartOfSpeech":0,"Level":0,"Transcription":"kæt","Meaning":"A small animal with fur, four legs, and a tail that is kept as a pet.","Category":{"Name":"Animals"},"Example":{"Name":"I have a cat called Bo.","Indexes":[[9,11],[0,0]]},"Group":0,"Progress":-1,"Time":"0001-01-01T00:00:00","Favorite":false,"Note":""}
