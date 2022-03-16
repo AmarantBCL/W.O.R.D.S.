@@ -313,6 +313,12 @@ namespace W.O.R.D.S.ViewModels
             {
                 string result = WordMeaning;
 
+                if (WordMeaning == "")
+                {
+                    word.Meaning = result;
+                    return;
+                }
+
                 if (word.PartOfSpeech == PartOfSpeech.Noun)
                 {
                     word.Meaning = $"A {word.Name} is {result}.";
