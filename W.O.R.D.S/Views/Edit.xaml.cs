@@ -21,10 +21,10 @@ namespace W.O.R.D.S.Views
     /// </summary>
     public partial class Edit : Window
     {
-        public Edit(Word word)
+        public Edit(Word word, Example example)
         {
             InitializeComponent();
-            DataContext = new EditViewModel(this, word);
+            DataContext = new EditViewModel(this, word, example);
         }
     }
 }

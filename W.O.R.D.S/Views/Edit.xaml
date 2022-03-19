@@ -62,7 +62,7 @@
                 <RichTextBox Grid.Column="1" Margin="4">
                     <FlowDocument>
                         <Paragraph>
-                            <Run Text="{Binding Word.Example.Left}"/><Run Text="{Binding Word.Example.Main}" FontWeight="Bold"/><Run Text="{Binding Word.Example.Right}"/><Run Text="{Binding Word.Example.Second}" FontWeight="Bold"/><Run Text="{Binding Word.Example.Final}"/>
+                            <Run Text="{Binding EditExample.Left}"/><Run Text="{Binding EditExample.Main}" FontWeight="Bold"/><Run Text="{Binding EditExample.Right}"/><Run Text="{Binding EditExample.Second}" FontWeight="Bold"/><Run Text="{Binding EditExample.Final}"/>
                         </Paragraph>
                     </FlowDocument>
                 </RichTextBox>

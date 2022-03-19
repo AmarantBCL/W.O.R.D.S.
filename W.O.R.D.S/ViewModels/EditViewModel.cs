@@ -12,7 +12,6 @@ namespace W.O.R.D.S.ViewModels
     public class EditViewModel : INotifyPropertyChanged
     {
         private readonly Window window;
-        private readonly Example editExample;
 
         private Word word;
         public Word Word
@@ -68,6 +67,17 @@ namespace W.O.R.D.S.ViewModels
 
         public ObservableCollection<Category> Categories { get; set; } = new ObservableCollection<Category>();
 
+        private Example editExample;
+        public Example EditExample
+        {
+            get => editExample;
+            set
+            {
+                editExample = value;
+                OnPropertyChanged("ShownExample");
+            }
+        }
+
         private int[] indexator = new int[4];
         public int[] Indexator
         {
@@ -79,7 +89,7 @@ namespace W.O.R.D.S.ViewModels
             }
         }
 
-        public EditViewModel(Window window, Word word)
+        public EditViewModel(Window window, Word word, Example example)
         {
             this.window = window;
             this.word = word;
@@ -95,11 +105,11 @@ namespace W.O.R.D.S.ViewModels
 
             SelectedPartOfSpeech = word.PartOfSpeech;
             SelectedLevel = word.Level;
-            editExample = word.GetExample();
-            Indexator[0] = editExample.Indexes[0, 0];
-            Indexator[1] = editExample.Indexes[0, 1];
-            Indexator[2] = editExample.Indexes[1, 0];
-            Indexator[3] = editExample.Indexes[1, 1];
+            EditExample = example;
+            Indexator[0] = EditExample.Indexes[0, 0];
+            Indexator[1] = EditExample.Indexes[0, 1];
+            Indexator[2] = EditExample.Indexes[1, 0];
+            Indexator[3] = EditExample.Indexes[1, 1];
         }
 
         private RelayCommand okCommand;
@@ -138,11 +148,11 @@ namespace W.O.R.D.S.ViewModels
         {
             string note = word.Note.Replace("\\n", "\n");
             word.Note = note;
-            string exampleStr = editExample.Left + editExample.Main + editExample.Right + editExample.Second + editExample.Final;
-            editExample.Name = exampleStr;
+            string exampleStr = EditExample.Left + EditExample.Main + EditExample.Right + EditExample.Second + EditExample.Final;
+            EditExample.Name = exampleStr;
             int[,] indexes = { { Indexator[0], Indexator[1] }, { Indexator[2], Indexator[3] } };
-            editExample.Indexes = indexes;
-            editExample.FormatExample();
+            EditExample.Indexes = indexes;
+            EditExample.FormatExample();
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

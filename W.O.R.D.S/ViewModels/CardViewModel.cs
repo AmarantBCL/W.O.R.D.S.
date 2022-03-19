@@ -311,7 +311,7 @@ namespace W.O.R.D.S.ViewModels
                 return editCommand ??
                   (editCommand = new RelayCommand(obj =>
                   {
-                      editWindow = new Edit(Mode.Word);
+                      editWindow = new Edit(Mode.Word, ShownExample);
                       editWindow.Show();
                   }));
             }
