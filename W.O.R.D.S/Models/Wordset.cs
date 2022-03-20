@@ -36,58 +36,38 @@ namespace W.O.R.D.S.Models
 
             TimeHandler Handler = DateTime.Now.AddDays;
 
-            GetInitialList(vocabulary);
+            List<Word> set = GetInitialList(vocabulary, category);
 
-            if (category.Name == "All")
+            if (!IsLearning)
             {
-                if (!IsLearning)
-                {
-                    Set = Set.OrderBy(x => Guid.NewGuid())
-                        .Take(amount)
-                        .ToList();
-                }
-                else
-                {
-                    Set = Set.Where(x => x.Progress >= 5 && Handler(-(x.Group * Coeff[x.Group])) > x.Time)
-                        .OrderByDescending(x => x.Time)
-                        .ThenBy(x => Guid.NewGuid())
-                        .Union(Word.Vocabulary.Distinct()
-                        .Where(x => x.Dict.Name == vocabulary.Name)
-                        .Where(x => x.Progress < 5)
-                        .OrderByDescending(x => x.Time > new DateTime())
-                        .OrderByDescending(x => x.Progress)
-                        .ThenBy(x => Guid.NewGuid())
-                        ).Take(amount)
-                        .OrderBy(x => Guid.NewGuid())
-                        .ToList();
-                }
+                Set = set.OrderBy(x => Guid.NewGuid())
+                    .Take(amount)
+                    .ToList();
             }
             else
             {
-                if (!IsLearning)
-                {
-                    Set = Set.Where(x => x.Category != null && x.Category.Name == category.Name)
-                        .OrderBy(x => Guid.NewGuid())
-                        .Take(amount)
-                        .ToList();
-                }
-                else
-                {
-                    Set = Set.Where(x => x.Category != null && x.Category.Name == category.Name)
-                        .Where(x => x.Progress >= 5 && Handler(-(x.Group * Coeff[x.Group])) > x.Time)
-                        .OrderByDescending(x => x.Time)
-                        .ThenBy(x => Guid.NewGuid())
-                        .Union(Word.Vocabulary.Distinct()
-                        .Where(x => x.Dict.Name == vocabulary.Name)
-                        .Where(x => x.Category != null && x.Category.Name == category.Name)
-                        .Where(x => x.Progress < 5)
-                        .OrderByDescending(x => x.Time > new DateTime())
-                        .OrderByDescending(x => x.Progress)
-                        .ThenBy(x => Guid.NewGuid())
-                        ).Take(amount)
-                        .OrderBy(x => Guid.NewGuid())
-                        .ToList();
-                }
+                int wordAmount = amount;
+
+                var set1 = set.Where(x => x.Progress >= 5 && Handler(-(x.Group * Coeff[x.Group])) > x.Time)
+                    .OrderByDescending(x => x.Time)
+                    .ThenBy(x => Guid.NewGuid())
+                    .ToList();
+
+                wordAmount -= set1.Count;
+                List<Word> moreSet = GetInitialList(vocabulary, category);
+
+                var set2 = moreSet.Distinct()
+                    .Where(x => x.Dict.Name == vocabulary.Name)
+                    .Where(x => x.Progress < 5)
+                    .OrderByDescending(x => x.Time > new DateTime())
+                    .OrderByDescending(x => x.Progress)
+                    .ThenBy(x => Guid.NewGuid())
+                    .Take(wordAmount)
+                    .OrderBy(x => Guid.NewGuid())
+                    .ToList();
+
+                Set = set1.Union(set2)
+                    .ToList();
             }
 
             SaveWordList();
@@ -202,22 +182,32 @@ namespace W.O.R.D.S.Models
             Word.SaveWordsToFile(Vocabulary.Fav);
         }
 
-        private void GetInitialList(Vocabulary vocabulary)
+        private List<Word> GetInitialList(Vocabulary vocabulary, Category category)
         {
-            Set = Word.Vocabulary.Distinct().
-                Where(x => x.Dict.Name == vocabulary.Name).
-                ToList();
+            List<Word> set = new List<Word>();
 
-            var set1 = Setting.ShowWords ? Set.Where(x => x.WordClass == WordClass.Word)
+            set = Word.Vocabulary.Distinct()
+                .Where(x => x.Dict.Name == vocabulary.Name)
+                .ToList();
+
+            if (category.Name != "All")
+            {
+                set = set.Where(x => x.Category != null && x.Category.Name == category.Name)
+                    .ToList();
+            }
+
+            var set1 = Setting.ShowWords ? set.Where(x => x.WordClass == WordClass.Word)
                 .ToList() : new List<Word>();
-            var set2 = Setting.ShowPhrases ? Set.Where(x => x.WordClass == WordClass.Phrase)
+            var set2 = Setting.ShowPhrases ? set.Where(x => x.WordClass == WordClass.Phrase)
                 .ToList() : new List<Word>();
-            var set3 = Setting.ShowSentences ? Set.Where(x => x.WordClass == WordClass.Sentence)
+            var set3 = Setting.ShowSentences ? set.Where(x => x.WordClass == WordClass.Sentence)
                 .ToList() : new List<Word>();
 
-            Set = set1.Union(set2)
+            set = set1.Union(set2)
                 .Union(set3)
                 .ToList();
+
+            return set;
         }
     }
 }
