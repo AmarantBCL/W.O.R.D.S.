@@ -526,6 +526,31 @@ namespace W.O.R.D.S.ViewModels
             }
         }
 
+        private RelayCommand favCommand;
+        public RelayCommand FavCommand
+        {
+            get
+            {
+                return favCommand ??
+                  (favCommand = new RelayCommand(obj =>
+                  {
+                      SelectedWord.Favorite = !SelectedWord.Favorite;
+
+                      if (SelectedWord.Favorite)
+                      {
+                          Word favWord = new Word(SelectedWord.Name, SelectedWord.Translation, SelectedWord.PartOfSpeech, SelectedWord.Level, SelectedWord.Transcription, SelectedWord.Meaning, SelectedWord.Category, SelectedWord.Examples, SelectedWord.Note, 0, -1, new DateTime(), SelectedWord.Favorite);
+                          favWord.Dict = Vocabulary.Fav;
+                      }
+                      else
+                      {
+                          Word.DeleteWordFromFavs(SelectedWord.Name, SelectedWord.Translation);
+                      }
+
+                      Search = Search;
+                  }));
+            }
+        }
+
         public event PropertyChangedEventHandler PropertyChanged;
         public void OnPropertyChanged([CallerMemberName] string prop = "")
         {

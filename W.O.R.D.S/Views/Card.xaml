@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:W.O.R.D.S.Views"
         xmlns:converters="clr-namespace:W.O.R.D.S.Models.Converters"
         mc:Ignorable="d"
-        Title="Card" Height="600" Width="900" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+        Title="Card" Height="600" Width="950" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
     <Window.Resources>
         <converters:AnswerConverter x:Key="AnswerConverter" />
         <converters:ColorConverter x:Key="ColorConverter" />
@@ -178,7 +178,7 @@
 
                 <TextBlock Text="{Binding ShownExample.Right}" FontSize="20" VerticalAlignment="Center" Visibility="{Binding Mode.Presenter.ContextVisible}"></TextBlock>
 
-                <TextBox Text="{Binding SecondEditText,UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center" Width="200" Height="36" Background="PaleGreen" IsEnabled="{Binding ElementsEnabled}" MaxLength="{Binding Mode.Word.Example.Second.Length}" Visibility="{Binding Mode.Presenter.SecondEditVisible}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="20" Margin="8">
+                <TextBox Text="{Binding SecondEditText,UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center" Width="200" Height="36" Background="PaleGreen" IsEnabled="{Binding ElementsEnabled}" MaxLength="{Binding ShownExample.Second.Length}" Visibility="{Binding Mode.Presenter.SecondEditVisible}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="20" Margin="8">
                     <TextBox.InputBindings>
                         <KeyBinding
                             Key="Return"
@@ -252,15 +252,15 @@
         </StackPanel>
 
         <StackPanel Grid.Row="2" Orientation="Horizontal">
-            <Button Width="450" Command="{Binding NextCommand}" CommandParameter="1" Visibility="{Binding Mode.Presenter.ShowAnswerVisible}" Background="DarkGreen" FontWeight="Bold" FontSize="18">ПРАВИЛЬНО</Button>
-            <Button Width="450" Command="{Binding NextCommand}" CommandParameter="0" Visibility="{Binding Mode.Presenter.ShowAnswerVisible}" Background="FireBrick" FontWeight="Bold" FontSize="18">НЕПРАВИЛЬНО</Button>
-            <Button Width="900" Command="{Binding AnswerCommand}" Visibility="{Binding Mode.Presenter.RightWrongVisible}" Background="Teal" FontWeight="Bold" FontSize="18">ПОКАЗАТЬ ОТВЕТ</Button>
+            <Button Width="470" Command="{Binding NextCommand}" CommandParameter="1" Visibility="{Binding Mode.Presenter.ShowAnswerVisible}" Background="DarkGreen" FontWeight="Bold" FontSize="18">ПРАВИЛЬНО</Button>
+            <Button Width="470" Command="{Binding NextCommand}" CommandParameter="0" Visibility="{Binding Mode.Presenter.ShowAnswerVisible}" Background="FireBrick" FontWeight="Bold" FontSize="18">НЕПРАВИЛЬНО</Button>
+            <Button Width="950" Command="{Binding AnswerCommand}" Visibility="{Binding Mode.Presenter.RightWrongVisible}" Background="Teal" FontWeight="Bold" FontSize="18">ПОКАЗАТЬ ОТВЕТ</Button>
 
-            <Button Width="900" Command="{Binding NextCommand}" Visibility="{Binding Mode.Presenter.NextVisible}" Background="Teal" FontWeight="Bold" FontSize="18">ДАЛЕЕ</Button>
+            <Button Width="950" Command="{Binding NextCommand}" Visibility="{Binding Mode.Presenter.NextVisible}" Background="Teal" FontWeight="Bold" FontSize="18">ДАЛЕЕ</Button>
 
-            <Button Width="900" Command="{Binding AnswerCommand}" Visibility="{Binding Mode.Presenter.EnterVisible}" Background="Gray" FontWeight="Bold" FontSize="18">ВВЕСТИ</Button>
+            <Button Width="950" Command="{Binding AnswerCommand}" Visibility="{Binding Mode.Presenter.EnterVisible}" Background="Gray" FontWeight="Bold" FontSize="18">ВВЕСТИ</Button>
 
-            <Button Width="900" Command="{Binding CloseCommand}" Visibility="{Binding Mode.Presenter.CloseVisible}" Background="Gray" FontWeight="Bold" FontSize="18">ЗАВЕРШИТЬ</Button>
+            <Button Width="950" Command="{Binding CloseCommand}" Visibility="{Binding Mode.Presenter.CloseVisible}" Background="Gray" FontWeight="Bold" FontSize="18">ЗАВЕРШИТЬ</Button>
         </StackPanel>
     </Grid>
 </Window>
