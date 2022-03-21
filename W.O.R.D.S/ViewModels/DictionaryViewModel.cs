@@ -412,14 +412,15 @@ namespace W.O.R.D.S.ViewModels
                               }
                           }
                           
-                      }  
+                      }
 
+                      string name = Search;
                       WordName = "";
                       WordTranslation = "";
                       WordTranscription = "";
                       WordMeaning = "";
                       WordExample = "";
-                      Search = Search;
+                      Search = name;
 
                       //MessageBox.Show($"Слово {WordName} успешно отредактировано.", "Новое слово", MessageBoxButton.OK, MessageBoxImage.Information);
                   }));
@@ -453,12 +454,13 @@ namespace W.O.R.D.S.ViewModels
 
                           //MessageBox.Show($"Слово {WordName} успешно добавлено.", "Новое слово", MessageBoxButton.OK, MessageBoxImage.Information);
 
+                          string name = Search;
                           WordName = "";
                           WordTranslation = "";
                           WordTranscription = "";
                           WordMeaning = "";
                           WordExample = "";
-                          Search = "";
+                          Search = name;
                       }
                       else
                       {
