@@ -310,6 +310,9 @@
     <Content Include="Icons\fight.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Icons\fragile.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Icons\give.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
