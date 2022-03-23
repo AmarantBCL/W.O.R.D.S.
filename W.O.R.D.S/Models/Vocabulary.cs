@@ -7,6 +7,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
+using W.O.R.D.S.Models.DTO;
 
 namespace W.O.R.D.S.Models
 {
@@ -144,6 +145,19 @@ namespace W.O.R.D.S.Models
             }
 
             File.WriteAllLines(path, newLines.ToArray());
+            GenerateForWordFinder();
+        }
+
+        public static void GenerateForWordFinder()
+        {
+            string path = @"D:/WordList.txt";
+            StringBuilder sb = new StringBuilder();
+            foreach (var word in Word.Vocabulary)
+            {
+                if (word.Dict.Name == "MERGED VOCABULARY" && word.WordClass == WordClass.Word)
+                    sb.AppendLine(word.Name);
+            }
+            File.WriteAllText(path, sb.ToString());
         }
     }
 }
