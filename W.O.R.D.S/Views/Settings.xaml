@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:W.O.R.D.S.Views"
         mc:Ignorable="d"
-        Title="Settings" Height="600" Width="950" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+        Title="Settings" Height="600" Width="1000" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
     <Window.Resources>
         <Style x:Key="14px">
             <Setter Property="Control.FontSize" Value="14"/>

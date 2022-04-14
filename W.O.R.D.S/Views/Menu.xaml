@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:W.O.R.D.S"
         mc:Ignorable="d"
-        Title="Welcome to W.O.R.D.S.!" Height="600" Width="950" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+        Title="Welcome to W.O.R.D.S.!" Height="600" Width="1000" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
     <Window.Resources>
         <Style x:Key="14px">
             <Setter Property="Control.FontSize" Value="14"/>

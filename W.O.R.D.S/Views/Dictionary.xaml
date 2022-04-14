@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:W.O.R.D.S.Views"
         xmlns:converters="clr-namespace:W.O.R.D.S.Models.Converters"
         mc:Ignorable="d"
-        Title="Dictionary" Height="600" Width="950" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+        Title="Dictionary" Height="600" Width="1000" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
     <Window.Resources>
         <Style x:Key="ButtonStyle">
             <Setter Property="Control.FontSize" Value="14"/>
@@ -101,7 +101,7 @@
         </ListView>
 
         <StackPanel Grid.Row="1" Orientation="Horizontal">
-            <TextBox Text="{Binding Search, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Background="PowderBlue" Width="198" FontSize="18" FontWeight="Bold" VerticalAlignment="Center" Margin="4,0,6,0"></TextBox>
+            <TextBox Text="{Binding Search, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Background="PowderBlue" Width="248" FontSize="18" FontWeight="Bold" VerticalAlignment="Center" Margin="4,0,6,0"></TextBox>
             <Button Command="{Binding FavCommand}" Background="Yellow" Style="{StaticResource ButtonStyle}" Width="40" Margin="0,0,6,0">★</Button>
             <Button Command="{Binding ResetCommand}" Background="Crimson" Style="{StaticResource ButtonStyle}" Margin="0,0,6,0">Удалить</Button>
             <Button Command="{Binding TestCommand}" Background="RoyalBlue" Style="{StaticResource ButtonStyle}" Margin="0,0,6,0">Индексировать</Button>
@@ -114,7 +114,7 @@
             <TextBlock VerticalAlignment="Center" Margin="4,0,6,0">Слово:</TextBlock>
             <TextBox Text="{Binding WordName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="100" FontSize="16" VerticalAlignment="Center" Margin="4,0,6,0"></TextBox>
             <TextBlock VerticalAlignment="Center" Margin="4,0,6,0">Перевод:</TextBlock>
-            <TextBox Text="{Binding WordTranslation}" Width="140" FontSize="16" VerticalAlignment="Center" Margin="4,0,6,0">
+            <TextBox Text="{Binding WordTranslation}" Width="190" FontSize="16" VerticalAlignment="Center" Margin="4,0,6,0">
                 <TextBox.InputBindings>
                     <KeyBinding
                         Key="Return"
@@ -141,11 +141,13 @@
 
         <StackPanel Grid.Row="3" Orientation="Horizontal">
             <TextBlock VerticalAlignment="Center" Margin="4,0,6,0">Транскрипция:</TextBlock>
-            <TextBox Text="{Binding WordTranscription}" Width="160" FontSize="16" VerticalAlignment="Center" Margin="4,0,6,0"></TextBox>
+            <TextBox Text="{Binding WordTranscription}" Width="100" FontSize="16" VerticalAlignment="Center" Margin="4,0,6,0"></TextBox>
             <TextBlock VerticalAlignment="Center" Margin="4,0,6,0">Значение:</TextBlock>
-            <TextBox Text="{Binding WordMeaning}" Width="200" FontSize="16" VerticalAlignment="Center" Margin="4,0,6,0"></TextBox>
+            <TextBox Text="{Binding WordMeaning}" Width="150" FontSize="16" VerticalAlignment="Center" Margin="4,0,6,0"></TextBox>
             <TextBlock VerticalAlignment="Center" Margin="4,0,6,0">Пример:</TextBlock>
-            <TextBox Text="{Binding WordExample}" Width="225" FontSize="16" VerticalAlignment="Center" Margin="4,0,6,0"></TextBox>
+            <TextBox Text="{Binding WordExample}" Width="175" FontSize="16" VerticalAlignment="Center" Margin="4,0,6,0"></TextBox>
+            <TextBlock VerticalAlignment="Center" Margin="4,0,6,0">Тезариус:</TextBlock>
+            <TextBox Text="{Binding WordThesaurus}" Width="150" FontSize="16" VerticalAlignment="Center" Margin="4,0,6,0"></TextBox>
             <!--CheckBox IsChecked="{Binding NoExamples}" VerticalAlignment="Center" Margin="4,0,6,0">Ex</-->
             <TextBlock Text="{Binding ExNumber}" TextDecorations="Underline" VerticalAlignment="Center" Margin="4,0,6,0"></TextBlock>
             <CheckBox IsChecked="{Binding NoPartOfSpeech}" VerticalAlignment="Center">Ч</CheckBox>

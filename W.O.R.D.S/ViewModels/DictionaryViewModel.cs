@@ -143,6 +143,17 @@ namespace W.O.R.D.S.ViewModels
             }
         }
 
+        private string wordThesaurus;
+        public string WordThesaurus
+        {
+            get => wordThesaurus;
+            set
+            {
+                wordThesaurus = value;
+                OnPropertyChanged("WordThesaurus");
+            }
+        }
+
         private Category selectedCategory;
         public Category SelectedCategory
         {
@@ -414,12 +425,16 @@ namespace W.O.R.D.S.ViewModels
                           
                       }
 
+                      if (WordThesaurus != null && WordThesaurus != "")
+                          SelectedWord.Note = WordThesaurus;
+
                       string name = Search;
                       WordName = "";
                       WordTranslation = "";
                       WordTranscription = "";
                       WordMeaning = "";
                       WordExample = "";
+                      WordThesaurus = "";
                       Search = name;
 
                       //MessageBox.Show($"Слово {WordName} успешно отредактировано.", "Новое слово", MessageBoxButton.OK, MessageBoxImage.Information);
