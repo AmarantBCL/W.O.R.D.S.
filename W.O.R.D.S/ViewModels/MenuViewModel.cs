@@ -117,16 +117,18 @@ namespace W.O.R.D.S.ViewModels
                 OnPropertyChanged("SelectedThesaurus");
                 Note = "";
                 if (SelectedVocabulary == null) return;
+                StringBuilder sb = new StringBuilder();
                 foreach (Word word in Word.Vocabulary)
                 {
                     if (SelectedVocabulary.Name != null && word.Dict.Name == SelectedVocabulary.Name)
                     {
                         if (ThesaurusInfo.GetTag(word.Note) == SelectedThesaurus.Name)
                         {
-                            Note += word.Name + " - " + word.Translation + "\n";
+                            sb.Append(word.Name + " - " + word.Translation + "\n" + word.Note + "\n\n");
                         }
                     }
                 }
+                Note = sb.ToString().Trim();
             }
         }
 

@@ -86,9 +86,9 @@
                         </DataTemplate>
                     </ComboBox.ItemTemplate>
                 </ComboBox>
-                <Button Margin="4,0,4,0" Content="Слова">
+                <Button Margin="4,0,4,0" Content="Слова" ToolTipService.ShowDuration="60000">
                     <Button.ToolTip>
-                        <ToolTip >
+                        <ToolTip>
                             <TextBlock Text="{Binding Note}" FontStyle="Italic" Foreground="Blue"></TextBlock>
                         </ToolTip>
                     </Button.ToolTip>
