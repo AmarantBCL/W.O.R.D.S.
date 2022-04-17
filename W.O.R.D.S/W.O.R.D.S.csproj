@@ -88,6 +88,7 @@
     <Compile Include="Models\DTO\Status.cs" />
     <Compile Include="Models\DTO\WordClass.cs" />
     <Compile Include="Models\Info\Thesaurus.cs" />
+    <Compile Include="Models\Info\ThesaurusInfo.cs" />
     <Compile Include="Models\Learning.cs" />
     <Compile Include="ViewModels\EditViewModel.cs" />
     <Compile Include="ViewModels\SettingsViewModel.cs" />

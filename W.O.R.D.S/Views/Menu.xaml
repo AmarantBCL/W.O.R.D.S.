@@ -74,6 +74,26 @@
                     </ComboBox.ItemTemplate>
                 </ComboBox>
             </StackPanel>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="5">
+                <TextBlock Text="Тезаурус: " Style="{StaticResource 14px}"/>
+                <ComboBox ItemsSource="{Binding ThesaurusList}" SelectedItem="{Binding SelectedThesaurus}" Width="200">
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <Image Width="24" Height="24" Margin="0,0,4,0" Source="{Binding Pic}"></Image>
+                                <TextBlock Text="{Binding Name}"></TextBlock>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+                </ComboBox>
+                <Button Margin="4,0,4,0" Content="Слова">
+                    <Button.ToolTip>
+                        <ToolTip >
+                            <TextBlock Text="{Binding Note}" FontStyle="Italic" Foreground="Blue"></TextBlock>
+                        </ToolTip>
+                    </Button.ToolTip>
+                </Button>
+            </StackPanel>
         </StackPanel>
 
         <StackPanel Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center" Style="{StaticResource 14px}">

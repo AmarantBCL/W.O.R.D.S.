@@ -11,6 +11,7 @@ using System.Windows;
 using W.O.R.D.S.Infrastructure;
 using W.O.R.D.S.Models;
 using W.O.R.D.S.Models.DTO;
+using W.O.R.D.S.Models.Info;
 using W.O.R.D.S.Views;
 
 namespace W.O.R.D.S.ViewModels
@@ -28,6 +29,7 @@ namespace W.O.R.D.S.ViewModels
         };
 
         public ObservableCollection<Category> Categories { get; set; } = new ObservableCollection<Category>();
+        public ObservableCollection<Thesaurus> ThesaurusList { get; set; } = new ObservableCollection<Thesaurus>();
         public ObservableCollection<Vocabulary> Vocabularies { get; set; } = new ObservableCollection<Vocabulary>();
 
         private int totalWords;
@@ -105,6 +107,40 @@ namespace W.O.R.D.S.ViewModels
             }
         }
 
+        private Thesaurus selectedThesaurus;
+        public Thesaurus SelectedThesaurus
+        {
+            get => selectedThesaurus;
+            set
+            {
+                selectedThesaurus = value;
+                OnPropertyChanged("SelectedThesaurus");
+                Note = "";
+                if (SelectedVocabulary == null) return;
+                foreach (Word word in Word.Vocabulary)
+                {
+                    if (SelectedVocabulary.Name != null && word.Dict.Name == SelectedVocabulary.Name)
+                    {
+                        if (ThesaurusInfo.GetTag(word.Note) == SelectedThesaurus.Name)
+                        {
+                            Note += word.Name + " - " + word.Translation + "\n";
+                        }
+                    }
+                }
+            }
+        }
+
+        private string note;
+        public string Note
+        {
+            get => note;
+            set
+            {
+                note = value;
+                OnPropertyChanged("Note");
+            }
+        }
+
         private int learning;
         public int Learning
         {
@@ -148,6 +184,15 @@ namespace W.O.R.D.S.ViewModels
 
                 if (item.Name == Setting.Category.Name)
                     SelectedCategory = item;
+            }
+
+            foreach (var item in ThesaurusInfo.Articles)
+            {
+                Thesaurus thesaurus = new Thesaurus(item.Key, item.Value);
+                ThesaurusList.Add(thesaurus);
+
+                if (item.Value == "unknown")
+                    SelectedThesaurus = thesaurus;
             }
 
             foreach (var item in Vocabulary.Read())

@@ -21,11 +21,11 @@ namespace W.O.R.D.S.Models.Converters
 
             if (word.Note != "")
             {
-                string tag = Thesaurus.GetTag(word.Note);
+                string tag = ThesaurusInfo.GetTag(word.Note);
 
-                if (Thesaurus.Article.ContainsKey(tag))
+                if (ThesaurusInfo.Articles.ContainsKey(tag))
                 {
-                    string image = Thesaurus.Article[tag];
+                    string image = ThesaurusInfo.Articles[tag];
                     return "/Icons/" + image.ToLower() + ".png";
                 }
             }
